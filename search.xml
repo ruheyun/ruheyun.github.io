@@ -129,61 +129,11 @@
     
     
     <entry>
-      <title>Markdown语法</title>
-      <link href="/2023/01/23/Markdown%E8%AF%AD%E6%B3%95/"/>
-      <url>/2023/01/23/Markdown%E8%AF%AD%E6%B3%95/</url>
-      
-        <content type="html"><![CDATA[<h2 id="Markdown学习"><a href="#Markdown学习" class="headerlink" title="Markdown学习"></a>Markdown学习</h2><p><code>一级标题用：# 标题内容</code></p><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p><code>二级标题用：## 标题内容</code></p><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><p><code>三级标题用：### 标题内容</code></p><p><code>以此类推，但markdown最多可有六级标题，注意点：#符合后面有空格然后加标题</code></p><h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><p><code>字体加粗用：**字体内容**</code></p><p><strong>hello world！</strong></p><p><code>字体斜体用：*字体内容*</code></p><p><em>hello world！</em></p><p><code>字体加粗且斜体用：***字体内容***</code></p><p><strong><em>hello world！</em></strong></p><p><code>字体删除横杠用：~~字体内容~~</code></p><p><del>hello world！</del></p><p><code>字体加下划线用：&lt;u&gt;hello world!&lt;/u&gt;</code></p><p><u>hello world!</u></p><p><code>字体下标表示用：H~2~o</code></p><p>H~2~o</p><p><code>字体上标表示用：n^2^</code></p><p>n^2^</p><p><code>字体高亮用：==字体内容==</code></p><p>==hello world!==</p><h2 id="表情符号"><a href="#表情符号" class="headerlink" title="表情符号"></a>表情符号</h2><p><code>常用表情符号：:smile: :laughing: :dizzy_face: :sob: :cold_sweat: :sweat_smile:  :cry: :triumph: :heart_eyes: :relaxed: :sunglasses: :weary:</code></p><p><code>:+1: :-1: :100: :clap: :bell: :gift: :question: :bomb: :heart: :coffee: :cyclone: :bow: :kiss: :pray: :sweat_drops: :hankey: :exclamation: :anger:</code></p><p>:smile: :laughing: :dizzy_face: :sob: :cold_sweat: :sweat_smile:  :cry: :triumph: :heart_eyes: :relaxed: :sunglasses: :weary:</p><p>:+1: :-1: :100: :clap: :bell: :gift: :question: :bomb: :heart: :coffee: :cyclone: :bow: :kiss: :pray: :sweat_drops: :hankey: :exclamation: :anger:</p><h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><code>引用内容用：&gt; 内容</code></p><p><code>二级引用用：&gt;&gt; 内容</code></p><p><code>两次enter键跳出引用</code></p><blockquote><p>我的第一篇博客</p><blockquote><p>二级引用</p></blockquote></blockquote><h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p><code>常用的分割线用：---或者***回车即可</code></p><hr><hr><h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p><code>插入本地图片用：![图片名字](图片地址绝对路径或者相对路径)</code></p><p><code>缺点：本地图片删除时，图片会失效</code></p><p><img src="/images/blog003.jpeg" alt="截图"></p><p><code>插入网络图片用：![图片名字](图片地址图片链接)</code></p><p><code>缺点：网络图片被作者删除时，无法引入，图片会显示失效</code></p><div class="img-wrap"><div class="img-bg"><img class="img" src="https://s2.loli.net/2023/01/24/DB7ulrUYzvaTOcJ.png" alt="网络图片"/></div><span class="image-caption">网络图片</span></div><h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><p><code>超链接用：[链接名字](链接地址)</code></p><p><a href="https://www.cnblogs.com/ruhe2022618/">点击跳转到我的主页</a></p><p><code>自动链接用：&lt;链接地址url或者邮箱&gt;</code></p><p><a href="https://www.cnblogs.com/ruhe2022618/">https://www.cnblogs.com/ruhe2022618/</a></p><h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p><code>有序列表用：1. 内容</code></p><ol><li>a</li><li>b</li><li>c</li></ol><p><code>无序列表用：- 内容</code></p><ul><li>a</li><li>b</li><li>c</li></ul><h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p><code>插入表格最简单方法，直接鼠标右键选插入&gt;表格即可</code></p><div class="table-container"><table><thead><tr><th>名字</th><th>性别</th><th>生日</th></tr></thead><tbody><tr><td>如何</td><td>男</td><td>2022.6.18</td></tr></tbody></table></div><p><code>插入表格第二种方式需要用格式：</code></p><p><code>|属性\|属性\|属性|</code></p><p><code>|--\|--\|--|</code></p><p><code>|内容\|内容|内容|</code></p><div class="table-container"><table><thead><tr><th>名字</th><th>性别</th><th>生日</th></tr></thead><tbody><tr><td>如何</td><td>男</td><td>2022.6.18</td></tr></tbody></table></div><h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><p><code>编写代码用：```语言名称回车即可</code></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorld</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">System.out.println(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>行内代码用：``两点内书写内容</code></p><blockquote><p>2022.6.18是我第一天注册博客园开始学习写文章，为了完成属于自己的第一篇博客，我熬夜写到半夜才完成。虽然有很多地方不足，但是我很开心。也希望自己可以在接下来学习Java的过程中坚持写博客，不放弃，希望可以让自己在学习过程中与大家一起讨论，分享总结。最后，祝园友心想事成！</p><p>2023.1.22自己开始搭建博客，23号自己的博客小站上线，已将文章迁移到自己的博客。</p></blockquote>]]></content>
-      
-      
-      <categories>
-          
-          <category> Blog写法笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Blog </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Java基础01</title>
       <link href="/2023/01/23/Java%E5%9F%BA%E7%A1%8001/"/>
       <url>/2023/01/23/Java%E5%9F%BA%E7%A1%8001/</url>
       
         <content type="html"><![CDATA[<h1 id="Java基础01"><a href="#Java基础01" class="headerlink" title="Java基础01"></a>Java基础01</h1><h2 id="Java特性及优势"><a href="#Java特性及优势" class="headerlink" title="Java特性及优势"></a>Java特性及优势</h2><ul><li>简单性</li><li>面向对象</li><li>可移植性</li><li>高性能</li><li>分布式</li><li>动态性</li><li>多线程</li><li>安全性</li><li>健壮性</li></ul><h2 id="Java三大版本"><a href="#Java三大版本" class="headerlink" title="Java三大版本"></a>Java三大版本</h2><ul><li><p>Java SE  标准版（重点）</p></li><li><p>Java ME 嵌入式开发</p></li><li><p>Java EE  E企业级开发</p></li></ul><h2 id="JDK，JRE，JVM"><a href="#JDK，JRE，JVM" class="headerlink" title="JDK，JRE，JVM"></a>JDK，JRE，JVM</h2><ul><li>JDK：Java Development Kit</li></ul><p><code>JDK是java语言的软件开发工具包，主要用于移动设备、嵌入式设备上的java应用程序。JDK是整个java开发的核心，它   包含了JAVA的运行环境（JVM+Java系统类库）和JAVA工具。</code></p><ul><li>JRE:    Java Runtime Enviroment</li></ul><p><code>Java运行环境（Java Runtime Environment，简称JRE）是一个软件，由太阳微系统所研发，JRE可以让计算机系统运行Java应用程序（Java Application）。</code></p><ul><li>JVM:   Java Virtual Machine</li></ul><p><code>虚拟机是一种抽象化的计算机，通过在实际的计算机上仿真模拟各种计算机功能来实现的。Java虚拟机有自己完善的硬体架构，如处理器、堆栈、寄存器等，还具有相应的指令系统。Java虚拟机屏蔽了与具体操作系统平台相关的信息，使得Java程序只需生成在Java虚拟机上运行的目标代码（字节码），就可以在多种平台上不加修改地运行。</code></p><h2 id="Java开发环境搭建"><a href="#Java开发环境搭建" class="headerlink" title="Java开发环境搭建"></a>Java开发环境搭建</h2><p><code>官网下载jdk8版本安装&gt;官网下载eclipse或者idea，安装即可（推荐使用idea）</code></p><p><code>jdk安装完后，需要测试jdk是否安装成功</code></p><p><code>1. 打开cmd，用win键+r</code></p><p><code>2. 输入java -version命令</code></p><p><code>3.如果安装成功，则会显示出你安装的版本</code></p><h2 id="第一个Java程序"><a href="#第一个Java程序" class="headerlink" title="第一个Java程序"></a>第一个Java程序</h2><ul><li>输出Hello world!</li></ul><p><code>打开刚刚安装好的idea&gt;create new project(自己起名字，选好工作台)&gt;右键点击project的src&gt;new&gt;java class即可创建好一个类，就可以在里面写代码了</code></p><p><code>psvm是main方法快捷方式，sout是输出语句快捷方式</code></p><p><code>在新建的class类中，打出psvm回车就会自动打出main方法语句，打出sout回车就会自动打出输出语句</code></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Helloworld</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//输出hello world！（单行注释）</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        多行注释：注释并不会被运行</span></span><br><span class="line"><span class="comment">        输出hello world！</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * javadoc:文本注释</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;hello world!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h4><p><code>1. 每个单词的大小写不能出现问题，Java对大小写是敏感的</code><br><code>2. 尽量使用英文</code><br><code>3. 文件名和类名必须保持一致，并且首字母大写</code><br><code>4. 程序语句符号都是英文符号</code></p><p><code>class表示类，main表示方法</code></p><h2 id="Java程序运行机制"><a href="#Java程序运行机制" class="headerlink" title="Java程序运行机制"></a>Java程序运行机制</h2><ul><li>编译型</li></ul><p><code>编译型语言：程序在执行之前需要一个专门的编译过程，把程序编译成 为机器语言的文件，运行时不需要重新翻译，直接使用编译的结果就行了。程序执行效率高，依赖编译器，跨平台性差些。如C、C++、Delphi等。</code></p><ul><li>解释型</li></ul><p><code>解释性语言编写的程序不进行预先编译，以文本方式存储程序代码。在发布程序时，看起来省了道编译工序。但是，在运行程序的时候，解释性语言必须先解释再运行。</code></p><p>java属于两种方式的结合。</p><h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p><code>书写注释是个非常好的习惯</code></p><p>Java注释分为三种：</p><ul><li>单行注释</li><li>多行注释</li><li>文档注释（代码演示如上）</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Java笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>包机制</title>
-      <link href="/2023/01/23/java%E5%8C%85%E6%9C%BA%E5%88%B6/"/>
-      <url>/2023/01/23/java%E5%8C%85%E6%9C%BA%E5%88%B6/</url>
-      
-        <content type="html"><![CDATA[<p>包机制</p><p>为了更好的组织类，java提供了包机制，用于区别类名的命名空间</p><p>包语句的语法格式为</p><p>package pkg1</p><p>一般利用公司与域名倒置作为包名  www.baidu.com  ——-&gt;com.baidu.www</p><p>为了能够使用某个包的成员，我们需要在java程序中明确导入改包，使用import语句可完成该功能</p><p>import package1</p><p>import package*; 表示导入改包所有类；</p>]]></content>
       
       
       <categories>
@@ -227,6 +177,56 @@
     </entry>
     
     
+    
+    <entry>
+      <title>Markdown语法</title>
+      <link href="/2023/01/23/Markdown%E8%AF%AD%E6%B3%95/"/>
+      <url>/2023/01/23/Markdown%E8%AF%AD%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Markdown学习"><a href="#Markdown学习" class="headerlink" title="Markdown学习"></a>Markdown学习</h2><p><code>一级标题用：# 标题内容</code></p><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p><code>二级标题用：## 标题内容</code></p><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><p><code>三级标题用：### 标题内容</code></p><p><code>以此类推，但markdown最多可有六级标题，注意点：#符合后面有空格然后加标题</code></p><h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><p><code>字体加粗用：**字体内容**</code></p><p><strong>hello world！</strong></p><p><code>字体斜体用：*字体内容*</code></p><p><em>hello world！</em></p><p><code>字体加粗且斜体用：***字体内容***</code></p><p><strong><em>hello world！</em></strong></p><p><code>字体删除横杠用：~~字体内容~~</code></p><p><del>hello world！</del></p><p><code>字体加下划线用：&lt;u&gt;hello world!&lt;/u&gt;</code></p><p><u>hello world!</u></p><p><code>字体下标表示用：H~2~o</code></p><p>H~2~o</p><p><code>字体上标表示用：n^2^</code></p><p>n^2^</p><p><code>字体高亮用：==字体内容==</code></p><p>==hello world!==</p><h2 id="表情符号"><a href="#表情符号" class="headerlink" title="表情符号"></a>表情符号</h2><p><code>常用表情符号：:smile: :laughing: :dizzy_face: :sob: :cold_sweat: :sweat_smile:  :cry: :triumph: :heart_eyes: :relaxed: :sunglasses: :weary:</code></p><p><code>:+1: :-1: :100: :clap: :bell: :gift: :question: :bomb: :heart: :coffee: :cyclone: :bow: :kiss: :pray: :sweat_drops: :hankey: :exclamation: :anger:</code></p><p>:smile: :laughing: :dizzy_face: :sob: :cold_sweat: :sweat_smile:  :cry: :triumph: :heart_eyes: :relaxed: :sunglasses: :weary:</p><p>:+1: :-1: :100: :clap: :bell: :gift: :question: :bomb: :heart: :coffee: :cyclone: :bow: :kiss: :pray: :sweat_drops: :hankey: :exclamation: :anger:</p><h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><code>引用内容用：&gt; 内容</code></p><p><code>二级引用用：&gt;&gt; 内容</code></p><p><code>两次enter键跳出引用</code></p><blockquote><p>我的第一篇博客</p><blockquote><p>二级引用</p></blockquote></blockquote><h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p><code>常用的分割线用：---或者***回车即可</code></p><hr><hr><h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p><code>插入本地图片用：![图片名字](图片地址绝对路径或者相对路径)</code></p><p><code>缺点：本地图片删除时，图片会失效</code></p><p><img src="/images/blog003.jpeg" alt="截图"></p><p><code>插入网络图片用：![图片名字](图片地址图片链接)</code></p><p><code>缺点：网络图片被作者删除时，无法引入，图片会显示失效</code></p><div class="img-wrap"><div class="img-bg"><img class="img" src="https://s2.loli.net/2023/01/24/DB7ulrUYzvaTOcJ.png" alt="网络图片"/></div><span class="image-caption">网络图片</span></div><h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><p><code>超链接用：[链接名字](链接地址)</code></p><p><a href="https://www.cnblogs.com/ruhe2022618/">点击跳转到我的主页</a></p><p><code>自动链接用：&lt;链接地址url或者邮箱&gt;</code></p><p><a href="https://www.cnblogs.com/ruhe2022618/">https://www.cnblogs.com/ruhe2022618/</a></p><h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p><code>有序列表用：1. 内容</code></p><ol><li>a</li><li>b</li><li>c</li></ol><p><code>无序列表用：- 内容</code></p><ul><li>a</li><li>b</li><li>c</li></ul><h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p><code>插入表格最简单方法，直接鼠标右键选插入&gt;表格即可</code></p><div class="table-container"><table><thead><tr><th>名字</th><th>性别</th><th>生日</th></tr></thead><tbody><tr><td>如何</td><td>男</td><td>2022.6.18</td></tr></tbody></table></div><p><code>插入表格第二种方式需要用格式：</code></p><p><code>|属性\|属性\|属性|</code></p><p><code>|--\|--\|--|</code></p><p><code>|内容\|内容|内容|</code></p><div class="table-container"><table><thead><tr><th>名字</th><th>性别</th><th>生日</th></tr></thead><tbody><tr><td>如何</td><td>男</td><td>2022.6.18</td></tr></tbody></table></div><h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><p><code>编写代码用：```语言名称回车即可</code></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorld</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">System.out.println(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>行内代码用：``两点内书写内容</code></p><blockquote><p>2022.6.18是我第一天注册博客园开始学习写文章，为了完成属于自己的第一篇博客，我熬夜写到半夜才完成。虽然有很多地方不足，但是我很开心。也希望自己可以在接下来学习Java的过程中坚持写博客，不放弃，希望可以让自己在学习过程中与大家一起讨论，分享总结。最后，祝园友心想事成！</p><p>2023.1.22自己开始搭建博客，23号自己的博客小站上线，已将文章迁移到自己的博客。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Blog写法笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Blog </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>包机制</title>
+      <link href="/2023/01/23/java%E5%8C%85%E6%9C%BA%E5%88%B6/"/>
+      <url>/2023/01/23/java%E5%8C%85%E6%9C%BA%E5%88%B6/</url>
+      
+        <content type="html"><![CDATA[<p>包机制</p><p>为了更好的组织类，java提供了包机制，用于区别类名的命名空间</p><p>包语句的语法格式为</p><p>package pkg1</p><p>一般利用公司与域名倒置作为包名  www.baidu.com  ——-&gt;com.baidu.www</p><p>为了能够使用某个包的成员，我们需要在java程序中明确导入改包，使用import语句可完成该功能</p><p>import package1</p><p>import package*; 表示导入改包所有类；</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
   
   
     
@@ -235,17 +235,6 @@
       <title>关于</title>
       <link href="/about/index.html"/>
       <url>/about/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -287,6 +276,17 @@
     
     
     <entry>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title></title>
       <link href="/js/light.js"/>
       <url>/js/light.js</url>
@@ -320,17 +320,6 @@
     
     
     <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>友链</title>
       <link href="/link/index.html"/>
       <url>/link/index.html</url>
@@ -342,9 +331,9 @@
     
     
     <entry>
-      <title>电影</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -356,6 +345,17 @@
       <title>音乐</title>
       <link href="/music/index.html"/>
       <url>/music/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>电影</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
