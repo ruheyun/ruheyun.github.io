@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.ruheyun.cn/Css%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2023-02-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.ruheyun.cn/04-Git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</loc>
+    
+    <lastmod>2023-01-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.ruheyun.cn/03-Git%E5%9C%A8Idea%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</loc>
     
     <lastmod>2023-01-27</lastmod>
@@ -21,6 +39,15 @@
   
   <url>
     <loc>https://www.ruheyun.cn/01-Git%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2023-01-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.ruheyun.cn/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     
     <lastmod>2023-01-27</lastmod>
     
@@ -166,7 +193,7 @@
 
   <url>
     <loc>https://www.ruheyun.cn/</loc>
-    <lastmod>2023-01-29</lastmod>
+    <lastmod>2023-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -174,28 +201,35 @@
   
   <url>
     <loc>https://www.ruheyun.cn/tags/Git/</loc>
-    <lastmod>2023-01-29</lastmod>
+    <lastmod>2023-02-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.ruheyun.cn/tags/Web/</loc>
+    <lastmod>2023-02-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.ruheyun.cn/tags/Blog/</loc>
-    <lastmod>2023-01-29</lastmod>
+    <lastmod>2023-02-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.ruheyun.cn/tags/Java/</loc>
-    <lastmod>2023-01-29</lastmod>
+    <lastmod>2023-02-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.ruheyun.cn/tags/MySQL/</loc>
-    <lastmod>2023-01-29</lastmod>
+    <lastmod>2023-02-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -204,28 +238,35 @@
   
   <url>
     <loc>https://www.ruheyun.cn/categories/Git%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2023-01-29</lastmod>
+    <lastmod>2023-02-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.ruheyun.cn/categories/Web%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2023-02-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.ruheyun.cn/categories/Blog%E5%86%99%E6%B3%95%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2023-01-29</lastmod>
+    <lastmod>2023-02-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.ruheyun.cn/categories/Java%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2023-01-29</lastmod>
+    <lastmod>2023-02-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.ruheyun.cn/categories/Mysql%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2023-01-29</lastmod>
+    <lastmod>2023-02-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
