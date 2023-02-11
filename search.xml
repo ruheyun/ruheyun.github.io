@@ -391,10 +391,10 @@
     
     <entry>
       <title></title>
-      <link href="/css/universe.css"/>
-      <url>/css/universe.css</url>
+      <link href="/css/readPercent.css"/>
+      <url>/css/readPercent.css</url>
       
-        <content type="html"><![CDATA[/* 背景宇宙星光  */#universe{    display: block;    position: fixed;    margin: 0;    padding: 0;    border: 0;    outline: 0;    left: 0;    top: 0;    width: 100%;    height: 100%;    pointer-events: none;    /* 这个是调置顶的优先级的，-1在文章页下面，背景上面，个人推荐这种 */    z-index: -1;}]]></content>
+        <content type="html"><![CDATA[/* 返回顶部 */button#go-up #percent {    display: none;    font-weight: bold;    font-size: 15px !important;}button#go-up span {    font-size: 12px!important;    margin-right: -1px;}/* 鼠标滑动到按钮上时显示返回顶部图标 */button#go-up:hover i {    display: block !important;}button#go-up:hover #percent {    display: none !important;}]]></content>
       
     </entry>
     
@@ -402,10 +402,10 @@
     
     <entry>
       <title></title>
-      <link href="/css/readPercent.css"/>
-      <url>/css/readPercent.css</url>
+      <link href="/css/universe.css"/>
+      <url>/css/universe.css</url>
       
-        <content type="html"><![CDATA[/* 返回顶部 */button#go-up #percent {    display: none;    font-weight: bold;    font-size: 15px !important;}button#go-up span {    font-size: 12px!important;    margin-right: -1px;}/* 鼠标滑动到按钮上时显示返回顶部图标 */button#go-up:hover i {    display: block !important;}button#go-up:hover #percent {    display: none !important;}]]></content>
+        <content type="html"><![CDATA[/* 背景宇宙星光  */#universe{    display: block;    position: fixed;    margin: 0;    padding: 0;    border: 0;    outline: 0;    left: 0;    top: 0;    width: 100%;    height: 100%;    pointer-events: none;    /* 这个是调置顶的优先级的，-1在文章页下面，背景上面，个人推荐这种 */    z-index: -1;}]]></content>
       
     </entry>
     
@@ -424,10 +424,10 @@
     
     <entry>
       <title></title>
-      <link href="/js/kslink.js"/>
-      <url>/js/kslink.js</url>
+      <link href="/js/fps.js"/>
+      <url>/js/fps.js</url>
       
-        <content type="html"><![CDATA[var leonus = {    linkCom: e => {        var t = document.querySelector(".el-textarea__inner");        "bf" == e ? (t.value = "```yml\n", t.value += "- name: \n  link: \n  avatar: \n  descr: \n  siteshot: ", t.value += "\n```", t.setSelectionRange(15, 15)) : (t.value = "站点名称：\n站点地址：\n头像链接：\n站点描述：\n站点截图：", t.setSelectionRange(5, 5)), t.focus()    },    owoBig: () => {        if (!document.getElementById("post-comment") || document.body.clientWidth < 768) return;        let e = 1,            t = "",            o = document.createElement("div"),            n = document.querySelector("body");        o.id = "owo-big", n.appendChild(o), new MutationObserver((l => {            for (let a = 0; a < l.length; a++) {                let i = l[a].addedNodes,                    s = "";                if (2 == i.length && "OwO-body" == i[1].className) s = i[1];                else {                    if (1 != i.length || "tk-comment" != i[0].className) continue;                    s = i[0]                }                s.onmouseover = l => {                    e && ("OwO-body" == s.className && "IMG" == l.target.tagName || "tk-owo-emotion" == l.target.className) && (e = 0, t = setTimeout((() => {                        let e = 3 * l.path[0].clientHeight,                            t = 3 * l.path[0].clientWidth,                            a = l.x - l.offsetX - (t - l.path[0].clientWidth) / 2,                            i = l.y - l.offsetY;                        a + t > n.clientWidth && (a -= a + t - n.clientWidth + 10), a < 0 && (a = 10), o.style.cssText = `display:flex; height:${e}px; width:${t}px; left:${a}px; top:${i}px;`, o.innerHTML = `<img src="${l.target.src}">`                    }), 300))                }, s.onmouseout = () => {                    o.style.display = "none", e = 1, clearTimeout(t)                }            }        })).observe(document.getElementById("post-comment"), {            subtree: !0,            childList: !0        })    },};]]></content>
+        <content type="html"><![CDATA[if (window.localStorage.getItem("fpson") == undefined || window.localStorage.getItem("fpson") == "1") {    var rAF = function () {        return (            window.requestAnimationFrame ||            window.webkitRequestAnimationFrame ||            function (callback) {                window.setTimeout(callback, 1000 / 60);            }        );    }();    var frame = 0;    var allFrameCount = 0;    var lastTime = Date.now();    var lastFameTime = Date.now();    var loop = function () {        var now = Date.now();        var fs = (now - lastFameTime);        var fps = Math.round(1000 / fs);        lastFameTime = now;        // 不置 0，在动画的开头及结尾记录此值的差值算出 FPS        allFrameCount++;        frame++;        if (now > 1000 + lastTime) {            var fps = Math.round((frame * 1000) / (now - lastTime));            if (fps <= 5) {                var kd = `<span style="color:#bd0000">卡成ppt🤢</span>`            } else if (fps <= 15) {                var kd = `<span style="color:red">电竞级帧率😖</span>`            } else if (fps <= 25) {                var kd = `<span style="color:orange">有点难受😨</span>`            } else if (fps < 35) {                var kd = `<span style="color:#9338e6">不太流畅🙄</span>`            } else if (fps <= 45) {                var kd = `<span style="color:#08b7e4">还不错哦😁</span>`            } else {                var kd = `<span style="color:#39c5bb">十分流畅🤣</span>`            }            document.getElementById("fps").innerHTML = `FPS:${fps} ${kd}`;            frame = 0;            lastTime = now;        };        rAF(loop);    }    loop();} else {    document.getElementById("fps").style = "display:none!important"}]]></content>
       
     </entry>
     
@@ -435,10 +435,10 @@
     
     <entry>
       <title></title>
-      <link href="/js/fps.js"/>
-      <url>/js/fps.js</url>
+      <link href="/js/kslink.js"/>
+      <url>/js/kslink.js</url>
       
-        <content type="html"><![CDATA[if (window.localStorage.getItem("fpson") == undefined || window.localStorage.getItem("fpson") == "1") {    var rAF = function () {        return (            window.requestAnimationFrame ||            window.webkitRequestAnimationFrame ||            function (callback) {                window.setTimeout(callback, 1000 / 60);            }        );    }();    var frame = 0;    var allFrameCount = 0;    var lastTime = Date.now();    var lastFameTime = Date.now();    var loop = function () {        var now = Date.now();        var fs = (now - lastFameTime);        var fps = Math.round(1000 / fs);        lastFameTime = now;        // 不置 0，在动画的开头及结尾记录此值的差值算出 FPS        allFrameCount++;        frame++;        if (now > 1000 + lastTime) {            var fps = Math.round((frame * 1000) / (now - lastTime));            if (fps <= 5) {                var kd = `<span style="color:#bd0000">卡成ppt🤢</span>`            } else if (fps <= 15) {                var kd = `<span style="color:red">电竞级帧率😖</span>`            } else if (fps <= 25) {                var kd = `<span style="color:orange">有点难受😨</span>`            } else if (fps < 35) {                var kd = `<span style="color:#9338e6">不太流畅🙄</span>`            } else if (fps <= 45) {                var kd = `<span style="color:#08b7e4">还不错哦😁</span>`            } else {                var kd = `<span style="color:#39c5bb">十分流畅🤣</span>`            }            document.getElementById("fps").innerHTML = `FPS:${fps} ${kd}`;            frame = 0;            lastTime = now;        };        rAF(loop);    }    loop();} else {    document.getElementById("fps").style = "display:none!important"}]]></content>
+        <content type="html"><![CDATA[var leonus = {    linkCom: e => {        var t = document.querySelector(".el-textarea__inner");        "bf" == e ? (t.value = "```yml\n", t.value += "- name: \n  link: \n  avatar: \n  descr: \n  siteshot: ", t.value += "\n```", t.setSelectionRange(15, 15)) : (t.value = "站点名称：\n站点地址：\n头像链接：\n站点描述：\n站点截图：", t.setSelectionRange(5, 5)), t.focus()    },    owoBig: () => {        if (!document.getElementById("post-comment") || document.body.clientWidth < 768) return;        let e = 1,            t = "",            o = document.createElement("div"),            n = document.querySelector("body");        o.id = "owo-big", n.appendChild(o), new MutationObserver((l => {            for (let a = 0; a < l.length; a++) {                let i = l[a].addedNodes,                    s = "";                if (2 == i.length && "OwO-body" == i[1].className) s = i[1];                else {                    if (1 != i.length || "tk-comment" != i[0].className) continue;                    s = i[0]                }                s.onmouseover = l => {                    e && ("OwO-body" == s.className && "IMG" == l.target.tagName || "tk-owo-emotion" == l.target.className) && (e = 0, t = setTimeout((() => {                        let e = 3 * l.path[0].clientHeight,                            t = 3 * l.path[0].clientWidth,                            a = l.x - l.offsetX - (t - l.path[0].clientWidth) / 2,                            i = l.y - l.offsetY;                        a + t > n.clientWidth && (a -= a + t - n.clientWidth + 10), a < 0 && (a = 10), o.style.cssText = `display:flex; height:${e}px; width:${t}px; left:${a}px; top:${i}px;`, o.innerHTML = `<img src="${l.target.src}">`                    }), 300))                }, s.onmouseout = () => {                    o.style.display = "none", e = 1, clearTimeout(t)                }            }        })).observe(document.getElementById("post-comment"), {            subtree: !0,            childList: !0        })    },};]]></content>
       
     </entry>
     
