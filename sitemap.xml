@@ -269,14 +269,14 @@
   </url>
   
   <url>
-    <loc>https://www.ruheyun.cn/tags/MySQL/</loc>
+    <loc>https://www.ruheyun.cn/tags/%E7%94%B5%E8%84%91/</loc>
     <lastmod>2023-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.ruheyun.cn/tags/%E7%94%B5%E8%84%91/</loc>
+    <loc>https://www.ruheyun.cn/tags/MySQL/</loc>
     <lastmod>2023-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -313,7 +313,7 @@
   </url>
   
   <url>
-    <loc>https://www.ruheyun.cn/categories/Mysql%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://www.ruheyun.cn/categories/java%E7%BB%83%E4%B9%A0%E9%A2%98/</loc>
     <lastmod>2023-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -327,7 +327,7 @@
   </url>
   
   <url>
-    <loc>https://www.ruheyun.cn/categories/java%E7%BB%83%E4%B9%A0%E9%A2%98/</loc>
+    <loc>https://www.ruheyun.cn/categories/Mysql%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2023-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
