@@ -472,11 +472,22 @@
     
     
     <entry>
-      <title></title>
-      <link href="/css/readPercent.css"/>
-      <url>/css/readPercent.css</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
-        <content type="html"><![CDATA[/* 返回顶部 */button#go-up #percent {    display: none;    font-weight: bold;    font-size: 15px !important;}button#go-up span {    font-size: 12px!important;    margin-right: -1px;}/* 鼠标滑动到按钮上时显示返回顶部图标 */button#go-up:hover i {    display: block !important;}button#go-up:hover #percent {    display: none !important;}]]></content>
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
+      
+        <content type="html"><![CDATA[<h3 id="本站友链添加方式"><a href="#本站友链添加方式" class="headerlink" title="本站友链添加方式"></a>本站友链添加方式</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">ruheyun</span></span><br><span class="line">  <span class="attr">link:</span> <span class="string">https://www.ruheyun.cn/</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">https://cdn.staticaly.com/gh/ruheyun/pic_bed@main/2023/txt.jpg</span></span><br><span class="line">  <span class="attr">descr:</span> <span class="string">一个萌新的折腾</span> <span class="string">🍭🍭🍭</span></span><br><span class="line">  <span class="attr">siteshot:</span> <span class="string">https://cdn.staticaly.com/gh/ruheyun/pic_bed@main/2023/bjt.jpg</span></span><br></pre></td></tr></table></figure><h3 id="加入本站友链格式"><a href="#加入本站友链格式" class="headerlink" title="加入本站友链格式"></a>加入本站友链格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- name: #站点名称</span><br><span class="line">  link: #站点链接</span><br><span class="line">  avatar: #站长头像</span><br><span class="line">  descr: #站点描述</span><br><span class="line">  siteshot: #站点截图 </span><br></pre></td></tr></table></figure><div class="note primary simple"><p>🎉在您提出申请友链之前，请将本站添加至友链，三个工作日内处理<br>🥗为了保障本站用户，本站仅支持个人网站的友链申请<br>🍧申请本站友链需要拥有独立域名（非免费域名），建议开启全站HTTPS<br>🥫如果友情链接已经添加，请保持网站的正常访问，会定期清理僵尸网站<br>🍖网站有一定的实质性内容和主题，不能是空壳网站和练手网站<br>💕感谢您对本站的支持，如果您已经满足上述要求，请在下方表单提交友链申请~~~</p></div><p><div class="addBtn"><button onclick="leonus.linkCom()"><i class="fa-solid fa-circle-plus"></i>快速申请 (默认样式)</button> <button onclick="leonus.linkCom(&quot;bf&quot;)"><i class="fa-solid fa-circle-plus"></i>快速申请 (Butterfly)</button></div></p><p><link rel="stylesheet" href="/css/kslink.css"></p><script src="/js/kslink.js"></script>]]></content>
       
     </entry>
     
@@ -488,6 +499,17 @@
       <url>/css/universe.css</url>
       
         <content type="html"><![CDATA[/* 背景宇宙星光  */#universe{    display: block;    position: fixed;    margin: 0;    padding: 0;    border: 0;    outline: 0;    left: 0;    top: 0;    width: 100%;    height: 100%;    pointer-events: none;    /* 这个是调置顶的优先级的，-1在文章页下面，背景上面，个人推荐这种 */    z-index: -1;}]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/css/readPercent.css"/>
+      <url>/css/readPercent.css</url>
+      
+        <content type="html"><![CDATA[/* 返回顶部 */button#go-up #percent {    display: none;    font-weight: bold;    font-size: 15px !important;}button#go-up span {    font-size: 12px!important;    margin-right: -1px;}/* 鼠标滑动到按钮上时显示返回顶部图标 */button#go-up:hover i {    display: block !important;}button#go-up:hover #percent {    display: none !important;}]]></content>
       
     </entry>
     
@@ -516,33 +538,11 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title></title>
       <link href="/js/fps.js"/>
       <url>/js/fps.js</url>
       
         <content type="html"><![CDATA[if (window.localStorage.getItem("fpson") == undefined || window.localStorage.getItem("fpson") == "1") {    var rAF = function () {        return (            window.requestAnimationFrame ||            window.webkitRequestAnimationFrame ||            function (callback) {                window.setTimeout(callback, 1000 / 60);            }        );    }();    var frame = 0;    var allFrameCount = 0;    var lastTime = Date.now();    var lastFameTime = Date.now();    var loop = function () {        var now = Date.now();        var fs = (now - lastFameTime);        var fps = Math.round(1000 / fs);        lastFameTime = now;        // 不置 0，在动画的开头及结尾记录此值的差值算出 FPS        allFrameCount++;        frame++;        if (now > 1000 + lastTime) {            var fps = Math.round((frame * 1000) / (now - lastTime));            if (fps <= 5) {                var kd = `<span style="color:#bd0000">卡成ppt🤢</span>`            } else if (fps <= 15) {                var kd = `<span style="color:red">电竞级帧率😖</span>`            } else if (fps <= 25) {                var kd = `<span style="color:orange">有点难受😨</span>`            } else if (fps < 35) {                var kd = `<span style="color:#9338e6">不太流畅🙄</span>`            } else if (fps <= 45) {                var kd = `<span style="color:#08b7e4">还不错哦😁</span>`            } else {                var kd = `<span style="color:#39c5bb">十分流畅🤣</span>`            }            document.getElementById("fps").innerHTML = `FPS:${fps} ${kd}`;            frame = 0;            lastTime = now;        };        rAF(loop);    }    loop();} else {    document.getElementById("fps").style = "display:none!important"}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/js/light.js"/>
-      <url>/js/light.js</url>
-      
-        <content type="html"><![CDATA[// 霓虹灯效果// 颜色数组var arr = ["#39c5bb", "#f14747", "#f1a247", "#f1ee47", "#b347f1", "#1edbff", "#ed709b", "#5636ed"];// 颜色索引var idx = 0;// 切换颜色function changeColor() {    // 仅夜间模式才启用    if (document.getElementsByTagName('html')[0].getAttribute('data-theme') == 'dark') {        if (document.getElementById("site-name"))            document.getElementById("site-name").style.textShadow = arr[idx] + " 0 0 15px";        if (document.getElementById("site-title"))            document.getElementById("site-title").style.textShadow = arr[idx] + " 0 0 15px";        if (document.getElementById("site-subtitle"))            document.getElementById("site-subtitle").style.textShadow = arr[idx] + " 0 0 10px";        if (document.getElementById("post-info"))            document.getElementById("post-info").style.textShadow = arr[idx] + " 0 0 5px";        try {            document.getElementsByClassName("author-info__name")[0].style.textShadow = arr[idx] + " 0 0 12px";            document.getElementsByClassName("author-info__description")[0].style.textShadow = arr[idx] + " 0 0 12px";        } catch {        }        idx++;        if (idx == 8) {            idx = 0;        }    } else {        // 白天模式恢复默认        if (document.getElementById("site-name"))            document.getElementById("site-name").style.textShadow = "#1e1e1ee0 1px 1px 1px";        if (document.getElementById("site-title"))            document.getElementById("site-title").style.textShadow = "#1e1e1ee0 1px 1px 1px";        if (document.getElementById("site-subtitle"))            document.getElementById("site-subtitle").style.textShadow = "#1e1e1ee0 1px 1px 1px";        if (document.getElementById("post-info"))            document.getElementById("post-info").style.textShadow = "#1e1e1ee0 1px 1px 1px";        try {            document.getElementsByClassName("author-info__name")[0].style.textShadow = "";            document.getElementsByClassName("author-info__description")[0].style.textShadow = "";        } catch {        }    }}// 开启计时器window.onload = setInterval(changeColor, 1200);]]></content>
       
     </entry>
     
@@ -561,10 +561,10 @@
     
     <entry>
       <title></title>
-      <link href="/js/readPercent.js"/>
-      <url>/js/readPercent.js</url>
+      <link href="/js/light.js"/>
+      <url>/js/light.js</url>
       
-        <content type="html"><![CDATA[window.onscroll = percent;// 执行函数// 页面百分比function percent() {    let a = document.documentElement.scrollTop || window.pageYOffset, // 卷去高度        b = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight) - document.documentElement.clientHeight, // 整个网页高度        result = Math.round(a / b * 100), // 计算百分比        up = document.querySelector("#go-up") // 获取按钮    if (result <= 95) {        up.childNodes[0].style.display = 'none'        up.childNodes[1].style.display = 'block'        up.childNodes[1].innerHTML = result;    } else {        up.childNodes[1].style.display = 'none'        up.childNodes[0].style.display = 'block'    }}]]></content>
+        <content type="html"><![CDATA[// 霓虹灯效果// 颜色数组var arr = ["#39c5bb", "#f14747", "#f1a247", "#f1ee47", "#b347f1", "#1edbff", "#ed709b", "#5636ed"];// 颜色索引var idx = 0;// 切换颜色function changeColor() {    // 仅夜间模式才启用    if (document.getElementsByTagName('html')[0].getAttribute('data-theme') == 'dark') {        if (document.getElementById("site-name"))            document.getElementById("site-name").style.textShadow = arr[idx] + " 0 0 15px";        if (document.getElementById("site-title"))            document.getElementById("site-title").style.textShadow = arr[idx] + " 0 0 15px";        if (document.getElementById("site-subtitle"))            document.getElementById("site-subtitle").style.textShadow = arr[idx] + " 0 0 10px";        if (document.getElementById("post-info"))            document.getElementById("post-info").style.textShadow = arr[idx] + " 0 0 5px";        try {            document.getElementsByClassName("author-info__name")[0].style.textShadow = arr[idx] + " 0 0 12px";            document.getElementsByClassName("author-info__description")[0].style.textShadow = arr[idx] + " 0 0 12px";        } catch {        }        idx++;        if (idx == 8) {            idx = 0;        }    } else {        // 白天模式恢复默认        if (document.getElementById("site-name"))            document.getElementById("site-name").style.textShadow = "#1e1e1ee0 1px 1px 1px";        if (document.getElementById("site-title"))            document.getElementById("site-title").style.textShadow = "#1e1e1ee0 1px 1px 1px";        if (document.getElementById("site-subtitle"))            document.getElementById("site-subtitle").style.textShadow = "#1e1e1ee0 1px 1px 1px";        if (document.getElementById("post-info"))            document.getElementById("post-info").style.textShadow = "#1e1e1ee0 1px 1px 1px";        try {            document.getElementsByClassName("author-info__name")[0].style.textShadow = "";            document.getElementsByClassName("author-info__description")[0].style.textShadow = "";        } catch {        }    }}// 开启计时器window.onload = setInterval(changeColor, 1200);]]></content>
       
     </entry>
     
@@ -582,11 +582,44 @@
     
     
     <entry>
+      <title>电影</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/js/readPercent.js"/>
+      <url>/js/readPercent.js</url>
+      
+        <content type="html"><![CDATA[window.onscroll = percent;// 执行函数// 页面百分比function percent() {    let a = document.documentElement.scrollTop || window.pageYOffset, // 卷去高度        b = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight) - document.documentElement.clientHeight, // 整个网页高度        result = Math.round(a / b * 100), // 计算百分比        up = document.querySelector("#go-up") // 获取按钮    if (result <= 95) {        up.childNodes[0].style.display = 'none'        up.childNodes[1].style.display = 'block'        up.childNodes[1].innerHTML = result;    } else {        up.childNodes[1].style.display = 'none'        up.childNodes[0].style.display = 'block'    }}]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title></title>
       <link href="/js/runtime.js"/>
       <url>/js/runtime.js</url>
       
         <content type="html"><![CDATA[var now = new Date;function createtime() {    now.setTime(now.getTime() + 1e3);    var e = new Date("01/23/2023 00:00:00"), t = Math.trunc(234e8 + (now - e) / 1e3 * 17), a = (t / 1496e5).toFixed(6),        o = new Date("01/23/2023 00:00:00"), n = (now - o) / 1e3 / 60 / 60 / 24, r = Math.floor(n),        i = (now - o) / 1e3 / 60 / 60 - 24 * r, s = Math.floor(i);    1 == String(s).length && (s = "0" + s);    var d = (now - o) / 1e3 / 60 - 1440 * r - 60 * s, l = Math.floor(d);    1 == String(l).length && (l = "0" + l);    var g = (now - o) / 1e3 - 86400 * r - 3600 * s - 60 * l, b = Math.round(g);    1 == String(b).length && (b = "0" + b);    let c = "";    c = s < 18 && s >= 9 ? `<img class='boardsign' src='https://cdn.staticaly.com/gh/ruheyun/pic_bed@main/2023/ruheyun%E5%B0%8F%E5%B1%8B.svg' title='什么时候能够实现财富自由呀~'><br> <div style="font-size:13px;font-weight:bold">本站已经运行了 ${r} 天 ${s} 小时 ${l} 分 ${b} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀</div>` : `<img class='boardsign' src='https://cdn.staticaly.com/gh/ruheyun/pic_bed@main/2023/R%E5%B0%8F%E5%B1%8B-%E4%B8%8B%E7%8F%AD%E4%BC%91%E6%81%AF%E5%95%A6.svg' title='下班了就该开开心心地玩耍~'><br> <div style="font-size:13px;font-weight:bold">本站已经运行了 ${r} 天 ${s} 小时 ${l} 分 ${b} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀</div>`, document.getElementById("workboard") && (document.getElementById("workboard").innerHTML = c)}setInterval((() => {    createtime()}), 1e3);]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
@@ -604,44 +637,11 @@
     
     
     <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
-      
-        <content type="html"><![CDATA[<h3 id="本站友链添加方式"><a href="#本站友链添加方式" class="headerlink" title="本站友链添加方式"></a>本站友链添加方式</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">ruheyun</span></span><br><span class="line">  <span class="attr">link:</span> <span class="string">https://www.ruheyun.cn/</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">https://cdn.staticaly.com/gh/ruheyun/pic_bed@main/2023/txt.jpg</span></span><br><span class="line">  <span class="attr">descr:</span> <span class="string">一个萌新的折腾</span> <span class="string">🍭🍭🍭</span></span><br><span class="line">  <span class="attr">siteshot:</span> <span class="string">https://cdn.staticaly.com/gh/ruheyun/pic_bed@main/2023/bjt.jpg</span></span><br></pre></td></tr></table></figure><h3 id="加入本站友链格式"><a href="#加入本站友链格式" class="headerlink" title="加入本站友链格式"></a>加入本站友链格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- name: #站点名称</span><br><span class="line">  link: #站点链接</span><br><span class="line">  avatar: #站长头像</span><br><span class="line">  descr: #站点描述</span><br><span class="line">  siteshot: #站点截图 </span><br></pre></td></tr></table></figure><div class="note primary simple"><p>🎉在您提出申请友链之前，请将本站添加至友链，三个工作日内处理<br>🥗为了保障本站用户，本站仅支持个人网站的友链申请<br>🍧申请本站友链需要拥有独立域名（非免费域名），建议开启全站HTTPS<br>🥫如果友情链接已经添加，请保持网站的正常访问，会定期清理僵尸网站<br>🍖网站有一定的实质性内容和主题，不能是空壳网站和练手网站<br>💕感谢您对本站的支持，如果您已经满足上述要求，请在下方表单提交友链申请~~~</p></div><p><div class="addBtn"><button onclick="leonus.linkCom()"><i class="fa-solid fa-circle-plus"></i>快速申请 (默认样式)</button> <button onclick="leonus.linkCom(&quot;bf&quot;)"><i class="fa-solid fa-circle-plus"></i>快速申请 (Butterfly)</button></div></p><p><link rel="stylesheet" href="/css/kslink.css"></p><script src="/js/kslink.js"></script>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>电影</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>音乐</title>
       <link href="/music/index.html"/>
       <url>/music/index.html</url>
       
         <content type="html"><![CDATA[<h3 id="♪-∇-欢迎来到aplayer音乐平台，请尽情欣赏"><a href="#♪-∇-欢迎来到aplayer音乐平台，请尽情欣赏" class="headerlink" title="♪(^∇^*)欢迎来到aplayer音乐平台，请尽情欣赏~~"></a><strong>♪(^∇^*)欢迎来到aplayer音乐平台，请尽情欣赏~~</strong></h3><h4 id="音乐简介"><a href="#音乐简介" class="headerlink" title="音乐简介"></a>音乐简介</h4><div class="note info simple"><p>1号音乐厅:日漫甜美歌曲</p><p>2号音乐厅:网络流行歌曲</p><p>3号音乐厅:听歌网站推荐</p></div><h4 id="1号音乐厅"><a href="#1号音乐厅" class="headerlink" title="1号音乐厅"></a>1号音乐厅</h4><details class="folding-tag" ><summary> 1号厅 </summary>              <div class='content'>              <div class="tabs" id="1号"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#1号-1">日漫歌曲</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="1号-1"><div id="aplayer-oSEOhviA" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="8804197373" data-server="tencent" data-type="playlist" data-mode="random" data-autoplay="false" data-listmaxheight="340px" data-preload="auto" data-theme="#e3f2f5" data-volume="0.4" mutex="true"></div><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>              </div>            </details><p><br></p><p><br></p><h4 id="2号音乐厅"><a href="#2号音乐厅" class="headerlink" title="2号音乐厅"></a>2号音乐厅</h4><details class="folding-tag" ><summary> 2号厅 </summary>              <div class='content'>              <div class="tabs" id="2号"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#2号-1">流行歌曲</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="2号-1"><div id="aplayer-oSEOhviA" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="8804197373" data-server="tencent" data-type="playlist" data-mode="random" data-autoplay="false" data-listmaxheight="340px" data-preload="auto" data-theme="#e3f2f5" data-volume="0.4" mutex="true"></div><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>              </div>            </details><p><br></p><p><br></p><h4 id="3号音乐厅"><a href="#3号音乐厅" class="headerlink" title="3号音乐厅"></a>3号音乐厅</h4><details class="folding-tag" ><summary> 3号厅 </summary>              <div class='content'>              <div class="tabs" id="3号"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#3号-1">暂无</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="3号-1"><div id="aplayer-oSEOhviA" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="8804197373" data-server="tencent" data-type="playlist" data-mode="random" data-autoplay="false" data-listmaxheight="340px" data-preload="auto" data-theme="#e3f2f5" data-volume="0.4" mutex="true"></div><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>              </div>            </details><p><br></p><blockquote><p>当你开心的时候，你是在享受音乐，但当你悲伤的时候，你会明白歌词的含义;</p><p>你只是看起来很快乐 那些漆黑的夜晚 那些不敢哭出声来的日子 眼泪在眼眶打转的感觉 只有你和音乐知道.</p></blockquote>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
