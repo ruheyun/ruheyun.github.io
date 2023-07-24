@@ -227,13 +227,6 @@
 
   
   <url>
-    <loc>https://www.ruheyun.cn/tags/Git/</loc>
-    <lastmod>2023-07-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.ruheyun.cn/tags/Web/</loc>
     <lastmod>2023-07-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -241,7 +234,7 @@
   </url>
   
   <url>
-    <loc>https://www.ruheyun.cn/tags/Blog/</loc>
+    <loc>https://www.ruheyun.cn/tags/Git/</loc>
     <lastmod>2023-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -262,14 +255,14 @@
   </url>
   
   <url>
-    <loc>https://www.ruheyun.cn/tags/Maven/</loc>
+    <loc>https://www.ruheyun.cn/tags/Blog/</loc>
     <lastmod>2023-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.ruheyun.cn/tags/%E7%94%B5%E8%84%91/</loc>
+    <loc>https://www.ruheyun.cn/tags/Maven/</loc>
     <lastmod>2023-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -282,14 +275,14 @@
     <priority>0.2</priority>
   </url>
   
-
-  
   <url>
-    <loc>https://www.ruheyun.cn/categories/Git%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://www.ruheyun.cn/tags/%E7%94%B5%E8%84%91/</loc>
     <lastmod>2023-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
+  
+
   
   <url>
     <loc>https://www.ruheyun.cn/categories/Web%E7%AC%94%E8%AE%B0/</loc>
@@ -299,7 +292,7 @@
   </url>
   
   <url>
-    <loc>https://www.ruheyun.cn/categories/Blog%E5%86%99%E6%B3%95%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://www.ruheyun.cn/categories/Git%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2023-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -313,6 +306,13 @@
   </url>
   
   <url>
+    <loc>https://www.ruheyun.cn/categories/Blog%E5%86%99%E6%B3%95%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2023-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.ruheyun.cn/categories/java%E7%BB%83%E4%B9%A0%E9%A2%98/</loc>
     <lastmod>2023-07-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -320,14 +320,14 @@
   </url>
   
   <url>
-    <loc>https://www.ruheyun.cn/categories/%E6%9D%82%E8%AE%B0/</loc>
+    <loc>https://www.ruheyun.cn/categories/Mysql%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2023-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.ruheyun.cn/categories/Mysql%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://www.ruheyun.cn/categories/%E6%9D%82%E8%AE%B0/</loc>
     <lastmod>2023-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
