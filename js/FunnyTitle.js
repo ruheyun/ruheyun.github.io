@@ -4,12 +4,12 @@ var titleTime;
 document.addEventListener('visibilitychange', function () {
     if (document.hidden) {
         $('[rel="icon"]').attr('href', "/images/icon-dengyan.png");
-        document.title = '╭(°A°`)╮ 跑哪里去了~';
+        document.title = '👀跑哪里去了~';
         clearTimeout(titleTime);
     }
     else {
         $('[rel="icon"]').attr('href', "/images/icon-tuzi.png");
-        document.title = '(ฅ>ω<*ฅ) 抓到你了~' ;
+        document.title = '🐖抓到你啦～' ;
         titleTime = setTimeout(function () {
             document.title = OriginTitle;
         }, 2000);
