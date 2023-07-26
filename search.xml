@@ -484,10 +484,10 @@
     
     <entry>
       <title></title>
-      <link href="/css/readPercent.css"/>
-      <url>/css/readPercent.css</url>
+      <link href="/css/universe.css"/>
+      <url>/css/universe.css</url>
       
-        <content type="html"><![CDATA[/* 返回顶部 */button#go-up #percent {    display: none;    font-weight: bold;    font-size: 15px !important;}button#go-up span {    font-size: 12px!important;    margin-right: -1px;}/* 鼠标滑动到按钮上时显示返回顶部图标 */button#go-up:hover i {    display: block !important;}button#go-up:hover #percent {    display: none !important;}]]></content>
+        <content type="html"><![CDATA[/* 背景宇宙星光  */#universe{    display: block;    position: fixed;    margin: 0;    padding: 0;    border: 0;    outline: 0;    left: 0;    top: 0;    width: 100%;    height: 100%;    pointer-events: none;    /* 这个是调置顶的优先级的，-1在文章页下面，背景上面，个人推荐这种 */    z-index: -1;}]]></content>
       
     </entry>
     
@@ -506,32 +506,21 @@
     
     <entry>
       <title></title>
+      <link href="/css/readPercent.css"/>
+      <url>/css/readPercent.css</url>
+      
+        <content type="html"><![CDATA[/* 返回顶部 */button#go-up #percent {    display: none;    font-weight: bold;    font-size: 15px !important;}button#go-up span {    font-size: 12px!important;    margin-right: -1px;}/* 鼠标滑动到按钮上时显示返回顶部图标 */button#go-up:hover i {    display: block !important;}button#go-up:hover #percent {    display: none !important;}]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
       <link href="/js/fps.js"/>
       <url>/js/fps.js</url>
       
         <content type="html"><![CDATA[if (window.localStorage.getItem("fpson") == undefined || window.localStorage.getItem("fpson") == "1") {    var rAF = function () {        return (            window.requestAnimationFrame ||            window.webkitRequestAnimationFrame ||            function (callback) {                window.setTimeout(callback, 1000 / 60);            }        );    }();    var frame = 0;    var allFrameCount = 0;    var lastTime = Date.now();    var lastFameTime = Date.now();    var loop = function () {        var now = Date.now();        var fs = (now - lastFameTime);        var fps = Math.round(1000 / fs);        lastFameTime = now;        // 不置 0，在动画的开头及结尾记录此值的差值算出 FPS        allFrameCount++;        frame++;        if (now > 1000 + lastTime) {            var fps = Math.round((frame * 1000) / (now - lastTime));            if (fps <= 5) {                var kd = `<span style="color:#bd0000">卡成ppt🤢</span>`            } else if (fps <= 15) {                var kd = `<span style="color:red">电竞级帧率😖</span>`            } else if (fps <= 25) {                var kd = `<span style="color:orange">有点难受😨</span>`            } else if (fps < 35) {                var kd = `<span style="color:#9338e6">不太流畅🙄</span>`            } else if (fps <= 45) {                var kd = `<span style="color:#08b7e4">还不错哦😁</span>`            } else {                var kd = `<span style="color:#39c5bb">十分流畅🤣</span>`            }            document.getElementById("fps").innerHTML = `FPS:${fps} ${kd}`;            frame = 0;            lastTime = now;        };        rAF(loop);    }    loop();} else {    document.getElementById("fps").style = "display:none!important"}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/js/kslink.js"/>
-      <url>/js/kslink.js</url>
-      
-        <content type="html"><![CDATA[var leonus = {    linkCom: e => {        var t = document.querySelector(".el-textarea__inner");        "bf" == e ? (t.value = "```yml\n", t.value += "- name: \n  link: \n  avatar: \n  descr: \n  siteshot: ", t.value += "\n```", t.setSelectionRange(15, 15)) : (t.value = "站点名称：\n站点地址：\n头像链接：\n站点描述：\n站点截图：", t.setSelectionRange(5, 5)), t.focus()    },    owoBig: () => {        if (!document.getElementById("post-comment") || document.body.clientWidth < 768) return;        let e = 1,            t = "",            o = document.createElement("div"),            n = document.querySelector("body");        o.id = "owo-big", n.appendChild(o), new MutationObserver((l => {            for (let a = 0; a < l.length; a++) {                let i = l[a].addedNodes,                    s = "";                if (2 == i.length && "OwO-body" == i[1].className) s = i[1];                else {                    if (1 != i.length || "tk-comment" != i[0].className) continue;                    s = i[0]                }                s.onmouseover = l => {                    e && ("OwO-body" == s.className && "IMG" == l.target.tagName || "tk-owo-emotion" == l.target.className) && (e = 0, t = setTimeout((() => {                        let e = 3 * l.path[0].clientHeight,                            t = 3 * l.path[0].clientWidth,                            a = l.x - l.offsetX - (t - l.path[0].clientWidth) / 2,                            i = l.y - l.offsetY;                        a + t > n.clientWidth && (a -= a + t - n.clientWidth + 10), a < 0 && (a = 10), o.style.cssText = `display:flex; height:${e}px; width:${t}px; left:${a}px; top:${i}px;`, o.innerHTML = `<img src="${l.target.src}">`                    }), 300))                }, s.onmouseout = () => {                    o.style.display = "none", e = 1, clearTimeout(t)                }            }        })).observe(document.getElementById("post-comment"), {            subtree: !0,            childList: !0        })    },};]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/css/universe.css"/>
-      <url>/css/universe.css</url>
-      
-        <content type="html"><![CDATA[/* 背景宇宙星光  */#universe{    display: block;    position: fixed;    margin: 0;    padding: 0;    border: 0;    outline: 0;    left: 0;    top: 0;    width: 100%;    height: 100%;    pointer-events: none;    /* 这个是调置顶的优先级的，-1在文章页下面，背景上面，个人推荐这种 */    z-index: -1;}]]></content>
       
     </entry>
     
@@ -550,10 +539,10 @@
     
     <entry>
       <title></title>
-      <link href="/js/newYear.js"/>
-      <url>/js/newYear.js</url>
+      <link href="/js/kslink.js"/>
+      <url>/js/kslink.js</url>
       
-        <content type="html"><![CDATA[let newYearTimer = null;var newYear = () => {    clearTimeout(newYearTimer);    if (!document.querySelector('#newYear')) return;    // 新年时间戳 and 星期对象    let newYear = new Date('2023-01-22 00:00:00').getTime() / 1000,        week = { 0: '周日', 1: '周一', 2: '周二', 3: '周三', 4: '周四', 5: '周五', 6: '周六' }    time();    // 补零函数    function nol(h) { return h > 9 ? h : '0' + h; };    function time() {        // 现在 时间对象        let now = new Date();        // 右下角 今天        document.querySelector('#newYear .today').innerHTML = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate() + ' ' + week[now.getDay()]        // 现在与新年相差秒数        let second = newYear - Math.round(now.getTime() / 1000);        // 小于0则表示已经过年        if (second < 0) {            document.querySelector('#newYear .title').innerHTML = 'Happy New Year!';            document.querySelector('#newYear .newYear-time').innerHTML = '<span class="happyNewYear">兔年快乐</p>';        } else {            // 大于0则还未过年            document.querySelector('#newYear .title').innerHTML = '距离2023年春节：'            // 大于一天则直接渲染天数            if (second > 86400) {                document.querySelector('#newYear .newYear-time').innerHTML = `<span class="day">${Math.ceil(second / 86400)}<span class="unit">天</span></span>`            } else {                // 小于一天则使用时分秒计时。                let h = nol(parseInt(second / 3600));                second %= 3600;                let m = nol(parseInt(second / 60));                second %= 60;                let s = nol(second);                document.querySelector('#newYear .newYear-time').innerHTML = `<span class="time">${h}:${m}:${s}</span></span>`;                // 计时                newYearTimer = setTimeout(time, 1000);            }        }    }    // 元宝飘落    jQuery(document).ready(function ($) {        $('#newYear').wpSuperSnow({            flakes: ['https://tuchuang.voooe.cn/images/2023/01/02/yb1.webp', 'https://tuchuang.voooe.cn/images/2023/01/02/yb2.webp', 'https://tuchuang.voooe.cn/images/2023/01/02/yb3.webp'],            totalFlakes: '100',            zIndex: '999999',            maxSize: '30',            maxDuration: '20',            useFlakeTrans: false        });    });}// Pjax适配：若没有开启Pjax这里直接是newYear()即可// 开了Pjax的用以下两句//document.addEventListener('pjax:complete', newYear);//document.addEventListener('DOMContentLoaded', newYear);newYear();]]></content>
+        <content type="html"><![CDATA[var leonus = {    linkCom: e => {        var t = document.querySelector(".el-textarea__inner");        "bf" == e ? (t.value = "```yml\n", t.value += "- name: \n  link: \n  avatar: \n  descr: \n  siteshot: ", t.value += "\n```", t.setSelectionRange(15, 15)) : (t.value = "站点名称：\n站点地址：\n头像链接：\n站点描述：\n站点截图：", t.setSelectionRange(5, 5)), t.focus()    },    owoBig: () => {        if (!document.getElementById("post-comment") || document.body.clientWidth < 768) return;        let e = 1,            t = "",            o = document.createElement("div"),            n = document.querySelector("body");        o.id = "owo-big", n.appendChild(o), new MutationObserver((l => {            for (let a = 0; a < l.length; a++) {                let i = l[a].addedNodes,                    s = "";                if (2 == i.length && "OwO-body" == i[1].className) s = i[1];                else {                    if (1 != i.length || "tk-comment" != i[0].className) continue;                    s = i[0]                }                s.onmouseover = l => {                    e && ("OwO-body" == s.className && "IMG" == l.target.tagName || "tk-owo-emotion" == l.target.className) && (e = 0, t = setTimeout((() => {                        let e = 3 * l.path[0].clientHeight,                            t = 3 * l.path[0].clientWidth,                            a = l.x - l.offsetX - (t - l.path[0].clientWidth) / 2,                            i = l.y - l.offsetY;                        a + t > n.clientWidth && (a -= a + t - n.clientWidth + 10), a < 0 && (a = 10), o.style.cssText = `display:flex; height:${e}px; width:${t}px; left:${a}px; top:${i}px;`, o.innerHTML = `<img src="${l.target.src}">`                    }), 300))                }, s.onmouseout = () => {                    o.style.display = "none", e = 1, clearTimeout(t)                }            }        })).observe(document.getElementById("post-comment"), {            subtree: !0,            childList: !0        })    },};]]></content>
       
     </entry>
     
@@ -572,32 +561,10 @@
     
     <entry>
       <title></title>
-      <link href="/js/universe.js"/>
-      <url>/js/universe.js</url>
+      <link href="/js/newYear.js"/>
+      <url>/js/newYear.js</url>
       
-        <content type="html"><![CDATA[function dark() {    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;    var n, e, i, h, t = .05, s = document.getElementById("universe"), o = !0, a = "180,184,240", r = "226,225,142",        d = "226,225,224", c = [];    function f() {        n = window.innerWidth, e = window.innerHeight, i = .216 * n, s.setAttribute("width", n), s.setAttribute("height", e)    }    function u() {        h.clearRect(0, 0, n, e);        for (var t = c.length, i = 0; i < t; i++) {            var s = c[i];            s.move(), s.fadeIn(), s.fadeOut(), s.draw()        }    }    function y() {        this.reset = function () {            this.giant = m(3), this.comet = !this.giant && !o && m(10), this.x = l(0, n - 10), this.y = l(0, e), this.r = l(1.1, 2.6), this.dx = l(t, 6 * t) + (this.comet + 1 - 1) * t * l(50, 120) + 2 * t, this.dy = -l(t, 6 * t) - (this.comet + 1 - 1) * t * l(50, 120), this.fadingOut = null, this.fadingIn = !0, this.opacity = 0, this.opacityTresh = l(.2, 1 - .4 * (this.comet + 1 - 1)), this.do = l(5e-4, .002) + .001 * (this.comet + 1 - 1)        }, this.fadeIn = function () {            this.fadingIn && (this.fadingIn = !(this.opacity > this.opacityTresh), this.opacity += this.do)        }, this.fadeOut = function () {            this.fadingOut && (this.fadingOut = !(this.opacity < 0), this.opacity -= this.do / 2, (this.x > n || this.y < 0) && (this.fadingOut = !1, this.reset()))        }, this.draw = function () {            if (h.beginPath(), this.giant) h.fillStyle = "rgba(" + a + "," + this.opacity + ")", h.arc(this.x, this.y, 2, 0, 2 * Math.PI, !1); else if (this.comet) {                h.fillStyle = "rgba(" + d + "," + this.opacity + ")", h.arc(this.x, this.y, 1.5, 0, 2 * Math.PI, !1);                for (var t = 0; t < 30; t++) h.fillStyle = "rgba(" + d + "," + (this.opacity - this.opacity / 20 * t) + ")", h.rect(this.x - this.dx / 4 * t, this.y - this.dy / 4 * t - 2, 2, 2), h.fill()            } else h.fillStyle = "rgba(" + r + "," + this.opacity + ")", h.rect(this.x, this.y, this.r, this.r);            h.closePath(), h.fill()        }, this.move = function () {            this.x += this.dx, this.y += this.dy, !1 === this.fadingOut && this.reset(), (this.x > n - n / 4 || this.y < 0) && (this.fadingOut = !0)        }, setTimeout(function () {            o = !1        }, 50)    }    function m(t) {        return Math.floor(1e3 * Math.random()) + 1 < 10 * t    }    function l(t, i) {        return Math.random() * (i - t) + t    }    f(), window.addEventListener("resize", f, !1), function () {        h = s.getContext("2d");        for (var t = 0; t < i; t++) c[t] = new y, c[t].reset();        u()    }(), function t() {        document.getElementsByTagName('html')[0].getAttribute('data-theme') == 'dark' && u(), window.requestAnimationFrame(t)    }()};dark()]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/js/readPercent.js"/>
-      <url>/js/readPercent.js</url>
-      
-        <content type="html"><![CDATA[window.onscroll = percent;// 执行函数// 页面百分比function percent() {    let a = document.documentElement.scrollTop || window.pageYOffset, // 卷去高度        b = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight) - document.documentElement.clientHeight, // 整个网页高度        result = Math.round(a / b * 100), // 计算百分比        up = document.querySelector("#go-up") // 获取按钮    if (result <= 95) {        up.childNodes[0].style.display = 'none'        up.childNodes[1].style.display = 'block'        up.childNodes[1].innerHTML = result;    } else {        up.childNodes[1].style.display = 'none'        up.childNodes[0].style.display = 'block'    }}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/js/runtime.js"/>
-      <url>/js/runtime.js</url>
-      
-        <content type="html"><![CDATA[var now = new Date;function createtime() {    now.setTime(now.getTime() + 1e3);    var e = new Date("01/23/2023 00:00:00"), t = Math.trunc(234e8 + (now - e) / 1e3 * 17), a = (t / 1496e5).toFixed(6),        o = new Date("01/23/2023 00:00:00"), n = (now - o) / 1e3 / 60 / 60 / 24, r = Math.floor(n),        i = (now - o) / 1e3 / 60 / 60 - 24 * r, s = Math.floor(i);    1 == String(s).length && (s = "0" + s);    var d = (now - o) / 1e3 / 60 - 1440 * r - 60 * s, l = Math.floor(d);    1 == String(l).length && (l = "0" + l);    var g = (now - o) / 1e3 - 86400 * r - 3600 * s - 60 * l, b = Math.round(g);    1 == String(b).length && (b = "0" + b);    let c = "";    c = s < 18 && s >= 9 ? `<img class='boardsign' src='https://cdn.staticaly.com/gh/ruheyun/pic_bed@main/2023/ruheyun%E5%B0%8F%E5%B1%8B.svg' title='什么时候能够实现财富自由呀~'><br> <div style="font-size:13px;font-weight:bold">本站已经运行了 ${r} 天 ${s} 小时 ${l} 分 ${b} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀</div>` : `<img class='boardsign' src='https://cdn.staticaly.com/gh/ruheyun/pic_bed@main/2023/R%E5%B0%8F%E5%B1%8B-%E4%B8%8B%E7%8F%AD%E4%BC%91%E6%81%AF%E5%95%A6.svg' title='下班了就该开开心心地玩耍~'><br> <div style="font-size:13px;font-weight:bold">本站已经运行了 ${r} 天 ${s} 小时 ${l} 分 ${b} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀</div>`, document.getElementById("workboard") && (document.getElementById("workboard").innerHTML = c)}setInterval((() => {    createtime()}), 1e3);]]></content>
+        <content type="html"><![CDATA[let newYearTimer = null;var newYear = () => {    clearTimeout(newYearTimer);    if (!document.querySelector('#newYear')) return;    // 新年时间戳 and 星期对象    let newYear = new Date('2023-01-22 00:00:00').getTime() / 1000,        week = { 0: '周日', 1: '周一', 2: '周二', 3: '周三', 4: '周四', 5: '周五', 6: '周六' }    time();    // 补零函数    function nol(h) { return h > 9 ? h : '0' + h; };    function time() {        // 现在 时间对象        let now = new Date();        // 右下角 今天        document.querySelector('#newYear .today').innerHTML = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate() + ' ' + week[now.getDay()]        // 现在与新年相差秒数        let second = newYear - Math.round(now.getTime() / 1000);        // 小于0则表示已经过年        if (second < 0) {            document.querySelector('#newYear .title').innerHTML = 'Happy New Year!';            document.querySelector('#newYear .newYear-time').innerHTML = '<span class="happyNewYear">兔年快乐</p>';        } else {            // 大于0则还未过年            document.querySelector('#newYear .title').innerHTML = '距离2023年春节：'            // 大于一天则直接渲染天数            if (second > 86400) {                document.querySelector('#newYear .newYear-time').innerHTML = `<span class="day">${Math.ceil(second / 86400)}<span class="unit">天</span></span>`            } else {                // 小于一天则使用时分秒计时。                let h = nol(parseInt(second / 3600));                second %= 3600;                let m = nol(parseInt(second / 60));                second %= 60;                let s = nol(second);                document.querySelector('#newYear .newYear-time').innerHTML = `<span class="time">${h}:${m}:${s}</span></span>`;                // 计时                newYearTimer = setTimeout(time, 1000);            }        }    }    // 元宝飘落    jQuery(document).ready(function ($) {        $('#newYear').wpSuperSnow({            flakes: ['https://tuchuang.voooe.cn/images/2023/01/02/yb1.webp', 'https://tuchuang.voooe.cn/images/2023/01/02/yb2.webp', 'https://tuchuang.voooe.cn/images/2023/01/02/yb3.webp'],            totalFlakes: '100',            zIndex: '999999',            maxSize: '30',            maxDuration: '20',            useFlakeTrans: false        });    });}// Pjax适配：若没有开启Pjax这里直接是newYear()即可// 开了Pjax的用以下两句//document.addEventListener('pjax:complete', newYear);//document.addEventListener('DOMContentLoaded', newYear);newYear();]]></content>
       
     </entry>
     
@@ -615,11 +582,44 @@
     
     
     <entry>
+      <title></title>
+      <link href="/js/readPercent.js"/>
+      <url>/js/readPercent.js</url>
+      
+        <content type="html"><![CDATA[window.onscroll = percent;// 执行函数// 页面百分比function percent() {    let a = document.documentElement.scrollTop || window.pageYOffset, // 卷去高度        b = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight) - document.documentElement.clientHeight, // 整个网页高度        result = Math.round(a / b * 100), // 计算百分比        up = document.querySelector("#go-up") // 获取按钮    if (result <= 95) {        up.childNodes[0].style.display = 'none'        up.childNodes[1].style.display = 'block'        up.childNodes[1].innerHTML = result;    } else {        up.childNodes[1].style.display = 'none'        up.childNodes[0].style.display = 'block'    }}]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>电影</title>
       <link href="/movies/index.html"/>
       <url>/movies/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/js/universe.js"/>
+      <url>/js/universe.js</url>
+      
+        <content type="html"><![CDATA[function dark() {    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;    var n, e, i, h, t = .05, s = document.getElementById("universe"), o = !0, a = "180,184,240", r = "226,225,142",        d = "226,225,224", c = [];    function f() {        n = window.innerWidth, e = window.innerHeight, i = .216 * n, s.setAttribute("width", n), s.setAttribute("height", e)    }    function u() {        h.clearRect(0, 0, n, e);        for (var t = c.length, i = 0; i < t; i++) {            var s = c[i];            s.move(), s.fadeIn(), s.fadeOut(), s.draw()        }    }    function y() {        this.reset = function () {            this.giant = m(3), this.comet = !this.giant && !o && m(10), this.x = l(0, n - 10), this.y = l(0, e), this.r = l(1.1, 2.6), this.dx = l(t, 6 * t) + (this.comet + 1 - 1) * t * l(50, 120) + 2 * t, this.dy = -l(t, 6 * t) - (this.comet + 1 - 1) * t * l(50, 120), this.fadingOut = null, this.fadingIn = !0, this.opacity = 0, this.opacityTresh = l(.2, 1 - .4 * (this.comet + 1 - 1)), this.do = l(5e-4, .002) + .001 * (this.comet + 1 - 1)        }, this.fadeIn = function () {            this.fadingIn && (this.fadingIn = !(this.opacity > this.opacityTresh), this.opacity += this.do)        }, this.fadeOut = function () {            this.fadingOut && (this.fadingOut = !(this.opacity < 0), this.opacity -= this.do / 2, (this.x > n || this.y < 0) && (this.fadingOut = !1, this.reset()))        }, this.draw = function () {            if (h.beginPath(), this.giant) h.fillStyle = "rgba(" + a + "," + this.opacity + ")", h.arc(this.x, this.y, 2, 0, 2 * Math.PI, !1); else if (this.comet) {                h.fillStyle = "rgba(" + d + "," + this.opacity + ")", h.arc(this.x, this.y, 1.5, 0, 2 * Math.PI, !1);                for (var t = 0; t < 30; t++) h.fillStyle = "rgba(" + d + "," + (this.opacity - this.opacity / 20 * t) + ")", h.rect(this.x - this.dx / 4 * t, this.y - this.dy / 4 * t - 2, 2, 2), h.fill()            } else h.fillStyle = "rgba(" + r + "," + this.opacity + ")", h.rect(this.x, this.y, this.r, this.r);            h.closePath(), h.fill()        }, this.move = function () {            this.x += this.dx, this.y += this.dy, !1 === this.fadingOut && this.reset(), (this.x > n - n / 4 || this.y < 0) && (this.fadingOut = !0)        }, setTimeout(function () {            o = !1        }, 50)    }    function m(t) {        return Math.floor(1e3 * Math.random()) + 1 < 10 * t    }    function l(t, i) {        return Math.random() * (i - t) + t    }    f(), window.addEventListener("resize", f, !1), function () {        h = s.getContext("2d");        for (var t = 0; t < i; t++) c[t] = new y, c[t].reset();        u()    }(), function t() {        document.getElementsByTagName('html')[0].getAttribute('data-theme') == 'dark' && u(), window.requestAnimationFrame(t)    }()};dark()]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/js/runtime.js"/>
+      <url>/js/runtime.js</url>
+      
+        <content type="html"><![CDATA[var now = new Date;function createtime() {    now.setTime(now.getTime() + 1e3);    var e = new Date("01/23/2023 00:00:00"), t = Math.trunc(234e8 + (now - e) / 1e3 * 17), a = (t / 1496e5).toFixed(6),        o = new Date("01/23/2023 00:00:00"), n = (now - o) / 1e3 / 60 / 60 / 24, r = Math.floor(n),        i = (now - o) / 1e3 / 60 / 60 - 24 * r, s = Math.floor(i);    1 == String(s).length && (s = "0" + s);    var d = (now - o) / 1e3 / 60 - 1440 * r - 60 * s, l = Math.floor(d);    1 == String(l).length && (l = "0" + l);    var g = (now - o) / 1e3 - 86400 * r - 3600 * s - 60 * l, b = Math.round(g);    1 == String(b).length && (b = "0" + b);    let c = "";    c = s < 18 && s >= 9 ? `<img class='boardsign' src='https://cdn.staticaly.com/gh/ruheyun/pic_bed@main/2023/ruheyun%E5%B0%8F%E5%B1%8B.svg' title='什么时候能够实现财富自由呀~'><br> <div style="font-size:13px;font-weight:bold">本站已经运行了 ${r} 天 ${s} 小时 ${l} 分 ${b} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀</div>` : `<img class='boardsign' src='https://cdn.staticaly.com/gh/ruheyun/pic_bed@main/2023/R%E5%B0%8F%E5%B1%8B-%E4%B8%8B%E7%8F%AD%E4%BC%91%E6%81%AF%E5%95%A6.svg' title='下班了就该开开心心地玩耍~'><br> <div style="font-size:13px;font-weight:bold">本站已经运行了 ${r} 天 ${s} 小时 ${l} 分 ${b} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀</div>`, document.getElementById("workboard") && (document.getElementById("workboard").innerHTML = c)}setInterval((() => {    createtime()}), 1e3);]]></content>
       
     </entry>
     
