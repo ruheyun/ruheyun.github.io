@@ -313,13 +313,6 @@
   </url>
   
   <url>
-    <loc>https://blog.ruheyun.top/categories/java%E7%BB%83%E4%B9%A0%E9%A2%98/</loc>
-    <lastmod>2023-07-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.ruheyun.top/categories/%E6%9D%82%E8%AE%B0/</loc>
     <lastmod>2023-07-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -328,6 +321,13 @@
   
   <url>
     <loc>https://blog.ruheyun.top/categories/Mysql%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2023-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ruheyun.top/categories/java%E7%BB%83%E4%B9%A0%E9%A2%98/</loc>
     <lastmod>2023-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
