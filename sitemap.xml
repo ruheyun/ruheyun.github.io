@@ -227,14 +227,14 @@
 
   
   <url>
-    <loc>https://blog.ruheyun.top/tags/Git/</loc>
+    <loc>https://blog.ruheyun.top/tags/Web/</loc>
     <lastmod>2023-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.ruheyun.top/tags/Web/</loc>
+    <loc>https://blog.ruheyun.top/tags/Git/</loc>
     <lastmod>2023-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -269,14 +269,14 @@
   </url>
   
   <url>
-    <loc>https://blog.ruheyun.top/tags/MySQL/</loc>
+    <loc>https://blog.ruheyun.top/tags/%E7%94%B5%E8%84%91/</loc>
     <lastmod>2023-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.ruheyun.top/tags/%E7%94%B5%E8%84%91/</loc>
+    <loc>https://blog.ruheyun.top/tags/MySQL/</loc>
     <lastmod>2023-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -285,14 +285,14 @@
 
   
   <url>
-    <loc>https://blog.ruheyun.top/categories/Git%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://blog.ruheyun.top/categories/Web%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2023-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.ruheyun.top/categories/Web%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://blog.ruheyun.top/categories/Git%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2023-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -320,14 +320,14 @@
   </url>
   
   <url>
-    <loc>https://blog.ruheyun.top/categories/Mysql%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://blog.ruheyun.top/categories/%E6%9D%82%E8%AE%B0/</loc>
     <lastmod>2023-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.ruheyun.top/categories/%E6%9D%82%E8%AE%B0/</loc>
+    <loc>https://blog.ruheyun.top/categories/Mysql%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2023-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
