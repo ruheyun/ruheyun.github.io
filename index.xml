@@ -13,14 +13,14 @@
         <pubDate>Sun, 25 Jan 2026 16:51:02 +0800</pubDate>
         
         <guid>https://ruheyun.github.io/p/myfirstblog/</guid>
-        <description>&lt;h3 id=&#34;hello-hugo&#34;&gt;Hello Hugo!
-&lt;/h3&gt;&lt;p&gt;测试github自动部署功能&lt;/p&gt;
-</description>
+        <description>&lt;img src="https://ruheyun.github.io/p/myfirstblog/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post MyFirstBlog" /&gt;&lt;p&gt;文章的前言部分，可有可无。&lt;/p&gt;
+&lt;h1 id=&#34;hello-hugo&#34;&gt;Hello Hugo!
+&lt;/h1&gt;&lt;p&gt;测试github自动部署功能&lt;/p&gt;</description>
         </item>
         <item>
         <title>Chinese Test</title>
         <link>https://ruheyun.github.io/p/test-chinese/</link>
-        <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+        <pubDate>Fri, 09 Sep 2022 00:00:00 +0000</pubDate>
         
         <guid>https://ruheyun.github.io/p/test-chinese/</guid>
         <description>&lt;img src="https://ruheyun.github.io/p/test-chinese/helena-hertz-wWZzXlDpMog-unsplash.jpg" alt="Featured image of post Chinese Test" /&gt;&lt;h2 id=&#34;正文测试&#34;&gt;正文测试
