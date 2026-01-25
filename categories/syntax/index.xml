@@ -15,7 +15,15 @@
         <guid>https://ruheyun.github.io/p/myfirstblog/</guid>
         <description>&lt;img src="https://ruheyun.github.io/p/myfirstblog/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post MyFirstBlog" /&gt;&lt;p&gt;文章的前言部分，可有可无。&lt;/p&gt;
 &lt;h1 id=&#34;hello-hugo&#34;&gt;Hello Hugo!
-&lt;/h1&gt;&lt;p&gt;测试github自动部署功能&lt;/p&gt;</description>
+&lt;/h1&gt;&lt;p&gt;测试github自动部署功能&lt;/p&gt;
+&lt;h2 id=&#34;名言&#34;&gt;名言
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;“成功不是终点，而失败并不致命：有勇气继续下去才是最重要的。”——温斯顿·丘吉尔&lt;/li&gt;
+&lt;li&gt;“宁可在独创性上失败，也不要在模仿中成功。”——赫尔曼·梅尔维尔&lt;/li&gt;
+&lt;li&gt;“成功之路和失败之路几乎是相同的。”——科林·戴维斯&lt;/li&gt;
+&lt;li&gt;“成功通常属于那些忙于寻找成功的人。”——亨利·大卫·梭罗&lt;/li&gt;
+&lt;li&gt;“学会从失败中成功。挫折和失败是通往成功最可靠的垫脚石。”——戴尔·卡耐基&lt;/li&gt;
+&lt;/ol&gt;</description>
         </item>
         <item>
         <title>Markdown Syntax Guide</title>
