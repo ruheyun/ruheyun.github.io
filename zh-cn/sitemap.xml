@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ruheyun.github.io/</loc>
-    <lastmod>2026-01-26T00:00:00+00:00</lastmod>
+    <lastmod>2026-01-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -109,13 +109,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="ja"
-                href="https://ruheyun.github.io/ja/tags/"
+                hreflang="zh-tw"
+                href="https://ruheyun.github.io/zh-tw/tags/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh-tw"
-                href="https://ruheyun.github.io/zh-tw/tags/"
+                hreflang="ja"
+                href="https://ruheyun.github.io/ja/tags/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -127,6 +127,12 @@
                 hreflang="zh-cn"
                 href="https://ruheyun.github.io/tags/"
                 />
+  </url><url>
+    <loc>https://ruheyun.github.io/page/</loc>
+    <lastmod>2026-01-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ruheyun.github.io/%E5%85%B3%E4%BA%8E/</loc>
+    <lastmod>2026-01-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/tags/css/</loc>
     <lastmod>2026-01-25T16:51:02+08:00</lastmod>
@@ -150,9 +156,6 @@
     <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/p/markdown%E8%AF%AD%E6%B3%95/</loc>
-    <lastmod>2026-01-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ruheyun.github.io/page/</loc>
     <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/%E6%97%A5%E5%BF%97/</loc>
@@ -180,13 +183,13 @@
     <lastmod>2019-09-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh-tw"
-                href="https://ruheyun.github.io/zh-tw/categories/test/"
+                hreflang="ja"
+                href="https://ruheyun.github.io/ja/categories/test/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="ja"
-                href="https://ruheyun.github.io/ja/categories/test/"
+                hreflang="zh-tw"
+                href="https://ruheyun.github.io/zh-tw/categories/test/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -233,8 +236,6 @@
   </url><url>
     <loc>https://ruheyun.github.io/p/emoji-support/</loc>
     <lastmod>2019-03-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ruheyun.github.io/%E5%85%B3%E4%BA%8E/</loc>
   </url><url>
     <loc>https://ruheyun.github.io/search/</loc>
   </url><url>

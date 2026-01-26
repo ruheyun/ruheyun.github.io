@@ -7,7 +7,68 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Mon, 26 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://ruheyun.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 27 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://ruheyun.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>关于</title>
+        <link>https://ruheyun.github.io/%E5%85%B3%E4%BA%8E/</link>
+        <pubDate>Mon, 26 Jan 2026 00:00:00 +0000</pubDate>
+        
+        <guid>https://ruheyun.github.io/%E5%85%B3%E4%BA%8E/</guid>
+        <description>&lt;h2 id=&#34;关于网站&#34;&gt;关于网站
+&lt;/h2&gt;&lt;h3 id=&#34;技术框架&#34;&gt;技术框架
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;网站框架：&lt;code&gt;Hugo&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;主题：&lt;code&gt;Stack&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;部署：&lt;code&gt;Github&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;开发语言：&lt;code&gt;Go&lt;/code&gt;，&lt;code&gt;Html&lt;/code&gt;，&lt;code&gt;Css&lt;/code&gt;，&lt;code&gt;Js&lt;/code&gt;，&lt;code&gt;yaml&lt;/code&gt;，&lt;code&gt;toml&lt;/code&gt;，&lt;code&gt;Markdown&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;版权声明：&lt;code&gt;CC BY-NC-SA 4.0&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;目前仅可以使用简体中文，请勿切换其他语言，网站功能正在完善中&amp;hellip;&lt;/p&gt;
+&lt;h3 id=&#34;搭建初衷&#34;&gt;搭建初衷
+&lt;/h3&gt;&lt;p&gt;作为一位计科学生，从大学开始便开始与计算机和编程语言打交道，本科主要学习语言是Java，但是学的不好，于是假期就想在B站看视频，学习Java相关知识，然后老师建议要做笔记，要开始写博客，学Java的课程第一节就教Markdown，以及注册CSDN和博客园。于是便接触到搭建博客、网站这些东西，想着身为计科学生，如果可以搭建一个自己的网站记录学习情况和笔记肯定很酷，这可能就是这个网站的来源。&lt;/p&gt;
+&lt;p&gt;那时我大二，自己写了（模仿B站大佬写的哈哈哈）一个由bootstrap为前端，Java为后端的简约博客，但是太简约了，而且需要服务器部署才行，但是又不想花钱买服务器部署网站，于是便开始寻找免费的方案。打开B站，搜索博客搭建，然后各种使用Hexo的快速建站视频吸引了我的注意力，便开始用Hexo搭建网站，搭配各种主题，很炫酷，为此没忍住花钱买了阿里云的域名（没错，最终又花钱了诶），并下定决心认知学习，每周至少写一篇博客（骗鬼去了哈）。寒假开学后，直接堕落，每天打游戏、看动漫、看漫画。每天教室-食堂-寝室，三点一线。上课金铲铲，食堂边吃饭边刷视频，回寝室看动漫、漫画。于是网站就废了。。。一气之下，删除了所有网站源码。&lt;/p&gt;
+&lt;p&gt;现在作为研究生（混上了），每天在实验室看论文、做笔记，于是又萌发了搭建网站记笔记的念头，于是又开始搭建网站了，便开始了使用Hugo建站的过程，希望这次能坚持做笔记。。。&lt;/p&gt;
+&lt;h3 id=&#34;网站内容&#34;&gt;网站内容
+&lt;/h3&gt;&lt;p&gt;记录学习笔记，以及搭建网站的过程&lt;/p&gt;
+&lt;h2 id=&#34;关于本人&#34;&gt;关于本人
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;昵称：RuHeYun&lt;/li&gt;
+&lt;li&gt;性别：男&lt;/li&gt;
+&lt;li&gt;生日：2001.08.XX&lt;/li&gt;
+&lt;li&gt;身份：计算机科学与技术在读研究生&lt;/li&gt;
+&lt;li&gt;研究方向：AIGC、数据安全&lt;/li&gt;
+&lt;li&gt;邮箱：ruheyun@qq.com&lt;/li&gt;
+&lt;li&gt;擅长：Python？Matlab？（好像有点废了，不知道写啥了，唉！技能树持续点亮中···）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;技能树&#34;&gt;技能树
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;技术/框架&lt;/th&gt;
+          &lt;th&gt;学习时间&lt;/th&gt;
+          &lt;th&gt;备注&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;扩散模型&lt;/td&gt;
+          &lt;td&gt;2024.12-至今&lt;/td&gt;
+          &lt;td&gt;持续学习扩散模型相关内容&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;差分隐私&lt;/td&gt;
+          &lt;td&gt;2024.12-至今&lt;/td&gt;
+          &lt;td&gt;持续学习差分隐私相关内容&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Django&lt;/td&gt;
+          &lt;td&gt;2026.01-至今&lt;/td&gt;
+          &lt;td&gt;读研后基本只用Python，那就把Python多学学吧&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        </item>
+        <item>
         <title>日志</title>
         <link>https://ruheyun.github.io/%E6%97%A5%E5%BF%97/</link>
         <pubDate>Sat, 18 Jun 2022 00:00:00 +0000</pubDate>
@@ -63,15 +124,6 @@
         
         <guid>https://ruheyun.github.io/archives/</guid>
         <description></description>
-        </item>
-        <item>
-        <title>关于</title>
-        <link>https://ruheyun.github.io/%E5%85%B3%E4%BA%8E/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://ruheyun.github.io/%E5%85%B3%E4%BA%8E/</guid>
-        <description>&lt;p&gt;This is a test page for i18n support.&lt;/p&gt;
-</description>
         </item>
         <item>
         <title>搜索</title>
