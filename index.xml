@@ -301,6 +301,55 @@
 </description>
         </item>
         <item>
+        <title>日志</title>
+        <link>https://ruheyun.github.io/%E6%97%A5%E5%BF%97/</link>
+        <pubDate>Sat, 18 Jun 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://ruheyun.github.io/%E6%97%A5%E5%BF%97/</guid>
+        <description>&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;事件&lt;/th&gt;
+          &lt;th&gt;完成时间&lt;/th&gt;
+          &lt;th&gt;备注&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Hugo网站菜单更新&lt;/td&gt;
+          &lt;td&gt;2026-01-26&lt;/td&gt;
+          &lt;td&gt;添加了日志并更改页脚部分&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Hugo搭建网站&lt;/td&gt;
+          &lt;td&gt;2026-01-25&lt;/td&gt;
+          &lt;td&gt;更新使用Hugo搭建网站并部署到Github&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;域名到期&lt;/td&gt;
+          &lt;td&gt;2024-07-22&lt;/td&gt;
+          &lt;td&gt;网站停止更新，不想续费域名hhh&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;阿里云备案&lt;/td&gt;
+          &lt;td&gt;2023-03-16&lt;/td&gt;
+          &lt;td&gt;将网站在阿里云备案并注册域名&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Hexo搭建网站&lt;/td&gt;
+          &lt;td&gt;2023-01-22&lt;/td&gt;
+          &lt;td&gt;使用hexo搭建网站并部署到Github&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;博客园建站&lt;/td&gt;
+          &lt;td&gt;2022-06-18&lt;/td&gt;
+          &lt;td&gt;第一次在博客园注册账号开始写博客&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        </item>
+        <item>
         <title>归档</title>
         <link>https://ruheyun.github.io/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
