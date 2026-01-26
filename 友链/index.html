@@ -351,7 +351,8 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>image</code> field accepts both local and external images.</p>
-<p>本网站信息：</p>
+<hr>
+<p>本网站链接：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -365,7 +366,7 @@
 </span></span><span class="line"><span class="cl">  - title: RuHeYun
 </span></span><span class="line"><span class="cl">    description: 喜欢在0和1之间折腾的计科小白一枚~.
 </span></span><span class="line"><span class="cl">    website: https://ruheyun.github.io/
-</span></span><span class="line"><span class="cl">    image: https://ruheyun.github.io/img/avatar_hu_f8d686082b82d9a3.png
+</span></span><span class="line"><span class="cl">    image: https://ruheyun.github.io/img/avatar_hu_fc0063c7379d43fb.png
 </span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -446,7 +447,7 @@
                     <h2 class="article-title">Hugo</h2>
                     <footer class="article-time">
                         
-                            使用go语言开发的最受欢迎的开源静态站点生成器之一.
+                            Hugo是使用go语言开发的最受欢迎的开源静态站点生成器之一.
                         
                     </footer>
                 </div>
@@ -469,7 +470,7 @@
                     <h2 class="article-title">Stack</h2>
                     <footer class="article-time">
                         
-                            Hugo中的一个主题，也是本站的使用主题.
+                            Stack是Hugo中的一个主题，也是本站的使用主题.
                         
                     </footer>
                 </div>
@@ -580,7 +581,89 @@
     </section>
     
     
+
+    
+    <section class="custom-footer-text">
+        <p style="text-align: left; font-size: 1.1em; margin: 0.5em 0;">
+            [ 天天熬夜 <span class="heartbeat">❤️</span> 迟早猝死 ]
+        </p>
+        <p id="blog-runtime" style="text-align: left; font-size: 0.9em; margin: 0.5em 0; color: #888;">
+            这个网站已经运行了: <span id="runtime-value">Loading...</span>
+            <span class="floating-end">ღゝ◡╹)ノ♡</span>
+        </p>
+    </section>
+    
+
 </footer>
+
+
+<style>
+     
+     
+    .custom-footer-text {
+        font-family: 'ZCOOL QingKe HuangYou', cursive, sans-serif;
+    }
+
+     
+    .custom-footer-text p:first-child {
+        font-size: 1.2em;
+         
+         
+    }
+
+
+    .heartbeat {
+        display: inline-block;
+        animation: heartbeat 1.5s ease-in-out infinite;
+        color: #e74c3c;  
+    }
+
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        15% { transform: scale(1.1); }
+        30% { transform: scale(1); }
+        45% { transform: scale(1.1); }
+        60% { transform: scale(1); }
+        75% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+      
+    .floating-end {
+        display: inline-block;
+        animation: float 3s ease-in-out infinite;
+         
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+    }
+</style>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        const startDate = new Date("2022-06-18T00:00:00Z"); 
+
+        function updateRuntime() {
+            const now = new Date();
+            const diffMs = now - startDate;
+            const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+            const diffSeconds = Math.floor((diffMs % (1000 * 60)) / 1000);
+
+            const runtimeStr = `${diffDays} 天 ${diffHours} 小时 ${diffMinutes} 分钟 ${diffSeconds} 秒`;
+            document.getElementById('runtime-value').textContent = runtimeStr;
+        }
+
+        
+        updateRuntime();
+        setInterval(updateRuntime, 1000);
+    });
+</script>
 
 
     

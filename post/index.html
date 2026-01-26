@@ -10,7 +10,7 @@
 <meta property='og:description' content="欢迎来到我的网站！">
 <meta property='og:url' content='https://ruheyun.github.io/post/'>
 <meta property='og:site_name' content='RuHeYun'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2026-01-25T16:51:02&#43;08:00 '/>
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2026-01-26T11:35:06&#43;08:00 '/>
 <meta name="twitter:title" content="Posts">
 <meta name="twitter:description" content="欢迎来到我的网站！"><link rel="alternate" type="application/rss&#43;xml" href="https://ruheyun.github.io/post/index.xml">
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -316,7 +316,7 @@
                     <a href="/archives/#2026">
                         
                             <span class="year">2026</span>
-                            <span class="count">1</span>
+                            <span class="count">2</span>
                         
                     </a> 
                 </div>
@@ -446,7 +446,7 @@
 
         <div class="section-card">
             <div class="section-details">
-                <h3 class="section-count">6 个页面</h3>
+                <h3 class="section-count">7 个页面</h3>
                 <h1 class="section-term">Posts</h1>
                 
             </div>
@@ -454,6 +454,17 @@
     </header>
     
     <section class="article-list--compact">
+        
+            <article>
+    <a href="/p/markdown%E8%AF%AD%E6%B3%95/">
+        <div class="article-details">
+            <h2 class="article-title">Markdown语法</h2>
+            <footer class="article-time">
+                <time datetime='2026-01-26T11:35:06&#43;08:00'>2026-01-26</time>
+            </footer>
+        </div>
+    </a>
+</article>
         
             <article>
     <a href="/p/myfirstblog/">
@@ -535,17 +546,6 @@
     </a>
 </article>
         
-            <article>
-    <a href="/p/math-typesetting/">
-        <div class="article-details">
-            <h2 class="article-title">Math Typesetting</h2>
-            <footer class="article-time">
-                <time datetime='2019-03-08T00:00:00Z'>2019-03-08</time>
-            </footer>
-        </div>
-    </a>
-</article>
-        
     </section><nav class="pagination" role="navigation" aria-label="pagination"><a class="page-link disabled"aria-label="Previous page"aria-disabled="true">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
     </a><a class="page-link current" aria-label="Page 1"aria-current="page">
@@ -565,7 +565,89 @@
     </section>
     
     
+
+    
+    <section class="custom-footer-text">
+        <p style="text-align: left; font-size: 1.1em; margin: 0.5em 0;">
+            [ 天天熬夜 <span class="heartbeat">❤️</span> 迟早猝死 ]
+        </p>
+        <p id="blog-runtime" style="text-align: left; font-size: 0.9em; margin: 0.5em 0; color: #888;">
+            这个网站已经运行了: <span id="runtime-value">Loading...</span>
+            <span class="floating-end">ღゝ◡╹)ノ♡</span>
+        </p>
+    </section>
+    
+
 </footer>
+
+
+<style>
+     
+     
+    .custom-footer-text {
+        font-family: 'ZCOOL QingKe HuangYou', cursive, sans-serif;
+    }
+
+     
+    .custom-footer-text p:first-child {
+        font-size: 1.2em;
+         
+         
+    }
+
+
+    .heartbeat {
+        display: inline-block;
+        animation: heartbeat 1.5s ease-in-out infinite;
+        color: #e74c3c;  
+    }
+
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        15% { transform: scale(1.1); }
+        30% { transform: scale(1); }
+        45% { transform: scale(1.1); }
+        60% { transform: scale(1); }
+        75% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+      
+    .floating-end {
+        display: inline-block;
+        animation: float 3s ease-in-out infinite;
+         
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+    }
+</style>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        const startDate = new Date("2022-06-18T00:00:00Z"); 
+
+        function updateRuntime() {
+            const now = new Date();
+            const diffMs = now - startDate;
+            const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+            const diffSeconds = Math.floor((diffMs % (1000 * 60)) / 1000);
+
+            const runtimeStr = `${diffDays} 天 ${diffHours} 小时 ${diffMinutes} 分钟 ${diffSeconds} 秒`;
+            document.getElementById('runtime-value').textContent = runtimeStr;
+        }
+
+        
+        updateRuntime();
+        setInterval(updateRuntime, 1000);
+    });
+</script>
 
 
             </main>

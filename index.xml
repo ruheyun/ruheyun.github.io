@@ -7,7 +7,172 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Sun, 25 Jan 2026 16:51:02 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 26 Jan 2026 11:35:06 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Markdown语法</title>
+        <link>https://ruheyun.github.io/p/markdown%E8%AF%AD%E6%B3%95/</link>
+        <pubDate>Mon, 26 Jan 2026 11:35:06 +0800</pubDate>
+        
+        <guid>https://ruheyun.github.io/p/markdown%E8%AF%AD%E6%B3%95/</guid>
+        <description>&lt;h1 id=&#34;markdown语法&#34;&gt;Markdown语法
+&lt;/h1&gt;&lt;p&gt;&lt;code&gt;一级标题用：# 标题内容&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;多级标题&#34;&gt;多级标题
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;二级标题用：## 标题内容&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;三级标题&#34;&gt;三级标题
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;三级标题用：### 标题内容&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;以此类推，但markdown最多可有六级标题&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;字体&#34;&gt;字体
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;字体加粗用：**字体内容**&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;hello world！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;字体斜体用：*字体内容*&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;hello world！&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;字体加粗且斜体用：***字体内容***&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;hello world！&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;字体删除横杠用：~~字体内容~~&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;hello world！&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;字体加下划线用：&amp;lt;u&amp;gt;hello world!&amp;lt;/u&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;u&gt;hello world!&lt;/u&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;字体下标表示用：H~2~o&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;H&lt;del&gt;2&lt;/del&gt;o&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;字体上标表示用：n^2^&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;n^2^&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;字体高亮用：==字体内容==&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;==hello world!==&lt;/p&gt;
+&lt;h2 id=&#34;表情符号&#34;&gt;表情符号
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;常用表情符号：:smile: :laughing: :dizzy_face: :sob: :cold_sweat: :sweat_smile:  :cry: :triumph: :heart_eyes: :relaxed: :sunglasses: :weary:&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;:+1: :-1: :100: :clap: :bell: :gift: :question: :bomb: :heart: :coffee: :cyclone: :bow: :kiss: :pray: :sweat_drops: :hankey: :exclamation: :anger:&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;:smile: :laughing: :dizzy_face: :sob: :cold_sweat: :sweat_smile:  :cry: :triumph: :heart_eyes: :relaxed: :sunglasses: :weary:&lt;/p&gt;
+&lt;p&gt;:+1: :-1: :100: :clap: :bell: :gift: :question: :bomb: :heart: :coffee: :cyclone: :bow: :kiss: :pray: :sweat_drops: :hankey: :exclamation: :anger:&lt;/p&gt;
+&lt;h2 id=&#34;引用&#34;&gt;引用
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;引用内容用：&amp;gt; 内容&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;二级引用用：&amp;gt;&amp;gt; 内容&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;两次enter键跳出引用&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我的第一篇博客&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;二级引用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;分割线&#34;&gt;分割线
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;常用的分割线用：---或者***回车即可&lt;/code&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;图片&#34;&gt;图片
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;插入本地图片用：![图片名字](图片地址绝对路径)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ruheyun.github.io/p/markdown%E8%AF%AD%E6%B3%95/t_1.jpg&#34;
+	width=&#34;213&#34;
+	height=&#34;120&#34;
+	srcset=&#34;https://ruheyun.github.io/p/markdown%E8%AF%AD%E6%B3%95/t_1_hu_f0f3e5eafcdb0bd4.jpg 480w, https://ruheyun.github.io/p/markdown%E8%AF%AD%E6%B3%95/t_1_hu_2ae5ce89bd40730a.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;本地图片&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;426px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;插入网络图片用：![图片名字](图片地址图片链接)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ruheyun.github.io/p/markdown%E8%AF%AD%E6%B3%95/t_2.jpg&#34;
+	width=&#34;213&#34;
+	height=&#34;120&#34;
+	srcset=&#34;https://ruheyun.github.io/p/markdown%E8%AF%AD%E6%B3%95/t_2_hu_264dc3544ccf5688.jpg 480w, https://ruheyun.github.io/p/markdown%E8%AF%AD%E6%B3%95/t_2_hu_862d9366ce62d89b.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;网络图片&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;426px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;本地地址和网络上图片地址可能会由于本地的更改删除或者网络图片出处的删除，而导致图片无效而显示不出来，建议大家把需要的图片上传到自己创建的图床里。&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;超链接&#34;&gt;超链接
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;超链接用：[链接名字](链接地址)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://ruheyun.github.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;点击跳转到我的主页&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;自动链接用：&amp;lt;链接地址url或者邮箱&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://ruheyun.github.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ruheyun.github.io/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;列表&#34;&gt;列表
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;有序列表用：1. 内容&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;a&lt;/li&gt;
+&lt;li&gt;b&lt;/li&gt;
+&lt;li&gt;c&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;无序列表用：- 内容&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a&lt;/li&gt;
+&lt;li&gt;b&lt;/li&gt;
+&lt;li&gt;c&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;表格&#34;&gt;表格
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;插入表格最简单方法，直接鼠标右键选插入&amp;gt;表格即可&lt;/code&gt;&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;名字&lt;/th&gt;
+          &lt;th&gt;性别&lt;/th&gt;
+          &lt;th&gt;生日&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;如何&lt;/td&gt;
+          &lt;td&gt;男&lt;/td&gt;
+          &lt;td&gt;2022.6.18&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;插入表格第二种方式需要用格式：&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;|属性|属性|属性|&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;|--|--|--|&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;|内容|内容|内容|&lt;/code&gt;&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;名字&lt;/th&gt;
+          &lt;th&gt;性别&lt;/th&gt;
+          &lt;th&gt;生日&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;如何&lt;/td&gt;
+          &lt;td&gt;男&lt;/td&gt;
+          &lt;td&gt;2022.6.18&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;代码块&#34;&gt;代码块
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;编写代码用：```语言名称回车即可&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;HelloWorld&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;	&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;		&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Hello World!&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;	&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;行内代码用：``两点内书写内容&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;html&#34;&gt;Html
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Markdown语法，同样支持Html语法，所以如果想要更丰富的格式，则可以借助Html、CSS、JS等实现。&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2022.6.18是我第一天注册博客园开始学习写文章，为了完成属于自己的第一篇博客，我熬夜写到半夜才完成。虽然有很多地方不足，但是我很开心。也希望自己可以在接下来学习Java的过程中坚持写博客，不放弃，希望可以让自己在学习过程中与大家一起讨论，分享总结。最后，祝园友心想事成！&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
         <title>MyFirstBlog</title>
         <link>https://ruheyun.github.io/p/myfirstblog/</link>
         <pubDate>Sun, 25 Jan 2026 16:51:02 +0800</pubDate>
@@ -511,7 +676,8 @@ $$</description>
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;code&gt;image&lt;/code&gt; field accepts both local and external images.&lt;/p&gt;
-&lt;p&gt;本网站信息：&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;本网站链接：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -525,7 +691,7 @@ $$</description>
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  - title: RuHeYun
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    description: 喜欢在0和1之间折腾的计科小白一枚~.
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    website: https://ruheyun.github.io/
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    image: https://ruheyun.github.io/img/avatar_hu_f8d686082b82d9a3.png
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    image: https://ruheyun.github.io/img/avatar_hu_fc0063c7379d43fb.png
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
