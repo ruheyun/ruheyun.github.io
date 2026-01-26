@@ -10,7 +10,7 @@
 <meta property='og:description' content="一个完全免费的Hugo网站搭建过程。">
 <meta property='og:url' content='https://ruheyun.github.io/p/hugo%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/'>
 <meta property='og:site_name' content='RuHeYun'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Markdown' /><meta property='article:tag' content='Hugo' /><meta property='article:tag' content='Stack' /><meta property='article:tag' content='Github' /><meta property='article:tag' content='Bat' /><meta property='article:published_time' content='2026-01-26T12:31:44&#43;08:00'/><meta property='article:modified_time' content='2026-01-26T12:31:44&#43;08:00'/><meta property='og:image' content='https://ruheyun.github.io/p/hugo%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/hugo-logo-wide.svg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Markdown' /><meta property='article:tag' content='Hugo' /><meta property='article:tag' content='Stack' /><meta property='article:tag' content='Github' /><meta property='article:tag' content='Bat' /><meta property='article:published_time' content='2026-01-26T12:31:44&#43;08:00'/><meta property='article:modified_time' content='2026-01-26T00:00:00&#43;00:00'/><meta property='og:image' content='https://ruheyun.github.io/p/hugo%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/hugo-logo-wide.svg' />
 <meta name="twitter:title" content="Hugo网站搭建">
 <meta name="twitter:description" content="一个完全免费的Hugo网站搭建过程。"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://ruheyun.github.io/p/hugo%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/hugo-logo-wide.svg' />
@@ -309,15 +309,48 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#下载hugo">下载Hugo</a></li>
-    <li><a href="#下载stack主题">下载Stack主题</a></li>
+    <li><a href="#下载hugo">下载Hugo</a>
+      <ol>
+        <li><a href="#进入hugo官网">进入Hugo官网</a></li>
+        <li><a href="#点击上图github">点击上图Github</a></li>
+        <li><a href="#解压出来放到自定义文件夹内">解压出来放到自定义文件夹内</a></li>
+      </ol>
+    </li>
+    <li><a href="#下载stack主题">下载Stack主题</a>
+      <ol>
+        <li><a href="#hugo官网点击themes">Hugo官网点击Themes</a></li>
+      </ol>
+    </li>
+    <li><a href="#启动hugo网站">启动Hugo网站</a></li>
     <li><a href="#配置stack主题">配置Stack主题</a>
       <ol>
+        <li><a href="#更改网站名字">更改网站名字</a></li>
+        <li><a href="#网站默认为简体中文">网站默认为简体中文</a></li>
+        <li><a href="#标题和子标题">标题和子标题</a></li>
+        <li><a href="#设置每页显示文章个数">设置每页显示文章个数</a></li>
+        <li><a href="#网站的图标">网站的图标</a></li>
+        <li><a href="#页脚日期以及文章日期格式">页脚日期以及文章日期格式</a></li>
+        <li><a href="#头像设置">头像设置</a></li>
         <li><a href="#配置评论区">配置评论区</a></li>
       </ol>
     </li>
-    <li><a href="#部署到github">部署到Github</a></li>
-    <li><a href="#创建和发布脚本">创建和发布脚本</a></li>
+    <li><a href="#部署到github">部署到Github</a>
+      <ol>
+        <li><a href="#先创建github仓库">先创建Github仓库</a></li>
+        <li><a href="#手动部署">手动部署</a></li>
+        <li><a href="#自动部署">自动部署</a>
+          <ol>
+            <li><a href="#生成token">生成token</a></li>
+            <li><a href="#配置token">配置token</a></li>
+            <li><a href="#配置本地文件">配置本地文件</a></li>
+            <li><a href="#设置gitignore文件">设置.gitignore文件</a></li>
+            <li><a href="#推送代码">推送代码</a></li>
+            <li><a href="#下次更新操作">下次更新操作</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#一键式脚本">一键式脚本</a></li>
   </ol>
 </nav>
         </div>
@@ -348,8 +381,8 @@
                 Hugo
             </a>
         
-            <a href="/categories/themes/" >
-                Themes
+            <a href="/categories/stack/" >
+                Stack
             </a>
         
     </header>
@@ -399,15 +432,541 @@
     <section class="article-content">
     
     
-    <p>这篇文章主要是记录了使用Hugo和Stack搭建整个网站的过程，以及部署到Github上，并编写了几个方便使用的Bat脚本。</p>
+    <p>这篇文章主要是记录了使用<code>Hugo</code>和<code>Stack</code>搭建整个网站的过程，以及部署到<code>Github</code>上，并编写了几个方便使用的<code>Bat</code>脚本。</p>
+<p><a class="link" href="https://gohugo.io/documentation/%3e"  target="_blank" rel="noopener"
+    >Hugo说明文档</a></p>
+<p><a class="link" href="https://stack.jimmycai.com/"  target="_blank" rel="noopener"
+    >Stack说明文档</a></p>
 <h1 id="hugo网站搭建过程">Hugo网站搭建过程
 </h1><h2 id="下载hugo">下载Hugo
-</h2><h2 id="下载stack主题">下载Stack主题
-</h2><h2 id="配置stack主题">配置Stack主题
-</h2><h3 id="配置评论区">配置评论区
-</h3><h2 id="部署到github">部署到Github
-</h2><h2 id="创建和发布脚本">创建和发布脚本
-</h2>
+</h2><h3 id="进入hugo官网">进入Hugo官网
+</h3><p><a class="link" href="https://gohugo.io/"  target="_blank" rel="noopener"
+    >https://gohugo.io/</a></p>
+<img src="26-1.png" alt="Hugo网站" style="zoom:80%;" />
+<h3 id="点击上图github">点击上图Github
+</h3><p>右侧界面找到<code>Releases</code>，点击进入</p>
+<img src="26_2.png" alt="版本" style="zoom:80%;" />
+<p>在<code>Assets</code>中找到适合自己电脑的版本</p>
+<img src="26_3.png" style="zoom:80%;" />
+<p>以<code>Windows</code>为例，下载<code>hugo_extended_0.154.5_windows-amd64.zip</code> 。</p>
+<h3 id="解压出来放到自定义文件夹内">解压出来放到自定义文件夹内
+</h3><img src="26_4.png" style="zoom:80%;" />
+<p>一共三个文件，只有<code>hugo.exe</code>有用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hugo.exe
+</span></span><span class="line"><span class="cl">LICENSE
+</span></span><span class="line"><span class="cl">README.md
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在该文件夹的地址栏敲打<code>cmd</code>，使用以下命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hugo new site blog
+</span></span><span class="line"><span class="cl"># blog：是由Hugo生成的含有一些文件的文件夹，可自定义这个名字
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="26_17.png" style="zoom:80%;" />
+<p>进入由<code>Hugo</code>生成的<code>blog</code>文件夹。</p>
+<h2 id="下载stack主题">下载Stack主题
+</h2><h3 id="hugo官网点击themes">Hugo官网点击Themes
+</h3><img src="26_5.png" style="zoom:80%;" />
+<p>选择自己喜欢的主题，这里以<code>Stack</code>为例，点击<code>Stack</code>，然后点击<code>Download</code>会跳转到该主题的<code>Github</code>页面，按照上面下载<code>Hugo</code>的方式下载最新版主题源码。</p>
+<img src="26_6.png" style="zoom:80%;" />
+<p>将下载后的主题压缩包解压，文件夹名字去掉版本号，如下图形式，复制到<code>blog</code>文件夹内的<code>themes</code>里</p>
+<img src="26_7.png" style="zoom:80%;" />
+<h2 id="启动hugo网站">启动Hugo网站
+</h2><p>先将<code>D:\Dev\MyBlog</code>文件夹下的<code>hugo.exe</code>，复制到<code>D:\Dev\MyBlog\blog</code>下，然后在该文件夹的地址栏敲打<code>cmd</code>，进入命令行窗口，输入下面命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hugo server -D
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="26_8.png" style="zoom:80%;" />
+<p>复制图片倒数第二行地址 <code>http://localhost:1313/</code>，去浏览器打开，最基础的网站就搭建好了。</p>
+<h2 id="配置stack主题">配置Stack主题
+</h2><p>主题文件夹路径为<code>D:\Dev\MyBlog\blog\themes\hugo-theme-stack</code>，但是不建议直接改<code>themes</code>内的文件，所以把下图两个重要的文件和文件夹复制到<code>D:\Dev\MyBlog\blog</code>文件夹下</p>
+<img src="26_9.png" style="zoom:80%;" />
+<blockquote>
+<p>后续如果有要修改<code>hugo-theme-stack</code>内的文件或文件夹，就在<code>blog</code>文件夹下创建相同路径或文件进行修改，<code>blog</code>文件夹优先级高于<code>hugo-theme-stack</code>文件夹。</p>
+</blockquote>
+<p>删除<code>blog</code>文件夹下的<code>hugo.toml</code>文件，使用上面复制的<code>hugo.yaml</code>配置文件。</p>
+<h3 id="更改网站名字">更改网站名字
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">baseurl:                 # 可先不填
+</span></span><span class="line"><span class="cl">languageCode: en-us      
+</span></span><span class="line"><span class="cl">theme: hugo-theme-stack  # 与对应文件夹名字相同
+</span></span><span class="line"><span class="cl">title: RuHeYun           # 自定义
+</span></span><span class="line"><span class="cl">copyright: RuHeYun       # 自定义
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="网站默认为简体中文">网站默认为简体中文
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DefaultContentLanguage: zh-cn
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">hasCJKLanguage: true
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="标题和子标题">标题和子标题
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">zh-cn:
+</span></span><span class="line"><span class="cl">    languageName: 简体中文
+</span></span><span class="line"><span class="cl">    title: RuHeYun              # 自定义
+</span></span><span class="line"><span class="cl">    weight: 2
+</span></span><span class="line"><span class="cl">    params:
+</span></span><span class="line"><span class="cl">        sidebar:
+</span></span><span class="line"><span class="cl">            subtitle: 欢迎来到我的网站！       # 自定义
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>weight是指在下拉菜单中的位置权重，越靠近0的在上方。</p>
+</blockquote>
+<h3 id="设置每页显示文章个数">设置每页显示文章个数
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">pagination:
+</span></span><span class="line"><span class="cl">    pagerSize: 3  # 自定义
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="网站的图标">网站的图标
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">favicon: /favicon.ico # &#39;/&#39;必须要带
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在<code>D:\Dev\MyBlog\blog\static</code>目录下放图标。</p>
+<h3 id="页脚日期以及文章日期格式">页脚日期以及文章日期格式
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">footer:
+</span></span><span class="line"><span class="cl">    since: 2022    # 自定义
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">dateFormat:
+</span></span><span class="line"><span class="cl">    published: 2006-01-02 
+</span></span><span class="line"><span class="cl">    lastUpdated: 2006-01-02
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="头像设置">头像设置
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sidebar:
+</span></span><span class="line"><span class="cl">        emoji: 🥰        # 自定义
+</span></span><span class="line"><span class="cl">        subtitle: 
+</span></span><span class="line"><span class="cl">        avatar:
+</span></span><span class="line"><span class="cl">            enabled: true
+</span></span><span class="line"><span class="cl">            local: true
+</span></span><span class="line"><span class="cl">            src: img/avatar.png   # 自定义
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>目录为<code>D:\Dev\MyBlog\blog\assets\img</code>，所有操作都是在<code>blog</code>内操作，不改<code>themes</code>文件夹内的内容。</p>
+<h3 id="配置评论区">配置评论区
+</h3><p>本网站使用<code>giscus</code>评论软件 ，这个功能是基于<code>Github</code>的，因此此部分放到部署到<code>Github</code>后。</p>
+<h2 id="部署到github">部署到Github
+</h2><p>首先要有<code>Github</code>账号，本地电脑安装了<code>Git</code>，后续需要用 <code>git</code> 将代码上传到 <code>github</code>，这部分需要在本地 <code>git</code> 配置密钥与 <code>github</code> 连接，自行学习关于 <code>git</code> 部分内容。</p>
+<h3 id="先创建github仓库">先创建Github仓库
+</h3><img src="26_10.png" style="zoom:80%;" />
+<p>点击<code>Github</code>头像，点击<code>Repositories</code>，然后点击<code>New</code>创建仓库</p>
+<img src="26_11.png" style="zoom:80%;" />
+<p>两个仓库要求如下：</p>
+<img src="26_13.png" style="zoom:80%;" />
+<img src="26_12.png" style="zoom:80%;" />
+<p>第一个仓库<code>公开</code>，名字必须是<code>你的github名字.github.io</code>。</p>
+<p>第二个仓库<code>隐私</code>，名字随意，比如<code>hugo-code</code>。</p>
+<h3 id="手动部署">手动部署
+</h3><p>先改动<code>hugo.yaml</code>配置文件第一行，将网站网址填进去</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">baseurl: https://ruheyun.github.io
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>public</code>文件夹是整个网站文件夹经过<code>go</code>语言编译好的包含<code>html</code>文件的文件夹，不包含原始代码。由命令<code>hugo server -D</code>产生的（前面使用过，如果更改了内容就需要重新运行这个命令，更新<code>public</code>文件夹）。</p>
+<p>进入<code>public</code>文件夹，地址为<code>D:\Dev\MyBlog\blog\public</code>，在地址栏敲<code>cmd</code>，进入命令行窗口，依次输入下面命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 初始化本地仓库
+</span></span><span class="line"><span class="cl">git init
+</span></span><span class="line"><span class="cl"># 添加所有新增文件
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl"># 提交到本地仓库
+</span></span><span class="line"><span class="cl">git commit -m &#34;first commit&#34;
+</span></span><span class="line"><span class="cl"># 设置本地分支为main
+</span></span><span class="line"><span class="cl">git branch -M main
+</span></span><span class="line"><span class="cl"># 连接远程仓库，需要本地git与远程github通过密钥连接后才能连接仓库
+</span></span><span class="line"><span class="cl">git remote add origin git@github.com:ruheyun/ruheyun.github.io.git
+</span></span><span class="line"><span class="cl"># 将本地仓库推送到远程仓库
+</span></span><span class="line"><span class="cl">git push -u origin main
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>打开<code>github</code>，到<code>ruheyun.github.io</code>仓库界面</p>
+<img src="26_14.png" style="zoom:80%;" />
+<p>依次点击<code>Settings</code>-&gt;<code>Pages</code>-&gt;<code>Visit site</code></p>
+<p>或者直接浏览器输入<code>https://ruheyun.github.io/</code>，成功进入网站。</p>
+<h3 id="自动部署">自动部署
+</h3><p>按照上面手动部署过程，每次改完内容，都需要运行<code>hugo server -D</code>更新<code>public</code>文件夹，然后将<code>public</code>文件夹推送到远程仓库。这里提供自动部署方案。</p>
+<h4 id="生成token">生成token
+</h4><p>依次点击<code>github头像</code>-&gt;<code>Settings</code>-&gt;<code>Developer settings</code>-&gt;<code>Personal access tokens</code>-&gt;<code>Tokens(classic)</code>-&gt;<code>Generate new token(classic)</code></p>
+<img src="26_15.png" style="zoom:80%;" />
+<p>按照图示<code>Note</code>随便写</p>
+<p><code>Expiration</code>建议按照图示选择，表示token永远有效</p>
+<p><code>Select scopes</code>建议按照图示选择</p>
+<p>最后生成的token，要自己建个txt文件保留好，只会在生成的这个时候显示，以后不会再显示具体token值了</p>
+<h4 id="配置token">配置token
+</h4><p>下一步，将token值配置到上面创建的第二个隐私仓库里。</p>
+<img src="26_16.png" style="zoom:80%;" />
+<p>首先进入仓库<code>hugo-code</code>页面，依次点击<code>Settings</code>-&gt;<code>Secrets and variables</code>-&gt;<code>Actions</code>-&gt;<code>Repository secrets</code>-&gt;<code>New repository secret</code></p>
+<p>然后将token值填进去保存为TOKEN，这个名字可自定义。</p>
+<h4 id="配置本地文件">配置本地文件
+</h4><p>在<code>hugo</code>主文件夹，比如<code>D:\Dev\MyBlog\blog</code>，创建一个<code>.github/workflows/hugo-deploy.yaml</code>文件，将以下内容复制进去，想具体了解更多，可查看<a class="link" href="https://docs.github.com/zh/actions"  target="_blank" rel="noopener"
+    >Github Action文档</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">name: deploy
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 代码提交到main分支时触发github action
+</span></span><span class="line"><span class="cl">on:
+</span></span><span class="line"><span class="cl">  push:
+</span></span><span class="line"><span class="cl">    branches:
+</span></span><span class="line"><span class="cl">      - main
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">jobs:
+</span></span><span class="line"><span class="cl">  deploy:
+</span></span><span class="line"><span class="cl">    runs-on: ubuntu-latest
+</span></span><span class="line"><span class="cl">    steps:
+</span></span><span class="line"><span class="cl">        - name: Checkout
+</span></span><span class="line"><span class="cl">          uses: actions/checkout@v4
+</span></span><span class="line"><span class="cl">          with:
+</span></span><span class="line"><span class="cl">              fetch-depth: 0
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        - name: Setup Hugo
+</span></span><span class="line"><span class="cl">          uses: peaceiris/actions-hugo@v3
+</span></span><span class="line"><span class="cl">          with:
+</span></span><span class="line"><span class="cl">              hugo-version: &#34;latest&#34;
+</span></span><span class="line"><span class="cl">              extended: true
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        - name: Build Web
+</span></span><span class="line"><span class="cl">          run: hugo -D
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        - name: Deploy Web
+</span></span><span class="line"><span class="cl">          uses: peaceiris/actions-gh-pages@v4
+</span></span><span class="line"><span class="cl">          with:
+</span></span><span class="line"><span class="cl">              PERSONAL_TOKEN: ${{ secrets.你的token变量名 }}
+</span></span><span class="line"><span class="cl">              EXTERNAL_REPOSITORY: 你的github名/你的仓库名
+</span></span><span class="line"><span class="cl">              PUBLISH_BRANCH: main
+</span></span><span class="line"><span class="cl">              PUBLISH_DIR: ./public
+</span></span><span class="line"><span class="cl">              commit_message: auto deploy
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>只需要改动两个地方</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PERSONAL_TOKEN: ${{ secrets.TOKEN }}
+</span></span><span class="line"><span class="cl">EXTERNAL_REPOSITORY: ruheyun/ruheyun.github.io
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="设置gitignore文件">设置.gitignore文件
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 由hugo命令自动生成的文件
+</span></span><span class="line"><span class="cl">public
+</span></span><span class="line"><span class="cl">resources
+</span></span><span class="line"><span class="cl">.hugo_build.lock
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># hugo程序
+</span></span><span class="line"><span class="cl">hugo.exe
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个文件放到主文件夹下，在<code>git</code>推送代码时，会忽略上述文件夹和文件。</p>
+<h4 id="推送代码">推送代码
+</h4><p>将所有网站代码推送到<code>hugo-code</code>仓库</p>
+<p>在主文件夹<code>D:\Dev\MyBlog\blog</code>的地址栏输入<code>cmd</code>进入命令行，依次执行下面命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 初始化本地仓库
+</span></span><span class="line"><span class="cl">git init
+</span></span><span class="line"><span class="cl"># 添加所有新增文件
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl"># 提交到本地仓库
+</span></span><span class="line"><span class="cl">git commit -m &#34;first commit&#34;
+</span></span><span class="line"><span class="cl"># 设置本地分支为main
+</span></span><span class="line"><span class="cl">git branch -M main
+</span></span><span class="line"><span class="cl"># 连接远程仓库，需要本地git与远程github通过密钥连接后才能连接仓库
+</span></span><span class="line"><span class="cl">git remote add origin git@github.com:ruheyun/hugo-code.git
+</span></span><span class="line"><span class="cl"># 将本地仓库推送到远程仓库
+</span></span><span class="line"><span class="cl">git push -u origin main
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上传之后会自动部署静态仓库<code>ruheyun.github.io</code>，稍等一会儿刷新网站就可以看到已更新。</p>
+<h4 id="下次更新操作">下次更新操作
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 1.更新网站主题代码 
+</span></span><span class="line"><span class="cl"># 2.通过 hugo new content post\myFirstBlog\index.md 生成新文章页面
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">git commit -m &#34;first commit0&#34;
+</span></span><span class="line"><span class="cl">git remote add origin git@github.com:ruheyun/hugo-code.git
+</span></span><span class="line"><span class="cl">git push -u origin main
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过上面两种方式更改代码，只需要依次执行上面代码，将主文件夹内的文件上传到隐私仓库即可，静态仓库会自动部署，不用管。</p>
+<h2 id="一键式脚本">一键式脚本
+</h2><p>经过上面的自动部署，但仍需敲一些代码，现将这些代码作成<code>bat</code>脚本，不用再输入代码。</p>
+<p><code>newpost.bat</code>：新建文章页，需要手动输入文章标题，不要含空格。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@echo off
+</span></span><span class="line"><span class="cl">setlocal
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">set /p title=Enter post title (e.g., Markdown Syntax): 
+</span></span><span class="line"><span class="cl">if &#34;%title%&#34;==&#34;&#34; set title=Untitled Post
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">set &#34;post_path=content\post\%title%\index.md&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">if exist &#34;%post_path%&#34; (
+</span></span><span class="line"><span class="cl">    echo WARNING: Post already exists at %post_path%
+</span></span><span class="line"><span class="cl">    echo Opening server anyway...
+</span></span><span class="line"><span class="cl">) else (
+</span></span><span class="line"><span class="cl">    echo Creating new post: %title%
+</span></span><span class="line"><span class="cl">    hugo new &#34;content/post/%title%/index.md&#34;
+</span></span><span class="line"><span class="cl">)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">hugo server -D
+</span></span><span class="line"><span class="cl">pause
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>localRun.bat</code>：本地运行代码查看，可不运行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@echo off
+</span></span><span class="line"><span class="cl">setlocal
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">hugo server -D
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pause
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>update.bat</code>：将本地代码推送到远程仓库，仓库名自定义。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@echo off
+</span></span><span class="line"><span class="cl">setlocal
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">REM 使用 PowerShell 获取当前时间（ISO 格式）
+</span></span><span class="line"><span class="cl">for /f &#34;usebackq tokens=*&#34; %%i in (`powershell -Command &#34;Get-Date -Format &#39;yyyy-MM-dd HH:mm:ss&#39;&#34;`) do set &#34;ts=%%i&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">REM 如果没有提供提交信息，默认使用时间戳
+</span></span><span class="line"><span class="cl">if &#34;%~1&#34;==&#34;&#34; (
+</span></span><span class="line"><span class="cl">    set &#34;commit_msg=Update on %ts%&#34;
+</span></span><span class="line"><span class="cl">) else (
+</span></span><span class="line"><span class="cl">    set &#34;commit_msg=%~1&#34;
+</span></span><span class="line"><span class="cl">)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">git commit -m &#34;%commit_msg%&#34;
+</span></span><span class="line"><span class="cl">git remote add origin git@github.com:ruheyun/hugo-code.git 2&gt;nul
+</span></span><span class="line"><span class="cl">git push -u origin main
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pause
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将上面三个<code>bat</code>文件放到<code>hugo</code>主文件夹下<code>D:\Dev\MyBlog\blog</code>，根据想要的功能，双击对应的<code>bat</code>文件即可。</p>
+
 </section>
 
 
@@ -440,7 +999,19 @@
 
         <span>Licensed under CC BY-NC-SA 4.0</span>
     </section>
-    </footer>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 2026-01-26
+        </span>
+    </section></footer>
 
 
     
@@ -449,63 +1020,6 @@
     
 
     
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">相关文章</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/p/myfirstblog/">
-        
-        
-            <div class="article-image">
-                <img src="/p/myfirstblog/pawel-czerwinski-8uZPynIu-rQ-unsplash.c514d916917173a48a42e0114b469961_hu_cd6a07a0d3af7b3e.jpg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post MyFirstBlog"
-                        
-                        data-hash="md5-xRTZFpFxc6SKQuARS0aZYQ==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">MyFirstBlog</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/markdown-syntax-guide/">
-        
-        
-            <div class="article-image">
-                <img src="/p/markdown-syntax-guide/pawel-czerwinski-8uZPynIu-rQ-unsplash.c514d916917173a48a42e0114b469961_hu_cd6a07a0d3af7b3e.jpg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post Markdown Syntax Guide"
-                        
-                        data-hash="md5-xRTZFpFxc6SKQuARS0aZYQ==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Markdown Syntax Guide</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
 
      
     

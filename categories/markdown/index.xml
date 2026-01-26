@@ -7,10 +7,10 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Mon, 26 Jan 2026 11:35:06 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/categories/markdown/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 26 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://ruheyun.github.io/categories/markdown/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Markdown语法</title>
         <link>https://ruheyun.github.io/p/markdown%E8%AF%AD%E6%B3%95/</link>
-        <pubDate>Mon, 26 Jan 2026 11:35:06 +0800</pubDate>
+        <pubDate>Sat, 18 Jun 2022 11:35:06 +0800</pubDate>
         
         <guid>https://ruheyun.github.io/p/markdown%E8%AF%AD%E6%B3%95/</guid>
         <description>&lt;img src="https://ruheyun.github.io/p/markdown%E8%AF%AD%E6%B3%95/markdown-mark.jfif" alt="Featured image of post Markdown语法" /&gt;&lt;h1 id=&#34;markdown语法&#34;&gt;Markdown语法
@@ -168,7 +168,7 @@
 &lt;h2 id=&#34;html&#34;&gt;Html
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;Markdown语法，同样支持Html语法，所以如果想要更丰富的格式，则可以借助Html、CSS、JS等实现。&lt;/code&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;2022.6.18是我第一天注册博客园开始学习写文章，为了完成属于自己的第一篇博客，我熬夜写到半夜才完成。虽然有很多地方不足，但是我很开心。也希望自己可以在接下来学习Java的过程中坚持写博客，不放弃，希望可以让自己在学习过程中与大家一起讨论，分享总结。最后，祝园友心想事成！&lt;/p&gt;
+&lt;p&gt;2022.6.18是我第一天注册博客园开始学习写文章，为了完成属于自己的第一篇博客，我熬夜写到半夜才完成。虽然有很多地方不足，但是我很开心。也希望自己可以在接下来学习过程中坚持写博客，不放弃，希望可以让自己在学习过程中与大家一起讨论，分享总结。最后，祝各位朋友心想事成！&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
         </item>
