@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Hugo on RuHeYun</title>
+        <link>https://ruheyun.github.io/tags/hugo/</link>
+        <description>Recent content in Hugo on RuHeYun</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>RuHeYun</copyright>
+        <lastBuildDate>Mon, 26 Jan 2026 12:31:44 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Hugo网站搭建</title>
+        <link>https://ruheyun.github.io/p/hugo%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</link>
+        <pubDate>Mon, 26 Jan 2026 12:31:44 +0800</pubDate>
+        
+        <guid>https://ruheyun.github.io/p/hugo%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</guid>
+        <description>&lt;img src="https://ruheyun.github.io/p/hugo%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/hugo-logo-wide.svg" alt="Featured image of post Hugo网站搭建" /&gt;&lt;p&gt;这篇文章主要是记录了使用Hugo和Stack搭建整个网站的过程，以及部署到Github上，并编写了几个方便使用的Bat脚本。&lt;/p&gt;
+&lt;h1 id=&#34;hugo网站搭建过程&#34;&gt;Hugo网站搭建过程
+&lt;/h1&gt;&lt;h2 id=&#34;下载hugo&#34;&gt;下载Hugo
+&lt;/h2&gt;&lt;h2 id=&#34;下载stack主题&#34;&gt;下载Stack主题
+&lt;/h2&gt;&lt;h2 id=&#34;配置stack主题&#34;&gt;配置Stack主题
+&lt;/h2&gt;&lt;h3 id=&#34;配置评论区&#34;&gt;配置评论区
+&lt;/h3&gt;&lt;h2 id=&#34;部署到github&#34;&gt;部署到Github
+&lt;/h2&gt;&lt;h2 id=&#34;创建和发布脚本&#34;&gt;创建和发布脚本
+&lt;/h2&gt;</description>
+        </item>
+        
+    </channel>
+</rss>
