@@ -555,16 +555,16 @@
         <pubDate>Mon, 26 Jan 2026 00:00:00 +0000</pubDate>
         
         <guid>https://ruheyun.github.io/%E5%85%B3%E4%BA%8E/</guid>
-        <description>&lt;h2 id=&#34;关于网站&#34;&gt;关于网站
+        <description>&lt;img src="https://ruheyun.github.io/%E5%85%B3%E4%BA%8E/26_20.jpg" alt="Featured image of post 关于" /&gt;&lt;h2 id=&#34;关于网站&#34;&gt;关于网站
 &lt;/h2&gt;&lt;h3 id=&#34;技术框架&#34;&gt;技术框架
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;网站框架：&lt;code&gt;Hugo&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;主题：&lt;code&gt;Stack&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;部署：&lt;code&gt;Github&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;开发语言：&lt;code&gt;Go&lt;/code&gt;，&lt;code&gt;Html&lt;/code&gt;，&lt;code&gt;Css&lt;/code&gt;，&lt;code&gt;Js&lt;/code&gt;，&lt;code&gt;yaml&lt;/code&gt;，&lt;code&gt;toml&lt;/code&gt;，&lt;code&gt;Markdown&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;开发语言：&lt;code&gt;Go&lt;/code&gt;，&lt;code&gt;Html&lt;/code&gt;，&lt;code&gt;CSS&lt;/code&gt;，&lt;code&gt;JS&lt;/code&gt;，&lt;code&gt;yaml&lt;/code&gt;，&lt;code&gt;toml&lt;/code&gt;，&lt;code&gt;Markdown&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;版权声明：&lt;code&gt;CC BY-NC-SA 4.0&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;目前仅可以使用简体中文，请勿切换其他语言，网站功能正在完善中&amp;hellip;&lt;/p&gt;
+&lt;p&gt;目前仅可以使用&lt;code&gt;简体中文&lt;/code&gt;，请勿切换其他语言，网站功能正在完善中&amp;hellip;&lt;/p&gt;
 &lt;h3 id=&#34;搭建初衷&#34;&gt;搭建初衷
 &lt;/h3&gt;&lt;p&gt;作为一位计科学生，从大学开始便开始与计算机和编程语言打交道，本科主要学习语言是Java，但是学的不好，于是假期就想在B站看视频，学习Java相关知识，然后老师建议要做笔记，要开始写博客，学Java的课程第一节就教Markdown，以及注册CSDN和博客园。于是便接触到搭建博客、网站这些东西，想着身为计科学生，如果可以搭建一个自己的网站记录学习情况和笔记肯定很酷，这可能就是这个网站的来源。&lt;/p&gt;
 &lt;p&gt;那时我大二，自己写了（模仿B站大佬写的哈哈哈）一个由bootstrap为前端，Java为后端的简约博客，但是太简约了，而且需要服务器部署才行，但是又不想花钱买服务器部署网站，于是便开始寻找免费的方案。打开B站，搜索博客搭建，然后各种使用Hexo的快速建站视频吸引了我的注意力，便开始用Hexo搭建网站，搭配各种主题，很炫酷，为此没忍住花钱买了阿里云的域名（没错，最终又花钱了诶），并下定决心认知学习，每周至少写一篇博客（骗鬼去了哈）。寒假开学后，直接堕落，每天打游戏、看动漫、看漫画。每天教室-食堂-寝室，三点一线。上课金铲铲，食堂边吃饭边刷视频，回寝室看动漫、漫画。于是网站就废了。。。一气之下，删除了所有网站源码。&lt;/p&gt;
@@ -608,6 +608,9 @@
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;生命不是要超越别人，而是要超越自己。  &amp;mdash;&amp;mdash;佚名&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         </item>
         <item>
