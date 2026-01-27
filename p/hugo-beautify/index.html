@@ -315,6 +315,7 @@
       </ol>
     </li>
     <li><a href="#网站页脚更改">网站页脚更改</a></li>
+    <li><a href="#滚动事件">滚动事件</a></li>
   </ol>
 </nav>
         </div>
@@ -627,6 +628,261 @@
 </span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
+</div><h2 id="滚动事件">滚动事件
+</h2><p>在页面右下角添加<code>回到顶端</code>和<code>滚动到底部</code>两个按钮。</p>
+<p>首先在<code>D:\Dev\MyBlog\blog\static\js</code>路径下新建<code>scroll-button.js</code>，将下面代码复制进去</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">document</span><span class="o">.</span><span class="n">addEventListener</span><span class="p">(</span><span class="s1">&#39;DOMContentLoaded&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">//</span> <span class="err">创建按钮容器</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">btnContainer</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">btnContainer</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="s1">&#39;scrollButtons&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">btnContainer</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">cssText</span> <span class="o">=</span> <span class="err">`</span>
+</span></span><span class="line"><span class="cl">        <span class="n">position</span><span class="p">:</span> <span class="n">fixed</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">right</span><span class="p">:</span> <span class="mf">1.5</span><span class="n">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bottom</span><span class="p">:</span> <span class="mf">1.5</span><span class="n">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">z</span><span class="o">-</span><span class="n">index</span><span class="p">:</span> <span class="mi">9999</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">flex</span><span class="o">-</span><span class="n">direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gap</span><span class="p">:</span> <span class="mf">0.75</span><span class="n">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">pointer</span><span class="o">-</span><span class="n">events</span><span class="p">:</span> <span class="n">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="err">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">//</span> <span class="err">创建「到顶部」按钮</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">topBtn</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">topBtn</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="s1">&#39;scrollToTop&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">topBtn</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;回到顶部&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">topBtn</span><span class="o">.</span><span class="n">innerHTML</span> <span class="o">=</span> <span class="err">`</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="n">svg</span> <span class="n">xmlns</span><span class="o">=</span><span class="s2">&#34;http://www.w3.org/2000/svg&#34;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&#34;20&#34;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&#34;20&#34;</span> <span class="n">viewBox</span><span class="o">=</span><span class="s2">&#34;0 0 24 24&#34;</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&#34;none&#34;</span> <span class="n">stroke</span><span class="o">=</span><span class="s2">&#34;currentColor&#34;</span> <span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">=</span><span class="s2">&#34;2&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span><span class="n">path</span> <span class="n">d</span><span class="o">=</span><span class="s2">&#34;M12 19V5M5 12l7-7 7 7&#34;</span><span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;/</span><span class="n">svg</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="err">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">topBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">cssText</span> <span class="o">=</span> <span class="err">`</span>
+</span></span><span class="line"><span class="cl">        <span class="n">width</span><span class="p">:</span> <span class="mi">44</span><span class="n">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">height</span><span class="p">:</span> <span class="mi">44</span><span class="n">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="p">:</span> <span class="mi">50</span><span class="o">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">background</span><span class="p">:</span> <span class="k">var</span><span class="p">(</span><span class="o">--</span><span class="n">card</span><span class="o">-</span><span class="n">background</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">color</span><span class="p">:</span> <span class="k">var</span><span class="p">(</span><span class="o">--</span><span class="n">card</span><span class="o">-</span><span class="n">font</span><span class="o">-</span><span class="n">color</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">border</span><span class="p">:</span> <span class="n">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="p">:</span> <span class="mi">0</span> <span class="mi">2</span><span class="n">px</span> <span class="mi">8</span><span class="n">px</span> <span class="n">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.15</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cursor</span><span class="p">:</span> <span class="n">pointer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">align</span><span class="o">-</span><span class="n">items</span><span class="p">:</span> <span class="n">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">justify</span><span class="o">-</span><span class="n">content</span><span class="p">:</span> <span class="n">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">transition</span><span class="p">:</span> <span class="n">all</span> <span class="mf">0.3</span><span class="n">s</span> <span class="nb">ease</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">pointer</span><span class="o">-</span><span class="n">events</span><span class="p">:</span> <span class="n">auto</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="err">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">topBtn</span><span class="o">.</span><span class="n">onmouseover</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">topBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="s1">&#39;translateY(-2px)&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">topBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">boxShadow</span> <span class="o">=</span> <span class="s1">&#39;0 4px 12px rgba(0,0,0,0.2)&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">topBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="s1">&#39;var(--theme-color)&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">topBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="n">topBtn</span><span class="o">.</span><span class="n">onmouseout</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">topBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="s1">&#39;translateY(0)&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">topBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">boxShadow</span> <span class="o">=</span> <span class="s1">&#39;0 2px 8px rgba(0,0,0,0.15)&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">topBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="s1">&#39;var(--card-background)&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">topBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;var(--card-font-color)&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="n">topBtn</span><span class="o">.</span><span class="n">onclick</span> <span class="o">=</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">e</span><span class="o">.</span><span class="n">preventDefault</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">window</span><span class="o">.</span><span class="n">scrollTo</span><span class="p">({</span> <span class="n">top</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">behavior</span><span class="p">:</span> <span class="s1">&#39;smooth&#39;</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">//</span> <span class="err">创建「到底部」按钮</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">bottomBtn</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bottomBtn</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="s1">&#39;scrollToBottom&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bottomBtn</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;滚动到底部&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bottomBtn</span><span class="o">.</span><span class="n">innerHTML</span> <span class="o">=</span> <span class="err">`</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="n">svg</span> <span class="n">xmlns</span><span class="o">=</span><span class="s2">&#34;http://www.w3.org/2000/svg&#34;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&#34;20&#34;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&#34;20&#34;</span> <span class="n">viewBox</span><span class="o">=</span><span class="s2">&#34;0 0 24 24&#34;</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&#34;none&#34;</span> <span class="n">stroke</span><span class="o">=</span><span class="s2">&#34;currentColor&#34;</span> <span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">=</span><span class="s2">&#34;2&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span><span class="n">path</span> <span class="n">d</span><span class="o">=</span><span class="s2">&#34;M12 5v14M5 12l7 7 7-7&#34;</span><span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;/</span><span class="n">svg</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="err">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bottomBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">cssText</span> <span class="o">=</span> <span class="err">`</span>
+</span></span><span class="line"><span class="cl">        <span class="n">width</span><span class="p">:</span> <span class="mi">44</span><span class="n">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">height</span><span class="p">:</span> <span class="mi">44</span><span class="n">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="p">:</span> <span class="mi">50</span><span class="o">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">background</span><span class="p">:</span> <span class="k">var</span><span class="p">(</span><span class="o">--</span><span class="n">card</span><span class="o">-</span><span class="n">background</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">color</span><span class="p">:</span> <span class="k">var</span><span class="p">(</span><span class="o">--</span><span class="n">card</span><span class="o">-</span><span class="n">font</span><span class="o">-</span><span class="n">color</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">border</span><span class="p">:</span> <span class="n">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="p">:</span> <span class="mi">0</span> <span class="mi">2</span><span class="n">px</span> <span class="mi">8</span><span class="n">px</span> <span class="n">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.15</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cursor</span><span class="p">:</span> <span class="n">pointer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">align</span><span class="o">-</span><span class="n">items</span><span class="p">:</span> <span class="n">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">justify</span><span class="o">-</span><span class="n">content</span><span class="p">:</span> <span class="n">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">transition</span><span class="p">:</span> <span class="n">all</span> <span class="mf">0.3</span><span class="n">s</span> <span class="nb">ease</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">pointer</span><span class="o">-</span><span class="n">events</span><span class="p">:</span> <span class="n">auto</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="err">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bottomBtn</span><span class="o">.</span><span class="n">onmouseover</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bottomBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="s1">&#39;translateY(2px)&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bottomBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">boxShadow</span> <span class="o">=</span> <span class="s1">&#39;0 4px 12px rgba(0,0,0,0.2)&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bottomBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="s1">&#39;var(--theme-color)&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bottomBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bottomBtn</span><span class="o">.</span><span class="n">onmouseout</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bottomBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="s1">&#39;translateY(0)&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bottomBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">boxShadow</span> <span class="o">=</span> <span class="s1">&#39;0 2px 8px rgba(0,0,0,0.15)&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bottomBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="s1">&#39;var(--card-background)&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bottomBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;var(--card-font-color)&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bottomBtn</span><span class="o">.</span><span class="n">onclick</span> <span class="o">=</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">e</span><span class="o">.</span><span class="n">preventDefault</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">window</span><span class="o">.</span><span class="n">scrollTo</span><span class="p">({</span> <span class="n">top</span><span class="p">:</span> <span class="n">document</span><span class="o">.</span><span class="n">documentElement</span><span class="o">.</span><span class="n">scrollHeight</span><span class="p">,</span> <span class="n">behavior</span><span class="p">:</span> <span class="s1">&#39;smooth&#39;</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">//</span> <span class="err">组装</span>
+</span></span><span class="line"><span class="cl">    <span class="n">btnContainer</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">topBtn</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">btnContainer</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">bottomBtn</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">document</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">btnContainer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">//</span> <span class="err">滚动时动态显示</span><span class="o">/</span><span class="err">隐藏（滚动</span> <span class="o">&gt;</span> <span class="mi">300</span><span class="n">px</span> <span class="err">显示）</span>
+</span></span><span class="line"><span class="cl">    <span class="n">window</span><span class="o">.</span><span class="n">addEventListener</span><span class="p">(</span><span class="s1">&#39;scroll&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">const</span> <span class="n">show</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">pageYOffset</span> <span class="o">&gt;</span> <span class="mi">300</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">topBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">opacity</span> <span class="o">=</span> <span class="n">show</span> <span class="err">?</span> <span class="s1">&#39;1&#39;</span> <span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">topBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">visibility</span> <span class="o">=</span> <span class="n">show</span> <span class="err">?</span> <span class="s1">&#39;visible&#39;</span> <span class="p">:</span> <span class="s1">&#39;hidden&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bottomBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">opacity</span> <span class="o">=</span> <span class="n">show</span> <span class="err">?</span> <span class="s1">&#39;1&#39;</span> <span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bottomBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">visibility</span> <span class="o">=</span> <span class="n">show</span> <span class="err">?</span> <span class="s1">&#39;visible&#39;</span> <span class="p">:</span> <span class="s1">&#39;hidden&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">//</span> <span class="err">接近底部时隐藏「到底部」按钮</span>
+</span></span><span class="line"><span class="cl">    <span class="n">window</span><span class="o">.</span><span class="n">addEventListener</span><span class="p">(</span><span class="s1">&#39;scroll&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">const</span> <span class="n">nearBottom</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">innerHeight</span> <span class="o">+</span> <span class="n">window</span><span class="o">.</span><span class="n">scrollY</span> <span class="o">&gt;=</span> <span class="n">document</span><span class="o">.</span><span class="n">documentElement</span><span class="o">.</span><span class="n">scrollHeight</span> <span class="o">-</span> <span class="mi">200</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bottomBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">opacity</span> <span class="o">=</span> <span class="n">nearBottom</span> <span class="err">?</span> <span class="s1">&#39;0&#39;</span> <span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bottomBtn</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">visibility</span> <span class="o">=</span> <span class="n">nearBottom</span> <span class="err">?</span> <span class="s1">&#39;hidden&#39;</span> <span class="p">:</span> <span class="s1">&#39;visible&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后再页脚的html文件里引入这个js文件</p>
+<p>在<code>D:\Dev\MyBlog\blog\layouts\partials\footer</code>路径下的<code>footer.html</code>最下面添加下面一行代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;script src=&#34;{{ &#34;js/scroll-buttons.js&#34; | relURL }}&#34;&gt;&lt;/script&gt;
+</span></span></code></pre></td></tr></table>
+</div>
 </div>
 </section>
 
@@ -641,7 +897,7 @@
         
             <a href="/tags/js/">JS</a>
         
-            <a href="/tags/css/">Css</a>
+            <a href="/tags/css/">CSS</a>
         
             <a href="/tags/giscus/">Giscus</a>
         
@@ -860,6 +1116,7 @@
     });
 </script>
 
+<script src="/js/scroll-buttons.js"></script>
 
     
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">

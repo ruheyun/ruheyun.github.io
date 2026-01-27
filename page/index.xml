@@ -90,6 +90,11 @@
   &lt;/thead&gt;
   &lt;tbody&gt;
       &lt;tr&gt;
+          &lt;td&gt;添加滚动事件&lt;/td&gt;
+          &lt;td&gt;2026-01-27&lt;/td&gt;
+          &lt;td&gt;页面右下角新添回到顶部以及滚动到底部按钮&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
           &lt;td&gt;同步部署到Vercel&lt;/td&gt;
           &lt;td&gt;2026-01-27&lt;/td&gt;
           &lt;td&gt;同步地址为：&lt;a class=&#34;link&#34; href=&#34;https://ruheyun.vercel.app&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
