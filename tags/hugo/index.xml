@@ -9,11 +9,11 @@
         <copyright>RuHeYun</copyright>
         <lastBuildDate>Tue, 27 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Hugo网站美化</title>
-        <link>https://ruheyun.github.io/p/hugo%E7%BD%91%E7%AB%99%E7%BE%8E%E5%8C%96/</link>
+        <link>https://ruheyun.github.io/p/hugo-beautify/</link>
         <pubDate>Tue, 27 Jan 2026 11:01:58 +0800</pubDate>
         
-        <guid>https://ruheyun.github.io/p/hugo%E7%BD%91%E7%AB%99%E7%BE%8E%E5%8C%96/</guid>
-        <description>&lt;img src="https://ruheyun.github.io/p/hugo%E7%BD%91%E7%AB%99%E7%BE%8E%E5%8C%96/26_21.png" alt="Featured image of post Hugo网站美化" /&gt;&lt;h1 id=&#34;网站美化&#34;&gt;网站美化
+        <guid>https://ruheyun.github.io/p/hugo-beautify/</guid>
+        <description>&lt;img src="https://ruheyun.github.io/p/hugo-beautify/26_21.png" alt="Featured image of post Hugo网站美化" /&gt;&lt;h1 id=&#34;网站美化&#34;&gt;网站美化
 &lt;/h1&gt;&lt;h2 id=&#34;评论区配置&#34;&gt;评论区配置
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;giscus&lt;/code&gt;是利用&lt;code&gt;Github&lt;/code&gt;仓库的&lt;code&gt;Discussions&lt;/code&gt;来实现的，完全免费。&lt;/p&gt;
 &lt;h3 id=&#34;使用方法&#34;&gt;使用方法
@@ -248,11 +248,11 @@
         </item>
         <item>
         <title>Hugo网站搭建</title>
-        <link>https://ruheyun.github.io/p/hugo%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</link>
+        <link>https://ruheyun.github.io/p/hugo-construction/</link>
         <pubDate>Mon, 26 Jan 2026 12:31:44 +0800</pubDate>
         
-        <guid>https://ruheyun.github.io/p/hugo%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</guid>
-        <description>&lt;img src="https://ruheyun.github.io/p/hugo%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/hugo-logo-wide.svg" alt="Featured image of post Hugo网站搭建" /&gt;&lt;p&gt;这篇文章主要是记录了使用&lt;code&gt;Hugo&lt;/code&gt;和&lt;code&gt;Stack&lt;/code&gt;搭建整个网站的过程，以及部署到&lt;code&gt;Github&lt;/code&gt;上，并编写了几个方便使用的&lt;code&gt;Bat&lt;/code&gt;脚本。&lt;/p&gt;
+        <guid>https://ruheyun.github.io/p/hugo-construction/</guid>
+        <description>&lt;img src="https://ruheyun.github.io/p/hugo-construction/hugo-logo-wide.svg" alt="Featured image of post Hugo网站搭建" /&gt;&lt;p&gt;这篇文章主要是记录了使用&lt;code&gt;Hugo&lt;/code&gt;和&lt;code&gt;Stack&lt;/code&gt;搭建整个网站的过程，以及部署到&lt;code&gt;Github&lt;/code&gt;上，并编写了几个方便使用的&lt;code&gt;Bat&lt;/code&gt;脚本。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/documentation/%3e&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Hugo说明文档&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://stack.jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;

@@ -34,13 +34,13 @@
     <lastmod>2026-01-27T11:32:30+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh-tw"
-                href="https://ruheyun.github.io/zh-tw/post/"
+                hreflang="ja"
+                href="https://ruheyun.github.io/ja/post/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="ja"
-                href="https://ruheyun.github.io/ja/post/"
+                hreflang="zh-tw"
+                href="https://ruheyun.github.io/zh-tw/post/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -60,13 +60,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh-tw"
-                href="https://ruheyun.github.io/zh-tw/categories/"
+                hreflang="ja"
+                href="https://ruheyun.github.io/ja/categories/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="ja"
-                href="https://ruheyun.github.io/ja/categories/"
+                hreflang="zh-tw"
+                href="https://ruheyun.github.io/zh-tw/categories/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -91,7 +91,7 @@
     <loc>https://ruheyun.github.io/tags/hugo/</loc>
     <lastmod>2026-01-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ruheyun.github.io/p/hugo%E7%BD%91%E7%AB%99%E7%BE%8E%E5%8C%96/</loc>
+    <loc>https://ruheyun.github.io/p/hugo-beautify/</loc>
     <lastmod>2026-01-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/tags/js/</loc>
@@ -134,7 +134,7 @@
     <loc>https://ruheyun.github.io/tags/github/</loc>
     <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ruheyun.github.io/p/hugo%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</loc>
+    <loc>https://ruheyun.github.io/p/hugo-construction/</loc>
     <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/tags/markdown/</loc>
@@ -146,7 +146,7 @@
     <loc>https://ruheyun.github.io/page/</loc>
     <lastmod>2026-01-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ruheyun.github.io/%E5%85%B3%E4%BA%8E/</loc>
+    <loc>https://ruheyun.github.io/about/</loc>
     <lastmod>2026-01-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/tags/html/</loc>
@@ -167,13 +167,13 @@
     <loc>https://ruheyun.github.io/categories/markdown/</loc>
     <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ruheyun.github.io/p/markdown%E8%AF%AD%E6%B3%95/</loc>
+    <loc>https://ruheyun.github.io/p/markdown-syntax/</loc>
     <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ruheyun.github.io/%E6%97%A5%E5%BF%97/</loc>
+    <loc>https://ruheyun.github.io/logs/</loc>
     <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ruheyun.github.io/p/test-chinese/</loc>
+    <loc>https://ruheyun.github.io/p/chinese-test/</loc>
     <lastmod>2019-09-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
@@ -188,20 +188,20 @@
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://ruheyun.github.io/p/test-chinese/"
+                href="https://ruheyun.github.io/p/chinese-test/"
                 />
   </url><url>
     <loc>https://ruheyun.github.io/categories/test/</loc>
     <lastmod>2019-09-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="ja"
-                href="https://ruheyun.github.io/ja/categories/test/"
+                hreflang="zh-tw"
+                href="https://ruheyun.github.io/zh-tw/categories/test/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh-tw"
-                href="https://ruheyun.github.io/zh-tw/categories/test/"
+                hreflang="ja"
+                href="https://ruheyun.github.io/ja/categories/test/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -251,6 +251,6 @@
   </url><url>
     <loc>https://ruheyun.github.io/search/</loc>
   </url><url>
-    <loc>https://ruheyun.github.io/%E5%8F%8B%E9%93%BE/</loc>
+    <loc>https://ruheyun.github.io/links/</loc>
   </url>
 </urlset>
