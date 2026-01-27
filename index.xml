@@ -863,9 +863,12 @@
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;网站框架：&lt;code&gt;Hugo&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;主题：&lt;code&gt;Stack&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;部署：&lt;code&gt;Github&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;部署：&lt;code&gt;Github&lt;/code&gt;，&lt;code&gt;Vercel&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;开发语言：&lt;code&gt;Go&lt;/code&gt;，&lt;code&gt;Html&lt;/code&gt;，&lt;code&gt;CSS&lt;/code&gt;，&lt;code&gt;JS&lt;/code&gt;，&lt;code&gt;yaml&lt;/code&gt;，&lt;code&gt;toml&lt;/code&gt;，&lt;code&gt;Markdown&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;版权声明：&lt;code&gt;CC BY-NC-SA 4.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;网站地址：&lt;a class=&#34;link&#34; href=&#34;https://ruheyun.github.io&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ruheyun.github.io&lt;/a&gt;，&lt;a class=&#34;link&#34; href=&#34;https://ruheyun.vercel.app&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ruheyun.vercel.app&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;目前仅可以使用&lt;code&gt;简体中文&lt;/code&gt;，请勿切换其他语言，网站功能正在完善中&amp;hellip;&lt;/p&gt;
 &lt;h3 id=&#34;搭建初衷&#34;&gt;搭建初衷
@@ -1117,6 +1120,12 @@
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;同步部署到Vercel&lt;/td&gt;
+          &lt;td&gt;2026-01-27&lt;/td&gt;
+          &lt;td&gt;同步地址为：&lt;a class=&#34;link&#34; href=&#34;https://ruheyun.vercel.app&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ruheyun.vercel.app&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;Hugo网站菜单更新&lt;/td&gt;
           &lt;td&gt;2026-01-26&lt;/td&gt;
