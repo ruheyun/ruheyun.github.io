@@ -92,11 +92,9 @@
 &lt;p&gt;可以选择安装到所有仓库，或者之前创建的静态页面仓库，&lt;code&gt;建议安装在静态页面仓库&lt;/code&gt;&lt;/p&gt;
 &lt;img src=&#34;image-20260127134905278.png&#34; alt=&#34;image-20260127134905278&#34; style=&#34;zoom:80%;&#34; /&gt;
 &lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;
-&lt;p&gt;返回到配置界面，往下找到配置项&lt;/p&gt;
-&lt;img src=&#34;image-20260127135304951.png&#34; alt=&#34;image-20260127135304951&#34; style=&#34;zoom:80%;&#34; /&gt;
-&lt;/li&gt;
+&lt;li&gt;返回到配置界面，往下找到配置项&lt;/li&gt;
 &lt;/ol&gt;
+&lt;img src=&#34;image-20260127135304951.png&#34; alt=&#34;image-20260127135304951&#34; style=&#34;zoom:80%;&#34; /&gt;
 &lt;p&gt;将静态仓库名按照要求填进去&lt;/p&gt;
 &lt;ol start=&#34;3&#34;&gt;
 &lt;li&gt;页面与discussion映射关系：只选择第一个，默认已选择，不用改&lt;/li&gt;
