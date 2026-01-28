@@ -2,16 +2,16 @@
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="欢迎来到我的网站！">
-<title>Tag: Css - RuHeYun</title>
+<title>Tag: CSS - RuHeYun</title>
 
 <link rel='canonical' href='https://ruheyun.github.io/tags/css/'>
 
-<link rel="stylesheet" href="/scss/style.min.c53e728d39bf4abc64011c8c96de2ed571fe0a5237f8e834a07f716ed99115ad.css"><meta property='og:title' content="Tag: Css - RuHeYun">
+<link rel="stylesheet" href="/scss/style.min.c53e728d39bf4abc64011c8c96de2ed571fe0a5237f8e834a07f716ed99115ad.css"><meta property='og:title' content="Tag: CSS - RuHeYun">
 <meta property='og:description' content="欢迎来到我的网站！">
 <meta property='og:url' content='https://ruheyun.github.io/tags/css/'>
 <meta property='og:site_name' content='RuHeYun'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2026-01-28T15:40:03&#43;08:00 '/>
-<meta name="twitter:title" content="Tag: Css - RuHeYun">
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2026-01-28T15:49:42&#43;08:00 '/>
+<meta name="twitter:title" content="Tag: CSS - RuHeYun">
 <meta name="twitter:description" content="欢迎来到我的网站！"><link rel="alternate" type="application/rss&#43;xml" href="https://ruheyun.github.io/tags/css/index.xml">
     <link rel="shortcut icon" href="/favicon.ico" />
 
@@ -409,7 +409,7 @@
             </a>
         
             <a href="/tags/css/">
-                Css
+                CSS
             </a>
         
             <a href="/tags/html/">
@@ -463,7 +463,7 @@
         <div class="section-card">
             <div class="section-details">
                 <h3 class="section-count">3 个页面</h3>
-                <h1 class="section-term">Css</h1>
+                <h1 class="section-term">CSS</h1>
                 
             </div>
         </div>
@@ -645,6 +645,7 @@
         document.head.appendChild(customFont);
     }());
 </script>
+
 <div id="particles-js"></div>
 
 <script src='https://ruheyun.github.io/background/particles.min.js'></script>
@@ -664,6 +665,7 @@
   }
 </style>
 
+
 <style>
   @font-face {
     font-family: 'shcss';
@@ -675,6 +677,89 @@
     --code-font-family: 'shcss';
   }
 </style>
+
+
+<style>
+    .highlight {
+         
+        max-height: 400px;
+        overflow: hidden;
+    }
+
+    .code-show {
+        max-height: none !important;
+    }
+
+    .code-more-box {
+        width: 100%;
+        padding-top: 78px;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(#fff));
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    .code-more-btn {
+        display: block;
+        margin: auto;
+        width: 44px;
+        height: 22px;
+        background: #f0f0f5;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        padding-top: 6px;
+        cursor: pointer;
+    }
+
+    .code-more-img {
+        cursor: pointer !important;
+        display: block;
+        margin: auto;
+        width: 22px;
+        height: 16px;
+    }
+</style>
+
+<script>
+  function initCodeMoreBox() {
+    let codeBlocks = document.querySelectorAll(".highlight");
+    if (!codeBlocks) {
+      return;
+    }
+    codeBlocks.forEach(codeBlock => {
+      
+      if (codeBlock.scrollHeight <= codeBlock.clientHeight) {
+        return;
+      }
+      
+      
+      let codeMoreBox = document.createElement('div');
+      codeMoreBox.classList.add('code-more-box');
+      
+      let codeMoreBtn = document.createElement('span');
+      codeMoreBtn.classList.add('code-more-btn');
+      codeMoreBtn.addEventListener('click', () => {
+        codeBlock.classList.add('code-show');
+        codeMoreBox.style.display = 'none';
+        
+        window.dispatchEvent(new Event('resize'))
+      })
+      
+      let img = document.createElement('img');
+      img.classList.add('code-more-img');
+      img.src = 'https:\/\/ruheyun.github.io\/icons\/codeMore.png'
+      
+      codeMoreBtn.appendChild(img);
+      codeMoreBox.appendChild(codeMoreBtn);
+      codeBlock.appendChild(codeMoreBox)
+    })
+  }
+  
+  initCodeMoreBox();
+</script>
+
 
 
     </body>

@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Wed, 28 Jan 2026 15:40:03 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 28 Jan 2026 15:49:42 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Hugo网站美化</title>
         <link>https://ruheyun.github.io/p/hugo-beautify/</link>
         <pubDate>Tue, 27 Jan 2026 11:01:58 +0800</pubDate>
@@ -887,7 +887,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      // img
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      let img = document.createElement(&amp;#39;img&amp;#39;);
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      img.classList.add(&amp;#39;code-more-img&amp;#39;);
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      img.src = {{ (resources.Get &amp;#34;icons/codeMore.png&amp;#34;).Permalink }}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      img.src = &amp;#39;{{ (resources.Get &amp;#34;icons/codeMore.png&amp;#34;).Permalink }}&amp;#39;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      // 元素添加
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      codeMoreBtn.appendChild(img);
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      codeMoreBox.appendChild(codeMoreBtn);
