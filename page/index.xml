@@ -90,6 +90,11 @@
   &lt;/thead&gt;
   &lt;tbody&gt;
       &lt;tr&gt;
+          &lt;td&gt;更改默认字体&lt;/td&gt;
+          &lt;td&gt;2026-01-28&lt;/td&gt;
+          &lt;td&gt;将默认字体改为了空心晴宋体&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
           &lt;td&gt;添加动态背景&lt;/td&gt;
           &lt;td&gt;2026-01-28&lt;/td&gt;
           &lt;td&gt;将网站页面背景替换成动态背景&lt;/td&gt;

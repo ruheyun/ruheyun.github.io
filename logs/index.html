@@ -349,6 +349,11 @@
   </thead>
   <tbody>
       <tr>
+          <td>更改默认字体</td>
+          <td>2026-01-28</td>
+          <td>将默认字体改为了空心晴宋体</td>
+      </tr>
+      <tr>
           <td>添加动态背景</td>
           <td>2026-01-28</td>
           <td>将网站页面背景替换成动态背景</td>
@@ -651,6 +656,19 @@
     z-index: -1;
   }
 </style>
+
+<style>
+  @font-face {
+    font-family: 'shcss';
+    src: url('https://ruheyun.github.io/font/SkyHeartClearSerifSC.ttf') format('truetype');
+  }
+
+  :root {
+    --base-font-family: 'shcss';
+    --code-font-family: 'shcss';
+  }
+</style>
+
 
     </body>
 </html>
