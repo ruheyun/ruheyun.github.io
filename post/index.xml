@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Tue, 27 Jan 2026 11:32:30 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 28 Jan 2026 14:28:52 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>PostTemplate</title>
         <link>https://ruheyun.github.io/p/post-template/</link>
         <pubDate>Tue, 27 Jan 2026 11:32:30 +0800</pubDate>
@@ -1215,7 +1215,8 @@
 &lt;/ol&gt;
 &lt;h3 id=&#34;三级标题&#34;&gt;三级标题
 &lt;/h3&gt;&lt;p&gt;没有内容了。。。&lt;/p&gt;
-&lt;p&gt;hugo文档，必须要有三级标题，才会显示右侧目录&amp;hellip;&lt;/p&gt;</description>
+&lt;p&gt;hugo文档，必须要有三级标题，才会显示右侧目录&amp;hellip;&lt;/p&gt;
+&lt;p&gt;测试是否自动更改最后更新时间&lt;/p&gt;</description>
         </item>
         <item>
         <title>Markdown语法</title>

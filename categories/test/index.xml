@@ -6,8 +6,7 @@
         <description>Recent content in Test on RuHeYun</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <copyright>RuHeYun</copyright>
-        <lastBuildDate>Sun, 25 Jan 2026 16:51:02 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/categories/test/index.xml" rel="self" type="application/rss+xml" /><item>
+        <copyright>RuHeYun</copyright><atom:link href="https://ruheyun.github.io/categories/test/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>MyFirstBlog</title>
         <link>https://ruheyun.github.io/p/myfirstblog/</link>
         <pubDate>Sun, 25 Jan 2026 16:51:02 +0800</pubDate>
@@ -26,7 +25,8 @@
 &lt;/ol&gt;
 &lt;h3 id=&#34;三级标题&#34;&gt;三级标题
 &lt;/h3&gt;&lt;p&gt;没有内容了。。。&lt;/p&gt;
-&lt;p&gt;hugo文档，必须要有三级标题，才会显示右侧目录&amp;hellip;&lt;/p&gt;</description>
+&lt;p&gt;hugo文档，必须要有三级标题，才会显示右侧目录&amp;hellip;&lt;/p&gt;
+&lt;p&gt;测试是否自动更改最后更新时间&lt;/p&gt;</description>
         </item>
         <item>
         <title>Chinese Test</title>
