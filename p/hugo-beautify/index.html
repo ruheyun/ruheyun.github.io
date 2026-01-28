@@ -10,7 +10,7 @@
 <meta property='og:description' content="对网站做简单的更改和美化，使网站功能更加完善。">
 <meta property='og:url' content='https://ruheyun.github.io/p/hugo-beautify/'>
 <meta property='og:site_name' content='RuHeYun'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Hugo' /><meta property='article:tag' content='Stack' /><meta property='article:tag' content='JS' /><meta property='article:tag' content='CSS' /><meta property='article:tag' content='giscus' /><meta property='article:published_time' content='2026-01-27T11:01:58&#43;08:00'/><meta property='article:modified_time' content='2026-01-28T15:49:42&#43;08:00'/><meta property='og:image' content='https://ruheyun.github.io/p/hugo-beautify/26_21.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Hugo' /><meta property='article:tag' content='Stack' /><meta property='article:tag' content='JS' /><meta property='article:tag' content='CSS' /><meta property='article:tag' content='giscus' /><meta property='article:published_time' content='2026-01-27T11:01:58&#43;08:00'/><meta property='article:modified_time' content='2026-01-28T19:58:49&#43;08:00'/><meta property='og:image' content='https://ruheyun.github.io/p/hugo-beautify/26_21.png' />
 <meta name="twitter:title" content="Hugo网站美化">
 <meta name="twitter:description" content="对网站做简单的更改和美化，使网站功能更加完善。"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://ruheyun.github.io/p/hugo-beautify/26_21.png' />
@@ -322,6 +322,12 @@
     <li><a href="#友链归档多列显示">友链、归档多列显示</a></li>
     <li><a href="#macos风格代码块">macOS风格代码块</a></li>
     <li><a href="#代码块折叠">代码块折叠</a></li>
+    <li><a href="#统计浏览数">统计浏览数</a>
+      <ol>
+        <li><a href="#页脚添加总浏览数">页脚添加总浏览数</a></li>
+        <li><a href="#单篇文章显示阅读量">单篇文章显示阅读量</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -1293,7 +1299,74 @@
 </div><blockquote>
 <p>本文美化功能大多参考网络上的方法和代码，主要参考美化文章，可以在友链里找到。</p>
 </blockquote>
-
+<h2 id="统计浏览数">统计浏览数
+</h2><p>本网站使用<a class="link" href="https://cn.vercount.one/"  target="_blank" rel="noopener"
+    >Vercount</a>作为计数器，具体官方源码为<a class="link" href="https://github.com/EvanNotFound/vercount"  target="_blank" rel="noopener"
+    >Github</a>。</p>
+<h3 id="页脚添加总浏览数">页脚添加总浏览数
+</h3><p>更改<code>D:\Dev\MyBlog\blog\layouts\partials\footer</code>下的<code>footer.html</code>，在最后一行先添加JS引用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;!-- vercount计数 --&gt;
+</span></span><span class="line"><span class="cl">&lt;script defer src=&#34;https://events.vercount.one/js&#34;&gt;&lt;/script&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后在footer标签内添加下面代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;!-- ========== 新增的自定义文本区域 ========== --&gt;
+</span></span><span class="line"><span class="cl">&lt;section class=&#34;custom-footer-text&#34;&gt;
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl">    &lt;p style=&#34;font-size: 0.9em;&#34;&gt;
+</span></span><span class="line"><span class="cl">        本站总访问量 &lt;span id=&#34;vercount_value_site_pv&#34;&gt;Loading...&lt;/span&gt; 次
+</span></span><span class="line"><span class="cl">        总访客数 &lt;span id=&#34;vercount_value_site_uv&#34;&gt;Loading...&lt;/span&gt; 人
+</span></span><span class="line"><span class="cl">    &lt;/p&gt;
+</span></span><span class="line"><span class="cl">    ...   
+</span></span><span class="line"><span class="cl">&lt;/section&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="单篇文章显示阅读量">单篇文章显示阅读量
+</h3><p>先在<code>D:\Dev\MyBlog\blog\assets\icons</code>下添加下面图标，命名<code>eye.svg</code></p>
+<img src="eye.svg" alt="eye" style="zoom:80%;" />
+<p>然后更改<code>D:\Dev\MyBlog\blog\layouts\partials\article\components</code>下的<code>footer.html</code>，如果没有就去<code>themes</code>对应文件复制过来，然后在<code>footer标签</code>内添加下面代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">&lt;!--</span> <span class="err">浏览量统计</span> <span class="o">--&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">section</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{{</span> <span class="n">partial</span> <span class="s2">&#34;helper/icon&#34;</span> <span class="s2">&#34;eye&#34;</span> <span class="p">}}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">time</span> <span class="k">class</span><span class="o">=</span><span class="s2">&#34;article-time--reading&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;!--</span> <span class="n">vercount统计当前页面浏览数的标签</span> <span class="o">--&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s2">&#34;vercount_value_page_pv&#34;</span><span class="o">&gt;</span><span class="n">loading</span><span class="o">...</span> <span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="err">次</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">time</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">section</span><span class="o">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
@@ -1307,7 +1380,7 @@
         
             <a href="/tags/js/">JS</a>
         
-            <a href="/tags/css/">CSS</a>
+            <a href="/tags/css/">Css</a>
         
             <a href="/tags/giscus/">Giscus</a>
         
@@ -1338,6 +1411,13 @@
         <span>
             最后更新于 2026-01-28
         </span>
+&nbsp;
+        
+        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+        <time class="article-time--reading">
+            
+            <span id="vercount_value_page_pv">loading... </span>次
+        </time>
     </section></footer>
 
 
@@ -1450,12 +1530,8 @@
         </p>
 
         <p style="font-size: 0.9em;">
-        <span id="busuanzi_container_site_pv">
-            本站总访问量 <span id="busuanzi_value_site_pv">0</span> 次
-        </span>
-        <span id="busuanzi_container_site_uv" style="margin-left: 1rem;">
-            总访客数 <span id="busuanzi_value_site_uv">0</span> 人
-        </span>
+            本站总访问量 <span id="vercount_value_site_pv">Loading...</span> 次
+            总访客数 <span id="vercount_value_site_uv">Loading...</span> 人
         </p>
         
         <p id="blog-runtime" style="text-align: left; font-size: 0.9em; margin: 0.5em 0; color: #888;">
@@ -1540,7 +1616,8 @@
 <script src="/js/scroll-buttons.js"></script>
 
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script defer src="https://events.vercount.one/js"></script>
 
     
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">

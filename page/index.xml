@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Wed, 28 Jan 2026 15:49:42 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 28 Jan 2026 19:58:49 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>关于</title>
         <link>https://ruheyun.github.io/about/</link>
         <pubDate>Mon, 26 Jan 2026 00:00:00 +0000</pubDate>
@@ -89,6 +89,11 @@
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;浏览数统计&lt;/td&gt;
+          &lt;td&gt;2026-01-28&lt;/td&gt;
+          &lt;td&gt;页脚处添加浏览数，页面结尾添加单篇文章阅读数&lt;/td&gt;
+      &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;代码块折叠&lt;/td&gt;
           &lt;td&gt;2026-01-28&lt;/td&gt;
