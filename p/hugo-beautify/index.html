@@ -6,11 +6,11 @@
 
 <link rel='canonical' href='https://ruheyun.github.io/p/hugo-beautify/'>
 
-<link rel="stylesheet" href="/scss/style.min.833d6eed45de56f48306bf57268d5b8cdfc8a60e8e7bdc99810464fcd033f7c6.css"><meta property='og:title' content="Hugo网站美化">
+<link rel="stylesheet" href="/scss/style.min.13c22d5352170f2e0b8c96868166ec0b7b487ad5dbb95d74a159feeb6c21b809.css"><meta property='og:title' content="Hugo网站美化">
 <meta property='og:description' content="对网站做简单的更改和美化，使网站功能更加完善。">
 <meta property='og:url' content='https://ruheyun.github.io/p/hugo-beautify/'>
 <meta property='og:site_name' content='RuHeYun'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Hugo' /><meta property='article:tag' content='Stack' /><meta property='article:tag' content='JS' /><meta property='article:tag' content='CSS' /><meta property='article:tag' content='giscus' /><meta property='article:published_time' content='2026-01-27T11:01:58&#43;08:00'/><meta property='article:modified_time' content='2026-01-28T14:58:55&#43;08:00'/><meta property='og:image' content='https://ruheyun.github.io/p/hugo-beautify/26_21.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Hugo' /><meta property='article:tag' content='Stack' /><meta property='article:tag' content='JS' /><meta property='article:tag' content='CSS' /><meta property='article:tag' content='giscus' /><meta property='article:published_time' content='2026-01-27T11:01:58&#43;08:00'/><meta property='article:modified_time' content='2026-01-28T15:20:33&#43;08:00'/><meta property='og:image' content='https://ruheyun.github.io/p/hugo-beautify/26_21.png' />
 <meta name="twitter:title" content="Hugo网站美化">
 <meta name="twitter:description" content="对网站做简单的更改和美化，使网站功能更加完善。"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://ruheyun.github.io/p/hugo-beautify/26_21.png' />
@@ -319,6 +319,7 @@
     <li><a href="#动态背景">动态背景</a></li>
     <li><a href="#修改默认字体">修改默认字体</a></li>
     <li><a href="#自动更改文章最后修改时间">自动更改文章最后修改时间</a></li>
+    <li><a href="#友链归档多列显示">友链、归档多列显示</a></li>
   </ol>
 </nav>
         </div>
@@ -1029,7 +1030,53 @@
 </div>
 </div><img src="image-20260128145604095.png" alt="image-20260128145604095" style="zoom:80%;" />
 <p>（3）更改文章时，会读取git提交时间，或者本地更改时间。</p>
-
+<h2 id="友链归档多列显示">友链、归档多列显示
+</h2><p>修改主文件夹下<code>assets/scss/custom.scss</code>文件(不存在则自行创建)，引入以下css样式代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="err">@</span><span class="n">media</span> <span class="p">(</span><span class="nb">min</span><span class="o">-</span><span class="n">width</span><span class="p">:</span> <span class="mi">1024</span><span class="n">px</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="o">.</span><span class="n">article</span><span class="o">-</span><span class="n">list</span><span class="o">--</span><span class="n">compact</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">display</span><span class="p">:</span> <span class="n">grid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">//</span> <span class="err">目前是两列，如需三列，则后面再加一个</span><span class="mi">1</span><span class="n">fr</span><span class="err">，以此类推</span>
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">-</span><span class="n">template</span><span class="o">-</span><span class="n">columns</span><span class="p">:</span> <span class="mi">1</span><span class="n">fr</span> <span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">background</span><span class="p">:</span> <span class="n">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="p">:</span> <span class="n">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">gap</span><span class="p">:</span> <span class="mi">1</span><span class="n">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">article</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">background</span><span class="p">:</span> <span class="k">var</span><span class="p">(</span><span class="o">--</span><span class="n">card</span><span class="o">-</span><span class="n">background</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">border</span><span class="p">:</span> <span class="n">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="p">:</span> <span class="k">var</span><span class="p">(</span><span class="o">--</span><span class="n">shadow</span><span class="o">-</span><span class="n">l2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">margin</span><span class="o">-</span><span class="n">bottom</span><span class="p">:</span> <span class="mi">8</span><span class="n">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="p">:</span> <span class="mi">8</span><span class="n">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="p">:</span> <span class="mi">16</span><span class="n">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
@@ -1043,7 +1090,7 @@
         
             <a href="/tags/js/">JS</a>
         
-            <a href="/tags/css/">CSS</a>
+            <a href="/tags/css/">Css</a>
         
             <a href="/tags/giscus/">Giscus</a>
         
@@ -1060,7 +1107,7 @@
 
 
 
-        <span>Licensed under CC BY-NC-SA 4.0</span>
+        <span>根据CC BY-NC-SA 4.0许可</span>
     </section>
     <section class="article-lastmod">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
