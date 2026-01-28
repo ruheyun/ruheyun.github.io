@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Wed, 28 Jan 2026 15:20:33 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 28 Jan 2026 15:40:03 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>关于</title>
         <link>https://ruheyun.github.io/about/</link>
         <pubDate>Mon, 26 Jan 2026 00:00:00 +0000</pubDate>
@@ -89,6 +89,16 @@
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;代码块折叠&lt;/td&gt;
+          &lt;td&gt;2026-01-28&lt;/td&gt;
+          &lt;td&gt;如果代码块过长可以默认折叠&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;更改代码块风格&lt;/td&gt;
+          &lt;td&gt;2026-01-28&lt;/td&gt;
+          &lt;td&gt;将代码块风格改为macOS形式&lt;/td&gt;
+      &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;友链、归档多列显示&lt;/td&gt;
           &lt;td&gt;2026-01-28&lt;/td&gt;
