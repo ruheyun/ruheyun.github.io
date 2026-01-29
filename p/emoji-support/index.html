@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Guide to emoji usage in Hugo">
-<title>Emoji Support</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Hugo 中 Emoji 使用指南">
+<title>Emoji 支持</title>
 
 <link rel='canonical' href='https://ruheyun.github.io/p/emoji-support/'>
 
-<link rel="stylesheet" href="/scss/style.min.c53e728d39bf4abc64011c8c96de2ed571fe0a5237f8e834a07f716ed99115ad.css"><meta property='og:title' content="Emoji Support">
-<meta property='og:description' content="Guide to emoji usage in Hugo">
+<link rel="stylesheet" href="/scss/style.min.c53e728d39bf4abc64011c8c96de2ed571fe0a5237f8e834a07f716ed99115ad.css"><meta property='og:title' content="Emoji 支持">
+<meta property='og:description' content="Hugo 中 Emoji 使用指南">
 <meta property='og:url' content='https://ruheyun.github.io/p/emoji-support/'>
 <meta property='og:site_name' content='RuHeYun'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='emoji' /><meta property='article:published_time' content='2019-03-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-01-25T20:35:44&#43;08:00'/><meta property='og:image' content='https://ruheyun.github.io/p/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg' />
-<meta name="twitter:title" content="Emoji Support">
-<meta name="twitter:description" content="Guide to emoji usage in Hugo"><meta name="twitter:card" content="summary_large_image">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='emoji' /><meta property='article:published_time' content='2019-03-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-01-29T14:48:23&#43;08:00'/><meta property='og:image' content='https://ruheyun.github.io/p/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg' />
+<meta name="twitter:title" content="Emoji 支持">
+<meta name="twitter:description" content="Hugo 中 Emoji 使用指南"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://ruheyun.github.io/p/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
@@ -287,7 +287,54 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#什么是短代码">什么是短代码？</a></li>
+    <li><a href="#内联短代码的特点">内联短代码的特点：</a></li>
+    <li><a href="#示例">示例：</a></li>
+    <li><a href="#与块级短代码的区别">与块级短代码的区别：</a></li>
+    <li><a href="#在-emoji-场景中的使用">在 Emoji 场景中的使用：</a>
+      <ol>
+        <li><a href="#emojify-不是短代码而是模板函数"><code>emojify</code> 不是短代码，而是模板函数</a></li>
+        <li><a href="#正确用法">正确用法</a>
+          <ol>
+            <li><a href="#方式-1全局启用推荐">方式 1：全局启用（推荐）</a></li>
+            <li><a href="#方式-2在模板文件中使用">方式 2：在模板文件中使用</a></li>
+            <li><a href="#方式-3自定义短代码如需局部控制">方式 3：自定义短代码（如需局部控制）</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="has-image main-article">
@@ -299,7 +346,7 @@
                         width="800" 
                         height="566" 
                         loading="lazy"
-                        alt="Featured image of post Emoji Support" />
+                        alt="Featured image of post Emoji 支持" />
                 
             </a>
         </div>
@@ -318,12 +365,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/emoji-support/">Emoji Support</a>
+            <a href="/p/emoji-support/">Emoji 支持</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            Guide to emoji usage in Hugo
+            Hugo 中 Emoji 使用指南
         </h3>
         
     </div>
@@ -361,18 +408,17 @@
     <section class="article-content">
     
     
-    <p>Emoji can be enabled in a Hugo project in a number of ways.</p>
-<p>The <a class="link" href="https://gohugo.io/functions/emojify/"  target="_blank" rel="noopener"
-    ><code>emojify</code></a> function can be called directly in templates or <a class="link" href="https://gohugo.io/templates/shortcode-templates/#inline-shortcodes"  target="_blank" rel="noopener"
-    >Inline Shortcodes</a>.</p>
-<p>To enable emoji globally, set <code>enableEmoji</code> to <code>true</code> in your site&rsquo;s <a class="link" href="https://gohugo.io/getting-started/configuration/"  target="_blank" rel="noopener"
-    >configuration</a> and then you can type emoji shorthand codes directly in content files; e.g.</p>
+    <p>在 Hugo 项目中，可通过多种方式启用 Emoji 支持。</p>
+<p>可在模板或内联短代码（<a class="link" href="https://gohugo.io/templates/shortcode-templates/#inline-shortcodes"  target="_blank" rel="noopener"
+    >Inline Shortcodes</a>）中直接调用 <a class="link" href="https://gohugo.io/functions/emojify/"  target="_blank" rel="noopener"
+    ><code>emojify</code></a> 函数。</p>
+<p>如需全局启用 Emoji：在站点<a class="link" href="%28https://gohugo.io/getting-started/configuration/%29" >配置文件</a>中将 <code>enableEmoji</code> 设为 <code>true</code>，即可在内容文件中直接输入 Emoji 简写代码。例如：</p>
 <p><span class="nowrap"><span class="emojify">🙈</span> <code>:see_no_evil:</code></span>  <span class="nowrap"><span class="emojify">🙉</span> <code>:hear_no_evil:</code></span>  <span class="nowrap"><span class="emojify">🙊</span> <code>:speak_no_evil:</code></span></p>
 <br>
-<p>The <a class="link" href="https://www.webfx.com/tools/emoji-cheat-sheet/"  target="_blank" rel="noopener"
-    >Emoji cheat sheet</a> is a useful reference for emoji shorthand codes.</p>
+<p>Emoji 速查表（<a class="link" href="https://www.webfx.com/tools/emoji-cheat-sheet/"  target="_blank" rel="noopener"
+    >cheat sheet</a>）是查询简写代码的实用参考资源。</p>
 <hr>
-<p><strong>N.B.</strong> The above steps enable Unicode Standard emoji characters and sequences in Hugo, however the rendering of these glyphs depends on the browser and the platform. To style the emoji you can either use a third party emoji font or a font stack; e.g.</p>
+<p><strong>注意</strong>：上述步骤可在 Hugo 中启用 Unicode 标准 Emoji 字符与序列，但实际渲染效果取决于浏览器及操作系统平台。如需自定义 Emoji 样式，可使用第三方 Emoji 字体或指定字体栈，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -385,6 +431,115 @@
 </span></span><span class="line"><span class="cl">}</span></span></code></pre></td></tr></table>
 </div>
 </div>
+
+<h2 id="什么是短代码">什么是短代码？
+</h2><p>在 Hugo 中，<strong>内联短代码（Inline Shortcodes）</strong> 是指可以在文章内容中直接使用的简短标记语法，用于插入动态内容或特殊功能。</p>
+<p>短代码是一种 Hugo 提供的模板功能，允许你在 Markdown 内容中嵌入可重用的代码片段。</p>
+<h2 id="内联短代码的特点">内联短代码的特点：
+</h2><ol>
+<li><strong>直接嵌入内容中</strong> - 可以在段落中间使用，不会打断文本流</li>
+<li><strong>语法简洁</strong> - 使用花括号 <code>{{ }}</code> 包裹</li>
+<li><strong>可传递参数</strong> - 可以接收参数来控制行为</li>
+</ol>
+<h2 id="示例">示例：
+</h2><p>这是一个段落，中间可以使用 {{&lt; highlight go &gt;}}这样的内联短代码 {{&lt; /highlight &gt;}}。</p>
+<p>或者调用 emoji 函数：{{% emojify &ldquo;:smile:&rdquo; %}}</p>
+<p>当你在内容中写 {{% emojify &ldquo;:smile:&rdquo; %}} 时，Hugo 会去 <code>layouts/shortcodes/</code> 目录下寻找 <code>emojify.html</code> 模板文件。</p>
+<p>具体操作看本文<code>5.2.3</code>。</p>
+<h2 id="与块级短代码的区别">与块级短代码的区别：
+</h2><ul>
+<li><strong>内联短代码</strong>：在行内使用，不独占一行</li>
+<li><strong>块级短代码</strong>：单独成块，通常用于插入图片、视频等较大元素</li>
+</ul>
+<h2 id="在-emoji-场景中的使用">在 Emoji 场景中的使用：
+</h2><p>{{% emojify &ldquo;:smile:&rdquo; %}}   // 会渲染为 😄</p>
+<p>这样你就可以在不启用全局 <code>enableEmoji</code> 的情况下，有选择性地在特定位置使用 Emoji 了。</p>
+<blockquote>
+<p>但是好像这样做不行，下面是解决方案：</p>
+</blockquote>
+<h3 id="emojify-不是短代码而是模板函数"><code>emojify</code> 不是短代码，而是模板函数
+</h3><p>Hugo 的 <code>emojify</code> 是一个<strong>模板函数（template function）</strong>，<strong>不是内置短代码</strong>。因此以下写法<strong>无法直接使用</strong>：</p>
+<p>{{% emojify &ldquo;:smile:&rdquo; %}}   // 无效（Hugo会报错）</p>
+<h3 id="正确用法">正确用法
+</h3><h4 id="方式-1全局启用推荐">方式 1：全局启用（推荐）
+</h4><p>在 <code>hugo.toml</code>/<code>hugo.yaml</code> 中设置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">enableEmoji</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后在 Markdown 中直接写：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">:smile:  # 会自动渲染为 😄
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="方式-2在模板文件中使用">方式 2：在模板文件中使用
+</h4><p>在 <code>.html</code> 模板中调用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="p">{{</span><span class="w"> </span><span class="nx">emojify</span><span class="w"> </span><span class="s">&#34;Hello :smile:&#34;</span><span class="w"> </span><span class="p">}}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="方式-3自定义短代码如需局部控制">方式 3：自定义短代码（如需局部控制）
+</h4><ol>
+<li>创建 <code>layouts/shortcodes/emoji.html</code>，下入下面代码：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="p">{{</span><span class="w"> </span><span class="nf">emojify</span><span class="w"> </span><span class="p">(.</span><span class="nx">Get</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">}}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>在 Markdown 中使用：{{% emojify &ldquo;:smile:&rdquo; %}} 会被渲染为 😄</li>
+</ol>
+<p><strong>注意</strong>：不能更改themes文件夹下的文件，要复制到主文件夹对应文件夹下，如下图：</p>
+<img src="image-20260129142644914.png" alt="image-20260129142644914" style="zoom:80%;" />
+<h2 id="总结">总结
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>方法</th>
+          <th>是否可行</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>{{% emojify &ldquo;:smile:&rdquo; %}}</td>
+          <td>❌</td>
+          <td><code>emojify</code> 不是短代码，不能这样用</td>
+      </tr>
+      <tr>
+          <td>全局 <code>enableEmoji: true</code> + <code>:smile:</code></td>
+          <td>✅</td>
+          <td>最简单，推荐</td>
+      </tr>
+      <tr>
+          <td>模板中 <code>{{ emojify &quot;...&quot; }}</code></td>
+          <td>✅</td>
+          <td>适用于主题开发者，不推荐</td>
+      </tr>
+      <tr>
+          <td>自定义短代码包装 <code>emojify</code></td>
+          <td>✅</td>
+          <td>需手动创建短代码文件，推荐</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>所以文档示例中提到的&quot;Inline Shortcodes&quot;是指<strong>可以创建自定义短代码来调用 <code>emojify</code> 函数</strong>，而不是 <code>emojify</code> 本身是短代码。</p>
 </section>
 
 
@@ -419,7 +574,7 @@
 
 
         <span>
-            最后更新于 2026-01-25
+            最后更新于 2026-01-29
         </span>
 &nbsp;
         
