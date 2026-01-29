@@ -4,21 +4,6 @@
   <url>
     <loc>https://ruheyun.github.io/post/</loc>
     <lastmod>2026-01-28T19:58:49+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://ruheyun.github.io/ja/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="https://ruheyun.github.io/zh-tw/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://ruheyun.github.io/post/"
-                />
   </url><url>
     <loc>https://ruheyun.github.io/p/post-template/</loc>
     <lastmod>2026-01-27T14:30:24+08:00</lastmod>
@@ -130,24 +115,6 @@
     <loc>https://ruheyun.github.io/logs/</loc>
     <lastmod>2026-01-28T19:58:49+08:00</lastmod>
   </url><url>
-    <loc>https://ruheyun.github.io/p/chinese-test/</loc>
-    <lastmod>2026-01-27T23:18:59+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="https://ruheyun.github.io/zh-tw/p/test-chinese/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://ruheyun.github.io/ja/p/test-chinese/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://ruheyun.github.io/p/chinese-test/"
-                />
-  </url><url>
     <loc>https://ruheyun.github.io/archives/</loc>
     <lastmod>2026-01-25T20:35:44+08:00</lastmod>
   </url><url>
@@ -230,21 +197,6 @@
   </url><url>
     <loc>https://ruheyun.github.io/categories/test/</loc>
     <lastmod>2026-01-25T20:35:44+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://ruheyun.github.io/ja/categories/test/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="https://ruheyun.github.io/zh-tw/categories/test/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://ruheyun.github.io/categories/test/"
-                />
   </url><url>
     <loc>https://ruheyun.github.io/search/</loc>
     <lastmod>2026-01-25T20:35:44+08:00</lastmod>

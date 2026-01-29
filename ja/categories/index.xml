@@ -6,23 +6,6 @@
         <description>Recent content in Categories on サンプルサイト</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <copyright>RuHeYun</copyright>
-        <lastBuildDate>Sun, 25 Jan 2026 22:53:36 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/ja/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Test</title>
-        <link>https://ruheyun.github.io/ja/categories/test/</link>
-        <pubDate>Fri, 09 Sep 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://ruheyun.github.io/ja/categories/test/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>テスト</title>
-        <link>https://ruheyun.github.io/ja/categories/%E3%83%86%E3%82%B9%E3%83%88/</link>
-        <pubDate>Fri, 09 Sep 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://ruheyun.github.io/ja/categories/%E3%83%86%E3%82%B9%E3%83%88/</guid>
-        <description></description>
-        </item>
-        
+        <copyright>RuHeYun</copyright><atom:link href="https://ruheyun.github.io/ja/categories/index.xml" rel="self" type="application/rss+xml" />
     </channel>
 </rss>
