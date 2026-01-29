@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>DM on RuHeYun</title>
-        <link>https://ruheyun.github.io/categories/dm/</link>
-        <description>Recent content in DM on RuHeYun</description>
+        <title>图像数据 on RuHeYun</title>
+        <link>https://ruheyun.github.io/tags/%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE/</link>
+        <description>Recent content in 图像数据 on RuHeYun</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <copyright>RuHeYun</copyright><atom:link href="https://ruheyun.github.io/categories/dm/index.xml" rel="self" type="application/rss+xml" /><item>
+        <copyright>RuHeYun</copyright>
+        <lastBuildDate>Thu, 29 Jan 2026 17:05:17 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Diffusion</title>
         <link>https://ruheyun.github.io/p/diffusion/</link>
         <pubDate>Thu, 29 Jan 2026 15:55:20 +0800</pubDate>
