@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Thu, 29 Jan 2026 17:05:17 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/icml/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 30 Jan 2026 21:44:57 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/icml/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Diffusion</title>
         <link>https://ruheyun.github.io/p/diffusion/</link>
         <pubDate>Thu, 29 Jan 2026 15:55:20 +0800</pubDate>
@@ -50,6 +50,302 @@
 &lt;h2 id=&#34;困惑点&#34;&gt;困惑点
 &lt;/h2&gt;&lt;p style=&#34;color: red;&#34;&gt;为什么论文第二部分又称前向过程为 Inference Process？&lt;/p&gt;
 &lt;p&gt;在这篇论文中，“inference” 指的是：给定一个真实数据样本 x(0) ，推断（或构造）它在整个扩散轨迹中对应的噪声版本序列 x(1),x(2),…,x(T) 。这里的 “inference” 不是指“从训练好的模型生成新样本”，而是指“为训练目的，从已知数据反推其在扩散链中的演化路径”。&lt;/p&gt;
+&lt;h2 id=&#34;论文翻译&#34;&gt;论文翻译
+&lt;/h2&gt;&lt;p&gt;以下翻译结合了AI工具和我对论文的理解，在翻译的过程中会省略我认为不重要的部分，并不是全篇一字一句的翻译。并且可能翻译或理解有误。（此过程同时借助了&lt;a class=&#34;link&#34; href=&#34;https://chatgpt.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChatGPT&lt;/a&gt;和&lt;a class=&#34;link&#34; href=&#34;https://chat.qwen.ai/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Qwen&lt;/a&gt;两个AI工具）&lt;/p&gt;
+&lt;h3 id=&#34;标题&#34;&gt;标题
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;利用非平衡热力学的深度无监督学习&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;摘要&#34;&gt;摘要
+&lt;/h3&gt;&lt;p&gt;机器学习中的一个核心问题在于：&lt;u&gt;如何利用高度灵活的概率分布族对复杂数据集进行建模，同时保证学习、采样、推断和评估在解析上或计算上仍具有可行性。&lt;/u&gt;本文提出了一种能够同时实现灵活性与可处理性的方法。&lt;mark&gt;其核心思想受非平衡统计物理学启发，即通过迭代式的前向扩散过程，系统且缓慢地破坏数据分布中的结构。随后，我们学习一个反向扩散过程以恢复数据中的结构，从而得到一个兼具高度灵活性与可处理性的数据生成模型。&lt;/mark&gt;该方法使我们能够快速地在具有数千层或时间步的深度生成模型中进行学习、采样与概率评估，并可计算所学模型下的条件概率与后验概率。此外，我们还开源发布了该算法的参考实现&lt;a class=&#34;link&#34; href=&#34;https://github.com/Sohl-Dickstein/Diffusion-Probabilistic-Models&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Github&lt;/a&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;引言&#34;&gt;引言
+&lt;/h3&gt;&lt;p&gt;历史上，概率模型一直面临两个相互冲突目标之间的权衡：可处理性与灵活性。具有可处理性的模型能够进行解析式评估并易于拟合数据（例如高斯分布或拉普拉斯分布）。然而，这些模型难以恰当地描述丰富数据集中的复杂结构。另一方面，灵活的模型则可以被建模以拟合任意数据中的结构。例如，我们可以通过任意（非负）函数 $\phi(x)$ 来定义模型，从而得到灵活的分布 $p(x) = \frac{\phi(x)}{Z}$，其中 Z 为归一化常数。然而，计算该归一化常数通常是不可行的。对这类灵活模型进行概率评估、训练或采样通常需要代价高昂的&lt;strong&gt;蒙特卡洛过程&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;目前已存在多种解析近似方法，它们虽可缓解但无法彻底消除这一权衡——例如平均场理论及其扩展、变分贝叶斯、对比散度、最小概率流、最小 KL 收缩、恰当评分规则、分数匹配、伪似然、循环信念传播等等，不一而足。此外，&lt;code&gt;非参数方法&lt;/code&gt;亦可取得显著成效。&lt;/p&gt;
+&lt;p&gt;非参数方法可被视为在可处理模型与灵活模型之间实现平滑过渡的一种途径。例如，非参数高斯混合模型在表示少量数据时可能仅使用单个高斯分布，而在表示无限量数据时则可扩展为由无限多个高斯分布构成的混合模型。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参数化 GMM：需预先设定 &lt;code&gt;K=5&lt;/code&gt; 个高斯分量，无论数据多复杂都只能用这 5 个分量拟合；&lt;/p&gt;
+&lt;p&gt;非参数 GMM：无需指定 &lt;code&gt;K&lt;/code&gt;，算法自动学习需要多少个分量——简单数据可能只用 2 个分量，复杂数据可能用 20 个甚至更多。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;扩散概率模型&#34;&gt;扩散概率模型
+&lt;/h4&gt;&lt;p&gt;我们提出了一种定义概率模型的新方法，该方法具备以下特性：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;模型结构具有极高的灵活性；&lt;/li&gt;
+&lt;li&gt;支持精确采样；&lt;/li&gt;
+&lt;li&gt;易于与其他分布相乘（例如用于计算后验概率）；&lt;/li&gt;
+&lt;li&gt;模型的对数似然以及单个状态的概率均可高效计算。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我们的方法利用马尔可夫链逐步将一个分布转换为另一个分布，这一思想源于&lt;mark&gt;非平衡统计物理学&lt;/mark&gt;和&lt;mark&gt;序列蒙特卡洛方法&lt;/mark&gt;。我们构建了一个生成式马尔可夫链，通过扩散过程将一个简单的已知分布（例如高斯分布）转换为目标（数据）分布。与使用马尔可夫链对已预先定义的模型进行近似评估不同，我们&lt;strong&gt;显式地将概率模型定义为马尔可夫链的终点&lt;/strong&gt;。由于扩散链中的每一步都具有可解析计算的概率，因此整个链的概率亦可进行解析式评估。&lt;/p&gt;
+&lt;p&gt;在该框架下的学习过程涉及对扩散过程中的微小扰动进行估计。相比使用单一的、无法解析归一化的&lt;mark&gt;势函数&lt;/mark&gt;来显式描述完整分布，估计微小扰动在计算上更为可行。此外，由于对任意光滑的目标分布都存在对应的扩散过程，该方法能够捕捉任意形式的数据分布。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Potential function&lt;/strong&gt;：势函数，源自物理学&amp;quot;势能&amp;quot;（potential energy）概念，在概率模型中表示未归一化的能量/权重函数。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我们通过在多个数据集上训练高对数似然模型，验证了这些扩散概率模型的有效性。所用数据集包括：二维瑞士卷（two-dimensional swiss roll）、二值序列、手写数字（MNIST）以及若干自然图像数据集（CIFAR-10、树皮纹理和枯叶模型）。&lt;/p&gt;
+&lt;h4 id=&#34;相关的其他工作&#34;&gt;相关的其他工作
+&lt;/h4&gt;&lt;p&gt;wake-sleep algorithm 首次提出了让推断模型与生成概率模型相互对抗训练的思想。此后近二十年间，这一思路在很大程度上未被深入探索，尽管存在一些例外工作。近年来，围绕该思想的研究呈现爆发式增长。之后提出的变分学习与推断算法，使得灵活的生成模型与潜在变量的后验分布能够被直接联合训练、相互优化。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;有些算法翻译为中文很不好理解，所以不做翻译。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这些论文中使用的变分界与我们训练目标中采用的变分界以及 Sminchisescu 等人（2006）早期工作中的形式相似。然而，我们的动机与模型形式均存在显著差异。相较于上述方法，本文工作保留了以下区别与优势：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;我们借鉴物理学、准静态过程（quasi-static processes）以及退火重要性采样（annealed importance sampling）的思想构建框架，而非基于变分贝叶斯方法；&lt;/li&gt;
+&lt;li&gt;我们展示了如何便捷地将所学分布与另一概率分布相乘（例如与条件分布相乘以计算后验分布）；&lt;/li&gt;
+&lt;li&gt;我们解决了变分推断方法中推断模型训练尤为困难的问题——该困难源于推断模型与生成模型在目标函数中的不对称性。为此，我们将前向（推断）过程限制为简单的函数形式，使得反向（生成）过程具有相同的函数形式；&lt;/li&gt;
+&lt;li&gt;我们训练了包含数千层（或时间步）的模型，而非仅限于少量层次；&lt;/li&gt;
+&lt;li&gt;我们为每一层（或时间步）中的熵产生（entropy production）提供了上界与下界估计。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;存在多种与&lt;code&gt;概率模型&lt;/code&gt;训练相关的技术（下文将简要总结），这些方法致力于构建高度灵活的生成模型形式、训练随机轨迹，或学习贝叶斯网络的逆过程。&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;技术/作者&lt;/th&gt;
+          &lt;th&gt;时间&lt;/th&gt;
+          &lt;th&gt;简述&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Reweighted wake-sleep&lt;/td&gt;
+          &lt;td&gt;2015&lt;/td&gt;
+          &lt;td&gt;对原始wake-sleep algorithm提出了扩展并改进了学习规则。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Generative stochastic networks&lt;/td&gt;
+          &lt;td&gt;2013/2014&lt;/td&gt;
+          &lt;td&gt;通过训练马尔可夫核，使其平稳分布与数据分布相匹配。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Neural autoregressive distribution estimators&lt;/td&gt;
+          &lt;td&gt;2011/2013&lt;/td&gt;
+          &lt;td&gt;将联合分布分解为一系列关于各维度的可处理条件分布序列。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Adversarial networks&lt;/td&gt;
+          &lt;td&gt;2014&lt;/td&gt;
+          &lt;td&gt;通过让生成模型与一个试图区分生成样本与真实数据的分类器进行对抗训练。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Schmidhuber（作者）&lt;/td&gt;
+          &lt;td&gt;1992&lt;/td&gt;
+          &lt;td&gt;提出的类似目标学习了一个双向映射，将数据映射到具有边缘独立单元的表示空间。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Rippel 与 Adams以及 Dinh（作者）&lt;/td&gt;
+          &lt;td&gt;2013、2014&lt;/td&gt;
+          &lt;td&gt;学习了到潜在表示空间的双射确定性映射，该潜在空间具有简单的阶乘密度函数。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Stuhlmüller（作者）&lt;/td&gt;
+          &lt;td&gt;2013&lt;/td&gt;
+          &lt;td&gt;贝叶斯网络学习了随机逆映射。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Mixtures of conditional Gaussian scale mixtures, MCGSMs&lt;/td&gt;
+          &lt;td&gt;2012&lt;/td&gt;
+          &lt;td&gt;利用高斯尺度混合来描述数据集，其参数依赖于一系列因果邻域。&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;此外，还有大量工作致力于学习从简单潜在分布到数据分布的灵活生成映射——早期范例包括 MacKay 将神经网络引入作为生成模型，以及 Bishop 等学习从潜在空间到数据空间的随机流形映射。&lt;code&gt;本文将在实验中与对抗网络及 MCGSMs 进行对比。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;来自物理学的相关思想包括 &lt;strong&gt;Jarzynski 等式&lt;/strong&gt;，该等式在机器学习中被称为&lt;strong&gt;退火重要性采样&lt;/strong&gt;（Annealed Importance Sampling, AIS）。AIS 利用马尔可夫链将一个分布缓慢转换为另一个分布，以计算归一化常数的比值。Burda 等人进一步证明，AIS 亦可基于反向轨迹而非前向轨迹执行。&lt;strong&gt;朗之万动力学&lt;/strong&gt;（Langevin dynamics）作为福克-普朗克方程（Fokker-Planck equation）的随机实现形式，展示了如何定义一个高斯扩散过程，使其以任意目标分布作为平稳分布。福克-普朗克方程也被用来进行随机优化。最后，&lt;strong&gt;柯尔莫哥洛夫前向与后向方程&lt;/strong&gt;（Kolmogorov forward and backward equations）表明：对于许多前向扩散过程，其对应的反向扩散过程可用相同的函数形式加以描述。&lt;/p&gt;
+&lt;h3 id=&#34;算法&#34;&gt;算法
+&lt;/h3&gt;&lt;p&gt;我们的目标是定义一个前向（或推断）扩散过程，将任意复杂的数据分布转换为简单且易于处理的分布；随后学习该扩散过程的有限时间反向过程，以此定义我们的生成模型分布（见图1）。我们首先描述前向推断扩散过程，继而展示如何训练反向生成扩散过程并利用其进行概率评估。此外，我们还为反向过程推导了熵的上下界，并说明所学分布如何与任意第二个分布相乘（例如在图像修复或去噪任务中计算后验分布时所需的操作）。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ruheyun.github.io/p/diffusion/image-20260130142618684.png&#34;
+	width=&#34;832&#34;
+	height=&#34;606&#34;
+	srcset=&#34;https://ruheyun.github.io/p/diffusion/image-20260130142618684_hu_ea920d4b659a5180.png 480w, https://ruheyun.github.io/p/diffusion/image-20260130142618684_hu_8f132b3a25a13647.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;137&#34;
+		data-flex-basis=&#34;329px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;图1：在 2-d swiss roll data 上训练的建模框架。第一行展示了前向轨迹 $q(x^{(0:T)})$ 在各时间切片上的分布。数据分布（左）经历高斯扩散过程，逐步转化为单位协方差高斯分布（右）。第二行展示了训练所得反向轨迹 $p(x^{(0:T)})$ 对应的时间切片。单位协方差高斯分布（右）经过具有学习得到的均值与协方差函数的高斯扩散过程，逐步重构回原始数据分布（左）。第三行展示了同一反向扩散过程的漂移项（drift term）$f_\mu(x^{(t)}, t) - x^{(t)}$。&lt;/p&gt;
+&lt;h4 id=&#34;前向轨迹&#34;&gt;前向轨迹
+&lt;/h4&gt;&lt;p&gt;我们将数据分布记为 $q(x^{(0)})$。通过反复应用针对 $\pi(y)$ 的马尔可夫扩散核 $T_\pi(y \mid y&amp;rsquo;; \beta)$，数据分布被逐步转换为一个性质良好（解析可处理）的分布 $\pi(y)$，其中 $\beta$ 为扩散速率，
+&lt;/p&gt;
+$$
+\pi (y) = \int dy&#39; \, T_\pi (y|y&#39;; \beta) \, \pi (y&#39;) \tag{1}
+$$$$
+q \left(x^{(t)} \mid x^{(t-1)} \right) = T_\pi \left(x^{(t)} \mid x^{(t-1)}; \beta_t \right). \tag{2}
+$$&lt;blockquote&gt;
+&lt;p&gt;公式 (1)：目标分布的平稳性条件。&lt;/p&gt;
+&lt;p&gt;该公式定义了 目标分布 $\pi (y)$ 作为扩散过程的平稳分布（equilibrium distribution）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$T_{\pi}(y∣y′;\beta)$ 是 &lt;strong&gt;马尔可夫扩散核&lt;/strong&gt;（Markov diffusion kernel），表示从状态 $y′$ 到 $y$ 的转移概率，$\beta$ 是&lt;strong&gt;扩散速率&lt;/strong&gt;（diffusion rate）。&lt;/li&gt;
+&lt;li&gt;$\pi(y)$ 满足：当系统达到平衡时，应用扩散核 $T_{\pi}$ 后分布保持不变。&lt;/li&gt;
+&lt;li&gt;在扩散模型中，$\pi(y)$ 通常选择为&lt;strong&gt;标准高斯分布&lt;/strong&gt;（如 $\pi(y) = N(y;0,I)$），因其解析性质良好（易于计算）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;公式 (2)：前向扩散过程的定义。&lt;/p&gt;
+&lt;p&gt;该公式定义了 前向扩散过程（inference process）的条件转移概率：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$q(x^{(t)}∣x^{(t−1)})$ 是在时间步 $t−1$ 给定 $x^{(t−1)}$ 时，状态 $x^{(t)}$ 的条件分布。&lt;/li&gt;
+&lt;li&gt;$T_{\pi}(x^{(t)}∣x^{(t−1)};β_t)$ 是&lt;strong&gt;时间相关的扩散核&lt;/strong&gt;，$\beta_t$ 是第 $t$ 步的&lt;strong&gt;扩散速率&lt;/strong&gt;（通常随时间递增）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;核心思想&lt;/strong&gt;：前向过程使用与目标分布 $\pi (y)$ 相同的扩散核 $T_{\pi}$，但 $\pi$ 随时间变化（$\beta_t$ 而非固定 $\beta$）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;前向轨迹对应于从数据分布开始并执行 $T$ 步扩散的过程，因此有
+&lt;/p&gt;
+$$
+q \left( x^{(0 \cdots T)} \right) = q \left( x^{(0)} \right) \prod_{t=1}^T q \left( x^{(t)} \mid x^{(t-1)} \right) \tag{3}
+$$&lt;blockquote&gt;
+&lt;p&gt;马尔科夫性质，每一步只依赖与前一步，与其他步独立。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在下文展示的实验中，$q(x^{(t)}∣x^{(t−1)})$ 对应于以下两种扩散过程之一：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;高斯扩散&lt;/strong&gt;：将数据逐步扩散至单位协方差高斯分布（identity-covariance Gaussian distribution）；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;二项扩散&lt;/strong&gt;：将数据逐步扩散至独立二项分布（independent binomial distribution）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;反向轨迹&#34;&gt;反向轨迹
+&lt;/h4&gt;&lt;p&gt;生成分布将被训练以描述相同的轨迹，但方向相反，
+&lt;/p&gt;
+$$
+p \left( x^{(T)} \right) = \pi \left( x^{(T)} \right) \tag{4}
+$$$$
+p \left( x^{(0 \cdots T)} \right) = p \left( x^{(T)} \right) \prod_{t=1}^T p \left( x^{(t-1)} \mid x^{(t)} \right). \tag{5}
+$$&lt;blockquote&gt;
+&lt;p&gt;反向轨迹也是马尔科夫链，根据马尔科夫性质得到的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;关键意义&lt;/strong&gt;：该框架通过学习反向扩散轨迹，使模型能够从简单分布 $\pi(x^{(T)})$ 逐步还原数据分布 $q(x^{(0)})$。由于每一步反向转移概率 $p(x^{(t−1)}∣x^{(t)})$ 均可参数化为神经网络，因此整个生成过程既灵活又可解析计算。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;对于高斯扩散与二项扩散，在连续扩散情形下（即步长 $\beta$ 趋近于零的极限），扩散过程的反向过程具有与前向过程&lt;strong&gt;完全相同的函数形式&lt;/strong&gt;。由于 $q(x^{(t)}∣x^{(t−1)})$ 服从高斯（或二项）分布，且当 $\beta_t$ 足够小时，反向条件分布 $q(x^{(t−1)}∣x^{(t)})$ 同样服从高斯（或二项）分布。轨迹长度 $T$ 越长，每一步的扩散速率 $\beta$ 即可取得越小，从而使离散扩散过程更逼近连续极限，反向过程的函数形式亦更精确地匹配前向过程。&lt;/p&gt;
+&lt;p&gt;在学习过程中，仅需估计高斯扩散核的&lt;strong&gt;均值与协方差&lt;/strong&gt;，或二项扩散核的&lt;strong&gt;比特翻转概率&lt;/strong&gt;。如表 App.1 所示，$f_{\mu}(x^{(t)},t)$ 与 $f_{\Sigma}(x^{(t)},t)$ 是定义高斯分布反向马尔可夫转移的均值与协方差的函数，$f_b(x^{(t)},t)$ 是为二项分布提供比特翻转概率的函数。运行该算法的计算成本等于这些函数的计算开销乘以时间步数。本文所有实验结果均采用多层感知机（MLP）来参数化这些函数。然而，大量回归或函数拟合技术均可适用，包括非参数方法。&lt;/p&gt;
+&lt;h3 id=&#34;模型概率&#34;&gt;模型概率
+&lt;/h3&gt;&lt;p&gt;生成模型赋予原始数据的概率为
+&lt;/p&gt;
+$$
+p \left( x^{(0)} \right) = \int dx^{(1 \cdots T)} \, p \left( x^{(0 \cdots T)} \right). \tag{6}
+$$&lt;p&gt;
+直观上，该积分难以处理——但借鉴退火重要性采样（annealed importance sampling）和 Jarzynski 等式的思想，我们转而评估前向与反向轨迹的相对概率，并对前向轨迹进行平均，
+&lt;/p&gt;
+$$
+\begin{align}
+p \left( x^{(0)} \right) &amp;= \int dx^{(1 \cdots T)} \, p \left( x^{(0 \cdots T)} \right) \frac{q \left( x^{(1 \cdots T)} \mid x^{(0)} \right)}{q \left( x^{(1 \cdots T)} \mid x^{(0)} \right)} \tag{7} \\
+&amp;= \int dx^{(1 \cdots T)} \, q \left( x^{(1 \cdots T)} \mid x^{(0)} \right) \frac{p \left( x^{(0 \cdots T)} \right)}{q \left( x^{(1 \cdots T)} \mid x^{(0)} \right)} \tag{8} \\
+&amp;= \int dx^{(1 \cdots T)} \, q \left( x^{(1 \cdots T)} \mid x^{(0)} \right) p \left( x^{(T)} \right) \prod_{t=1}^{T} \frac{p \left( x^{(t-1)} \mid x^{(t)} \right)}{q \left( x^{(t)} \mid x^{(t-1)} \right)}. \tag{9}
+\end{align}
+$$&lt;blockquote&gt;
+&lt;p&gt;公式（7）：概率表达式的重写，分子分母同乘相同因子，等式不变；&lt;/p&gt;
+&lt;p&gt;公式（8）：重要性采样形式，将积分改写为对前向轨迹的&lt;strong&gt;期望值&lt;/strong&gt;；&lt;/p&gt;
+&lt;p&gt;公式（9）：轨迹相对概率的显示表达，由将（5）带入（8）得到。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;该积分可通过从前向轨迹 $q(x^{(1⋯T)}∣x^{(0)})$ 中采样并取平均值来快速评估。当扩散步长 $\beta$ 趋近于无穷小时，前向与反向轨迹分布可趋于一致。若二者完全相同，则仅需从前向轨迹 $q(x^{(1⋯T)}∣x^{(0)})$ 中采样&lt;strong&gt;单一样本&lt;/strong&gt;，即可通过代入精确计算上述积分。此情形对应于统计物理学中的&lt;strong&gt;准静态过程&lt;/strong&gt;（quasi-static process）。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;核心概念解析&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;概念&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;快速评估&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;通过蒙特卡洛采样估计积分 $E_q[⋅]$，避免高维解析积分&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;轨迹分布一致&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;当 $\beta \rightarrow 0$ 且 $T \rightarrow \infty$（连续扩散极限）时，$p(x^{(0⋯T)})=q(x^{(0⋯T)})$，此时相对概率比值恒为 1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;单样本精确估计&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;若 $p=q$，则 $\frac{p(x^{(0⋯T)})}{q(x^{(1⋯T)}∣x^{(0)})}=const$，任意单样本即可给出精确期望值（方差为零）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;准静态过程&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;热力学中系统在无限缓慢变化下始终保持平衡态的过程；在扩散模型中，对应于每步扰动极小、前向/反向过程可逆的理想极限&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;实践意义&lt;/strong&gt;：虽然实际应用中 $\beta$ 无法取无穷小（计算成本限制），但该理论表明——&lt;strong&gt;轨迹越长、每步扰动越小，模型对数似然的估计方差越低&lt;/strong&gt;。这为扩散模型设计提供了理论指导：增加时间步数 $T$ 可提升概率估计精度。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;训练&#34;&gt;训练
+&lt;/h3&gt;&lt;p&gt;训练等价于最大化模型的对数似然，
+&lt;/p&gt;
+$$
+L = \int dx^{(0)} q\left(x^{(0)}\right) \log p\left(x^{(0)}\right) \tag{10}
+$$&lt;p&gt;
+该目标函数可以重写为：
+&lt;/p&gt;
+$$
+L = \int dx^{(0)} q\left(x^{(0)}\right) \log \left[ \int dx^{(1 \cdots T)} q\left(x^{(1 \cdots T)} \mid x^{(0)}\right) p\left(x^{(T)}\right) \prod_{t=1}^T \frac{p\left(x^{(t-1)} \mid x^{(t)}\right)}{q\left(x^{(t)} \mid x^{(t-1)}\right)} \right], \tag{11}
+$$&lt;p&gt;
+该表达式由&lt;code&gt;Jensen不等式&lt;/code&gt;提供了一个下界：
+&lt;/p&gt;
+$$
+L \geq \int dx^{(0 \cdots T)} q\left(x^{(0 \cdots T)}\right) \log \left[ p\left(x^{(T)}\right) \prod_{t=1}^T \frac{p\left(x^{(t-1)} \mid x^{(t)}\right)}{q\left(x^{(t)} \mid x^{(t-1)}\right)} \right]. \tag{12}
+$$&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;公式解析（q不含参数，p含参数）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;公式（10）：最大似然目标。本质是 期望对数似然（负交叉熵）。&lt;/p&gt;
+&lt;p&gt;公式（11）：将公式（9）带入（10），通过引入重要性采样，将高维积分转化为轨迹期望。&lt;/p&gt;
+&lt;p&gt;公式（12）：Jensen 不等式下界，避免计算轨迹比值，下界可表示为单轨迹的对数似然，通过蒙特卡洛采样估计。&lt;/p&gt;
+&lt;p&gt;该是扩散模型的训练目标函数。它将复杂的最大似然估计转化为一个可优化的目标，且：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无需计算归一化常数&lt;/li&gt;
+&lt;li&gt;仅需对轨迹进行采样和局部计算&lt;/li&gt;
+&lt;li&gt;与变分推断中的 ELBO 本质相同，但通过扩散过程结构实现了更精确的下界&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;与单样本精确估计的关联&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;当模型完美学习（$p=q$）且处于准静态极限时：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;轨迹比值 $\frac{p(x^{(0:T)})}{q(x^{(1:T)}∣x^{(0)})}$ 变为&lt;strong&gt;常数&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;此时 $log⁡E[X]=E[log⁡X]$，不等式取等，下界达到紧致&lt;/li&gt;
+&lt;li&gt;这解释了为何在理想情况下&amp;quot;单样本即可精确估计&amp;quot;（但实际中需多采样）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如附录 B 所述，对于我们的扩散轨迹，该下界简化为，
+&lt;/p&gt;
+$$
+\begin{equation}
+L \geq K \tag{13}
+\end{equation}
+$$$$
+\begin{equation}
+K = -\sum_{t=2}^T \int dx^{(0)} dx^{(t)} q\left(x^{(0)}, x^{(t)}\right) D_{KL}\left(q\left(x^{(t-1)} \mid x^{(t)}, x^{(0)}\right) \parallel p\left(x^{(t-1)} \mid x^{(t)}\right)\right) + H_q\left(X^{(T)} \mid X^{(0)}\right) - H_q\left(X^{(1)} \mid X^{(0)}\right) - H_p\left(X^{(T)}\right). \tag{14}
+\end{equation}
+$$&lt;blockquote&gt;
+&lt;p&gt;公式（14）求和项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;本质是每步的 KL 散度期望&lt;/li&gt;
+&lt;li&gt;衡量反向生成过程 p 与前向推断过程 q 的差异&lt;/li&gt;
+&lt;li&gt;训练目标：最小化该差异（即让 p 尽可能接近 q 的逆过程）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;熵项：&lt;/p&gt;
+&lt;p&gt;$H_q\left(X^{(T)} \mid X^{(0)}\right)$：最终状态 $X^{(T)}$ 在给定初始状态 $X^{(0)}$ 下的条件熵&lt;/p&gt;
+&lt;p&gt;$H_q\left(X^{(1)} \mid X^{(0)}\right)$：第一步后的条件熵&lt;/p&gt;
+&lt;p&gt;$H_p\left(X^{(T)}\right)$：模型在最终状态 $X^{(T)}$ 的熵（通常为 0，因为 $X^{(T)} \sim \pi$ 是固定分布）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;其中熵和 KL 散度均可解析计算。该下界的推导与&lt;strong&gt;变分贝叶斯方法&lt;/strong&gt;中对数似然界（log likelihood bound）的推导过程平行。&lt;/p&gt;
+&lt;p&gt;训练过程包括寻找能够最大化对数似然下界的反向马尔可夫转移概率，
+&lt;/p&gt;
+$$
+\hat{p}\left(x^{(t-1)} \mid x^{(t)}\right) = \underset{p\left(x^{(t-1)} \mid x^{(t)}\right)}{\operatorname{argmax}} K. \tag{15}
+$$&lt;p&gt;
+高斯扩散与二项扩散的具体估计目标见表 App.1。由此，&lt;strong&gt;概率分布的估计问题被简化为对函数的回归任务&lt;/strong&gt;：这些函数用于设定一系列高斯分布的均值与协方差（或设定一系列伯努利试验的状态翻转概率）。&lt;/p&gt;
+&lt;h4 id=&#34;选择扩散比率beta_t&#34;&gt;选择扩散比率$\beta_t$
+&lt;/h4&gt;&lt;p&gt;前向轨迹中 $\beta_t$ 的选择对训练后模型的性能至关重要。在退火重要性采样（AIS）中，中间分布的合理调度可显著提升对数配分函数估计的准确性。在热力学中，系统在不同平衡分布之间转移时所采用的路径调度，决定了自由能的损耗程度。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;自由能损耗：非平衡过程中因不可逆性导致的能量耗散。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在高斯扩散的情形下，我们通过在 $K$ 上执行梯度上升来学习前向扩散调度 $\beta_{2 \cdots T}$。第一步的方差 $\beta_1$ 被固定为一个较小的常数，以防止过拟合。为了显式表达从 $q(x^{(1 \cdots T)} \mid x^{(0)})$ 中采样的样本对 $\beta_{1 \cdots T}$ 的依赖关系，我们采用&amp;quot;冻结噪声&amp;quot;（frozen noise）技术——如（Kingma 与 Welling，2013）所述，将噪声视为额外的辅助变量，并在计算 $K$ 对参数的偏导数时保持其恒定。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$\beta$ 调度的选择有两种：固定或可学习。这段描述的是可学习的清况：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;即使在可学习调度中，$\beta_1$ 仍被固定为小常数（防止过拟合）&lt;/li&gt;
+&lt;li&gt;可学习的是 $\beta_2$ 到 $\beta_T$，即从第 2 步开始的扩散速率&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;“冻结噪声”技术：这是&lt;strong&gt;使采样过程对 $\beta_t$ 可微的关键技巧&lt;/strong&gt;，本质与 VAE 中的&amp;quot;重参数化技巧&amp;quot;相同。&lt;/p&gt;
+&lt;p&gt;刚开始以为和调度的选择有关，然后发现这个技术是&lt;strong&gt;为了使随机过程可微，&amp;ldquo;冻结&amp;quot;是指计算梯度时将已采样的噪声视为常数&lt;/strong&gt;，是扩散模型中的必要技术，其实就是&amp;quot;重参数化技巧&amp;quot;的另一个表达形式。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;对于二项扩散，离散状态空间使得基于冻结噪声的梯度上升方法无法实现（因离散变量不可微）。我们转而选择前向扩散调度 $\beta_{1 \cdots T}$，使得每一步扩散擦除原始信号的固定比例 $1/T$，由此得到的扩散速率为 $\beta_t = (T - t + 1)^{-1}$。&lt;/p&gt;
 </description>
         </item>
         
