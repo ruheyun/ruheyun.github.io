@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Fri, 30 Jan 2026 21:44:57 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 03 Feb 2026 20:29:10 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Diffusion</title>
         <link>https://ruheyun.github.io/p/diffusion/</link>
         <pubDate>Thu, 29 Jan 2026 15:55:20 +0800</pubDate>
@@ -131,7 +131,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;Rippel 与 Adams以及 Dinh（作者）&lt;/td&gt;
-          &lt;td&gt;2013、2014&lt;/td&gt;
+          &lt;td&gt;2013/2014&lt;/td&gt;
           &lt;td&gt;学习了到潜在表示空间的双射确定性映射，该潜在空间具有简单的阶乘密度函数。&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
@@ -304,13 +304,12 @@ $$&lt;blockquote&gt;
 &lt;p&gt;如附录 B 所述，对于我们的扩散轨迹，该下界简化为，
 &lt;/p&gt;
 $$
-\begin{equation}
 L \geq K \tag{13}
-\end{equation}
 $$$$
-\begin{equation}
-K = -\sum_{t=2}^T \int dx^{(0)} dx^{(t)} q\left(x^{(0)}, x^{(t)}\right) D_{KL}\left(q\left(x^{(t-1)} \mid x^{(t)}, x^{(0)}\right) \parallel p\left(x^{(t-1)} \mid x^{(t)}\right)\right) + H_q\left(X^{(T)} \mid X^{(0)}\right) - H_q\left(X^{(1)} \mid X^{(0)}\right) - H_p\left(X^{(T)}\right). \tag{14}
-\end{equation}
+\begin{align}
+K = &amp;-\sum_{t=2}^T \int dx^{(0)} dx^{(t)} q\left(x^{(0)}, x^{(t)}\right) D_{KL}\left(q\left(x^{(t-1)} \mid x^{(t)}, x^{(0)}\right) \parallel p\left(x^{(t-1)} \mid x^{(t)}\right)\right) \tag{14} \\
+&amp;+ H_q\left(X^{(T)} \mid X^{(0)}\right) - H_q\left(X^{(1)} \mid X^{(0)}\right) - H_p\left(X^{(T)}\right). \tag{14}
+\end{align}
 $$&lt;blockquote&gt;
 &lt;p&gt;公式（14）求和项：&lt;/p&gt;
 &lt;ul&gt;
@@ -329,7 +328,7 @@ $$&lt;blockquote&gt;
 $$
 \hat{p}\left(x^{(t-1)} \mid x^{(t)}\right) = \underset{p\left(x^{(t-1)} \mid x^{(t)}\right)}{\operatorname{argmax}} K. \tag{15}
 $$&lt;p&gt;
-高斯扩散与二项扩散的具体估计目标见表 App.1。由此，&lt;strong&gt;概率分布的估计问题被简化为对函数的回归任务&lt;/strong&gt;：这些函数用于设定一系列高斯分布的均值与协方差（或设定一系列伯努利试验的状态翻转概率）。&lt;/p&gt;
+由此，&lt;strong&gt;概率分布的估计问题被简化为对函数的回归任务&lt;/strong&gt;：这些函数用于设定一系列高斯分布的均值与协方差（或设定一系列伯努利试验的状态翻转概率）。&lt;/p&gt;
 &lt;h4 id=&#34;选择扩散比率beta_t&#34;&gt;选择扩散比率$\beta_t$
 &lt;/h4&gt;&lt;p&gt;前向轨迹中 $\beta_t$ 的选择对训练后模型的性能至关重要。在退火重要性采样（AIS）中，中间分布的合理调度可显著提升对数配分函数估计的准确性。在热力学中，系统在不同平衡分布之间转移时所采用的路径调度，决定了自由能的损耗程度。&lt;/p&gt;
 &lt;blockquote&gt;
@@ -346,6 +345,287 @@ $$&lt;p&gt;
 &lt;p&gt;刚开始以为和调度的选择有关，然后发现这个技术是&lt;strong&gt;为了使随机过程可微，&amp;ldquo;冻结&amp;quot;是指计算梯度时将已采样的噪声视为常数&lt;/strong&gt;，是扩散模型中的必要技术，其实就是&amp;quot;重参数化技巧&amp;quot;的另一个表达形式。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;对于二项扩散，离散状态空间使得基于冻结噪声的梯度上升方法无法实现（因离散变量不可微）。我们转而选择前向扩散调度 $\beta_{1 \cdots T}$，使得每一步扩散擦除原始信号的固定比例 $1/T$，由此得到的扩散速率为 $\beta_t = (T - t + 1)^{-1}$。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在扩散模型里（无论 Gaussian 还是 binomial），都会用到：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\beta_t$：第 t 步的噪声强度&lt;/li&gt;
+&lt;li&gt;$1-\beta_t$：第 t 步信号保留比例&lt;/li&gt;
+&lt;li&gt;累积信号保留量：$\bar{\alpha}&lt;em&gt;t = \prod&lt;/em&gt;{s=1}^{t}(1-\beta_s)$ 表示：第 t 步之后，还剩多少“原始信号”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在二项扩散情况下，每步抹掉 $\frac{1}{T}$ 原始信号：&lt;/p&gt;
+&lt;p&gt;则 $\bar{\alpha}_t = 1 - \frac{t}{T}$&lt;/p&gt;
+&lt;p&gt;由 $\bar{\alpha}&lt;em&gt;t = \bar{\alpha}&lt;/em&gt;{t-1}(1-\beta_t)$&lt;/p&gt;
+&lt;p&gt;可解得 $\beta_t = \frac{1}{T-t+1}$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;分布相乘与后验计算&#34;&gt;分布相乘与后验计算
+&lt;/h3&gt;&lt;p&gt;如信号去噪或缺失值推断等任务需要计算后验分布，这要求将模型分布 $p(x^{(0)})$ 与第二个分布（或有界正函数）$r(x^{(0)})$ 相乘，从而生成一个新的分布 $\tilde{p}(x^{(0)}) \propto p(x^{(0)}) , r(x^{(0)})$。&lt;/p&gt;
+&lt;p&gt;对于许多技术而言，分布相乘在计算上代价高昂且实现困难，这些技术包括变分自编码器（VAE）、生成式随机网络（GSN）、神经自回归分布估计器（NADE）以及大多数图模型。然而，在扩散模型框架下，分布相乘却十分直接：第二个分布 $r(x^{(0)})$ 既可以被视为对扩散过程中每一步的微小扰动，也常常能够精确地融入每一步扩散操作中。后续章节将详细阐述如何在扩散概率模型的框架下实现分布相乘。&lt;/p&gt;
+&lt;h4 id=&#34;修改后的边际分布&#34;&gt;修改后的边际分布
+&lt;/h4&gt;&lt;p&gt;首先，为了计算 $\tilde{p}(x^{(0)})$，我们将每个中间分布乘以一个对应的函数 $r(x^{(t)})$。我们使用波浪号（tilde）表示该分布或马尔可夫转移属于一条经过此类修改的轨迹。$\tilde{p}(x^{(0\cdots T)})$ 是修改后的反向轨迹，它从分布 $\tilde{p}(x^{(T)}) = \frac{1}{\tilde{Z}_T} p(x^{(T)}) r(x^{(T)})$ 开始，并通过一系列修改后的中间分布进行传递：&lt;/p&gt;
+$$
+\tilde{p}\left(x^{(t)}\right) = \frac{1}{\tilde{Z}_t} p\left(x^{(t)}\right) r\left(x^{(t)}\right), \tag{16}
+$$&lt;p&gt;其中 $\tilde{Z}_t$ 是第 $t$ 个中间分布的归一化常数。&lt;/p&gt;
+&lt;h4 id=&#34;修改后的扩散步骤&#34;&gt;修改后的扩散步骤
+&lt;/h4&gt;&lt;p&gt;逆扩散过程的马尔可夫核 $p(x^{(t)} \mid x^{(t+1)})$ 满足平衡条件：&lt;/p&gt;
+$$
+p(x^{(t)}) = \int dx^{(t+1)} \, p(x^{(t)} \mid x^{(t+1)}) \, p(x^{(t+1)}). \tag{17}
+$$&lt;p&gt;
+我们希望扰动的马尔可夫核 $\tilde{p}(x^{(t)} \mid x^{(t+1)})$ 满足扰动分布的平衡条件，&lt;/p&gt;
+$$
+\tilde{p}(x^{(t)}) = \int dx^{(t+1)} \, \tilde{p}(x^{(t)} \mid x^{(t+1)}) \, \tilde{p}(x^{(t+1)}), \tag{18}
+$$$$
+\frac{p(x^{(t)}) \, r(x^{(t)})}{\tilde{Z}_t} = \int dx^{(t+1)} \, \frac{\tilde{p}(x^{(t)} \mid x^{(t+1)}) \, p(x^{t+1}) \, r(x^{(t+1)})}{\tilde{Z}_{t+1}}, \tag{19}
+$$$$
+p(x^{(t)}) = \int dx^{(t+1)} \, \tilde{p}(x^{(t)} \mid x^{(t+1)}) \, \frac{\tilde{Z}_t \, r(x^{(t+1)})}{\tilde{Z}_{t+1} \, r(x^{(t)})} \, p(x^{(t+1)}). \tag{20}
+$$&lt;p&gt;若满足&lt;/p&gt;
+$$
+\tilde{p}\left(x^{(t)} \mid x^{(t+1)}\right) = p\left(x^{(t)} \mid x^{(t+1)}\right) \frac{\tilde{Z}_{t+1} r\left(x^{(t)}\right)}{\tilde{Z}_t r\left(x^{(t+1)}\right)}. \tag{21}
+$$&lt;p&gt;则方程 (20) 成立。&lt;/p&gt;
+&lt;p&gt;方程 (21) 可能不对应于一个归一化的概率分布，因此我们选择 $\tilde{p}(x^{(t)} \mid x^{(t+1)})$ 为相应的归一化分布：&lt;/p&gt;
+$$
+\tilde{p}\left(x^{(t)} \mid x^{(t+1)}\right) = \frac{1}{\tilde{Z}_t\left(x^{(t+1)}\right)} p\left(x^{(t)} \mid x^{(t+1)}\right) r\left(x^{(t)}\right), \tag{22}
+$$&lt;p&gt;其中 $\tilde{Z}_t(x^{(t+1)})$ 是归一化常数。&lt;/p&gt;
+&lt;p&gt;对于高斯分布，由于其方差较小，每一步扩散通常相对于 $r(x^{(t)})$ 具有非常尖锐的峰值。这意味着 $\frac{r(x^{(t)})}{r(x^{(t+1)})}$ 可视为对 $p(x^{(t)} \mid x^{(t+1)})$ 的微小扰动。对高斯分布的微小扰动仅影响其均值，而不会改变归一化常数，因此在此情况下方程 (21) 与 (22) 是等价的（见附录 C）。&lt;/p&gt;
+&lt;h4 id=&#34;应用-rxt&#34;&gt;应用 $r(x^{(t)})$
+&lt;/h4&gt;&lt;p&gt;若 $r(x^{(t)})$ 足够平滑，则可将其视为对反向扩散核 $p(x^{(t)} \mid x^{(t+1)})$ 的微小扰动。在此情况下，$\tilde{p}(x^{(t)} \mid x^{(t+1)})$ 将具有与 $p(x^{(t)} \mid x^{(t+1)})$ 相同的函数形式，但对于高斯核而言其均值将被扰动，而对于二项核而言其翻转率将被扰动。扰动后的扩散核见表 App.1，并在附录 C 中针对高斯核进行了推导。&lt;/p&gt;
+&lt;p&gt;若 $r(x^{(t)})$ 可以与高斯（或二项）分布以闭式形式相乘，则它可以直接与反向扩散核 $p(x^{(t)} \mid x^{(t+1)})$ 以闭式形式相乘。这种情况适用于 $r(x^{(t)})$ 由某些坐标子集的 delta 函数构成的情形，例如图 5 中的图像修复（inpainting）示例。&lt;/p&gt;
+&lt;h4 id=&#34;选择-rxt&#34;&gt;选择 $r(x^{(t)})$
+&lt;/h4&gt;&lt;p&gt;通常，$r(x^{(t)})$ 应当在整个轨迹过程中&lt;strong&gt;缓慢变化&lt;/strong&gt;。在本文的实验中，我们选择其为常数，&lt;/p&gt;
+$$
+r\left(x^{(t)}\right) = r\left(x^{(0)}\right). \tag{23}
+$$&lt;p&gt;
+另一种便捷的选择是 $r(x^{(t)}) = r(x^{(0)})^{\frac{T-t}{T}}$。在此第二种选择下，$r(x^{(t)})$ 对反向轨迹的起始分布没有贡献。这保证了从 $\tilde{p}(x^{(T)})$ 中抽取反向轨迹的初始样本仍然简单直接。&lt;/p&gt;
+&lt;h3 id=&#34;反向过程的熵&#34;&gt;反向过程的熵
+&lt;/h3&gt;&lt;p&gt;由于前向过程已知，我们可以推导反向轨迹中每一步条件熵的上下界，从而得到对数似然的上下界，公式 24：&lt;/p&gt;
+$$
+H_q\left(X^{(t)} \mid X^{(t-1)}\right) + H_q\left(X^{(t-1)} \mid X^{(0)}\right) - H_q\left(X^{(t)} \mid X^{(0)}\right) \leq H_q\left(X^{(t-1)} \mid X^{(t)}\right) \leq H_q\left(X^{(t)} \mid X^{(t-1)}\right), 
+$$&lt;p&gt;其中上下界仅依赖于 $q(x^{(1 \cdots T)} \mid x^{(0)})$，并且可以解析计算。推导过程见附录 A。&lt;/p&gt;
+&lt;h3 id=&#34;实验&#34;&gt;实验
+&lt;/h3&gt;&lt;p&gt;使用的是 Theano 库，现在已淘汰，学术上更多的用 pytorch，看代码时能看懂思路就行。&lt;/p&gt;
+&lt;h3 id=&#34;总结&#34;&gt;总结
+&lt;/h3&gt;&lt;p&gt;我们提出了一种新颖的概率分布建模算法，该算法支持精确采样与概率评估，并在多种玩具数据集与真实数据集（包括具有挑战性的自然图像数据集）上验证了其有效性。在所有实验中，我们均采用相似的基础算法，表明该方法能够准确建模广泛多样的分布形态。&lt;/p&gt;
+&lt;p&gt;现有大多数密度估计技术为保持计算可行性与效率，往往不得不牺牲建模能力，且采样或概率评估的计算成本通常极高。本算法的核心在于&lt;strong&gt;估计一个马尔可夫扩散链的逆过程&lt;/strong&gt;——该扩散链将数据映射至噪声分布。随着扩散步数的增加，每一步的逆分布逐渐变得简单且易于估计。最终得到的算法兼具以下优势：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;能够拟合任意数据分布（高建模灵活性）&lt;/li&gt;
+&lt;li&gt;训练过程可处理（tractable）&lt;/li&gt;
+&lt;li&gt;支持精确采样与概率评估&lt;/li&gt;
+&lt;li&gt;便于对条件分布与后验分布进行直接操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这一设计在建模能力与计算效率之间实现了前所未有的平衡。&lt;/p&gt;
+&lt;h3 id=&#34;附录&#34;&gt;附录
+&lt;/h3&gt;&lt;h4 id=&#34;a-条件熵边界推导&#34;&gt;A 条件熵边界推导
+&lt;/h4&gt;&lt;p&gt;反向轨迹中一步的条件熵 $H_q(X^{(t−1)}∣X^{(t)})$ 为
+&lt;/p&gt;
+$$
+H_q\left(X^{(t-1)}, X^{(t)}\right) = H_q\left(X^{(t)}, X^{(t-1)}\right) \tag{25}
+$$$$
+H_q\left(X^{(t-1)} \mid X^{(t)}\right) + H_q\left(X^{(t)}\right) = H_q\left(X^{(t)} \mid X^{(t-1)}\right) + H_q\left(X^{(t-1)}\right) \tag{26}
+$$$$
+H_q\left(X^{(t-1)} \mid X^{(t)}\right) = H_q\left(X^{(t)} \mid X^{(t-1)}\right) + H_q\left(X^{(t-1)}\right) - H_q\left(X^{(t)}\right) \tag{27}
+$$&lt;blockquote&gt;
+&lt;p&gt;公式 25 ：联合熵的对称性&lt;/p&gt;
+&lt;p&gt;公式 26 ：条件熵之间的关系&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;通过观察 $\pi(y)$ 是最大熵分布，可以构建熵变化的上界。这一结论对二项分布无条件成立，对高斯分布的情形则要求训练数据的方差为 1。对于高斯分布的情况，因此需要将训练数据缩放到单位范数以保证下述等式成立。但不需要进行白化处理。该上界推导如下，
+&lt;/p&gt;
+$$
+H_q\left(X^{(t)}\right) \geq H_q\left(X^{(t-1)}\right) \tag{28}
+$$$$
+H_q\left(X^{(t-1)}\right) - H_q\left(X^{(t)}\right) \leq 0 \tag{29}
+$$$$
+H_q\left(X^{(t-1)} \mid X^{(t)}\right) \leq H_q\left(X^{(t)} \mid X^{(t-1)}\right). \tag{30}
+$$&lt;blockquote&gt;
+&lt;p&gt;公式 28 ：随着扩散步数增加，数据分布的熵单调非减&lt;/p&gt;
+&lt;p&gt;公式 30 ：将 27 代入 29 得到，表明了反向过程的条件熵不超过前向过程的条件熵，即&lt;strong&gt;给出了反向过程条件熵的紧致上界&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;通过观察马尔可夫链中的额外步骤不会增加关于链中初始状态的可用信息，因此不会降低初始状态的条件熵，可以建立熵差的下界，
+&lt;/p&gt;
+$$
+H_q\left(X^{(0)} \mid X^{(t)}\right) \geq H_q\left(X^{(0)} \mid X^{(t-1)}\right) \tag{31}
+$$$$
+H_q\left(X^{(t-1)}\right) - H_q\left(X^{(t)}\right) \geq H_q\left(X^{(0)} \mid X^{(t-1)}\right) + H_q\left(X^{(t-1)}\right) - H_q\left(X^{(0)} \mid X^{(t)}\right) - H_q\left(X^{(t)}\right) \tag{32}
+$$$$
+H_q\left(X^{(t-1)}\right) - H_q\left(X^{(t)}\right) \geq H_q\left(X^{(0)}, X^{(t-1)}\right) - H_q\left(X^{(0)}, X^{(t)}\right) \tag{33}
+$$$$
+H_q\left(X^{(t-1)}\right) - H_q\left(X^{(t)}\right) \geq H_q\left(X^{(t-1)} \mid X^{(0)}\right) - H_q\left(X^{(t)} \mid X^{(0)}\right) \tag{34}
+$$$$
+H_q\left(X^{(t-1)} \mid X^{(t)}\right) \geq H_q\left(X^{(t)} \mid X^{(t-1)}\right) + H_q\left(X^{(t-1)} \mid X^{(0)}\right) - H_q\left(X^{(t)} \mid X^{(0)}\right). \tag{35}
+$$&lt;blockquote&gt;
+&lt;p&gt;公式 31 ：随着扩散步数增加，关于初始状态 $X^{(0)}$ 的条件熵单调非减&lt;/p&gt;
+&lt;p&gt;公式 32-35 ：熵差下界的推导，得到单步条件熵下界&lt;/p&gt;
+&lt;p&gt;公式 35 ：将 27 代入 34 可得&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;结合上述不等式，我们可以得到&lt;strong&gt;单步条件熵的紧致边界&lt;/strong&gt;
+&lt;/p&gt;
+$$
+H_q\left(X^{(t)} \mid X^{(t-1)}\right) \geq H_q\left(X^{(t-1)} \mid X^{(t)}\right) \geq H_q\left(X^{(t)} \mid X^{(t-1)}\right) + H_q\left(X^{(t-1)} \mid X^{(0)}\right) - H_q\left(X^{(t)} \mid X^{(0)}\right). \tag{36}
+$$&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;仅依赖前向轨迹&lt;/strong&gt;：上下界均只依赖于已知的前向扩散过程 $q(x^{(1⋯T)}∣x^{(0)})$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解析可计算&lt;/strong&gt;：无需蒙特卡洛采样，可直接通过概率分布的解析形式计算&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;紧致性&lt;/strong&gt;：在准静态极限下（$\beta \rightarrow0$），上下界收敛，实现精确计算&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;b-对数似然下界&#34;&gt;B. 对数似然下界
+&lt;/h4&gt;&lt;p&gt;对数似然的下界为&lt;/p&gt;
+$$
+L \geq K \tag{37}
+$$$$
+K = \int dx^{(0 \cdots T)} q\left(x^{(0 \cdots T)}\right) \log \left[ p\left(x^{(T)}\right) \prod_{t=1}^T \frac{p\left(x^{(t-1)} \mid x^{(t)}\right)}{q\left(x^{(t)} \mid x^{(t-1)}\right)} \right] \tag{38}
+$$&lt;blockquote&gt;
+&lt;p&gt;这里对应正文公式 （11）（12）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;b1-pxt-的熵&#34;&gt;B.1. $p(X^{(T)})$ 的熵
+&lt;/h4&gt;&lt;p&gt;我们可以分离出 $p(X^{(T)})$ 的贡献，并将其重写为熵，
+&lt;/p&gt;
+$$
+K = \int dx^{(0 \cdots T)} \, q\left(x^{(0 \cdots T)}\right) \sum_{t=1}^T \log \left[ \frac{p\left(x^{(t-1)} \mid x^{(t)}\right)}{q\left(x^{(t)} \mid x^{(t-1)}\right)} \right] + \int dx^{(T)} \, q\left(x^{(T)}\right) \log p\left(x^{(T)}\right) \tag{40}
+$$$$
+= \int dx^{(0\cdots T)} q\left(x^{(0\cdots T)}\right) \sum_{t=1}^T \log \left[ \frac{p\left(x^{(t-1)} \mid x^{(t)}\right)}{q\left(x^{(t)} \mid x^{(t-1)}\right)} \right] + \int dx^{(T)} q\left(x^{(T)}\right) \log \pi\left(x^{(T)}\right) \tag{41}
+$$&lt;p&gt;根据设计（选择或规范化了核与参数，使得每一步的二阶矩保持与 $\pi$ 相同），相对于 $\pi(x^{(t)})$ 的交叉熵在我们的扩散核下是常数，并且等于 $p(x^{(T)})$ 的熵。&lt;/p&gt;
+&lt;p&gt;因此，&lt;/p&gt;
+$$
+K = \sum_{t=1}^T \int dx^{(0\cdots T)} q\left(x^{(0\cdots T)}\right) \log \left[ \frac{p\left(x^{(t-1)} \mid x^{(t)}\right)}{q\left(x^{(t)} \mid x^{(t-1)}\right)} \right] - H_q\left(X^{(T)}\right). \tag{43}
+$$&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;最大熵性质&lt;/strong&gt;：在给定方差的约束下，高斯分布具有&lt;strong&gt;最大熵&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;交叉熵恒定&lt;/strong&gt;：若 $q(x^{(t)})$ 与 $\pi (x^{(t)})$ 具有&lt;strong&gt;相同的二阶矩&lt;/strong&gt;（方差），则：&lt;/li&gt;
+&lt;/ul&gt;
+$$
+&gt; -\int q\left(x^{(t)}\right) \log \pi\left(x^{(t)}\right) \, dx^{(t)} 
+&gt; = -\int \pi\left(x^{(t)}\right) \log \pi\left(x^{(t)}\right) \, dx^{(t)} 
+&gt; = H(\pi)
+&gt; $$&lt;p&gt;即：任何具有单位方差的分布与标准高斯 $\pi$ 的交叉熵都等于 $\pi$ 的熵&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;特别地&lt;/strong&gt;：当 $t=T$ 时，$q(x^{(T)})=\pi (x^{(T)})$，此时交叉熵退化为 $\pi$ 的熵：&lt;/li&gt;
+&lt;/ul&gt;
+$$
+&gt; \int q\left(x^{(T)}\right) \log \pi\left(x^{(T)}\right) \, dx^{(T)} 
+&gt; = \int \pi\left(x^{(T)}\right) \log \pi\left(x^{(T)}\right) \, dx^{(T)} 
+&gt; = -H(\pi) = -H_p\left(X^{(T)}\right)
+&gt; $$&lt;p&gt;只要 $q(x^{(t)})$ 与 $\pi (x^{(t)})$ 具有相同的二阶矩，交叉熵即恒等于 $\pi$ 的熵，与 $q$ 的具体形式无关。这是扩散模型设计中利用高斯分布最大熵性质的关键技巧。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;核心推导&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设目标分布为标准高斯 $\pi(x)=N(x;0,I)$，其概率密度为：
+&lt;/p&gt;
+$$
+&gt; \pi(x) = (2\pi)^{-d/2} \exp\left(-\frac{1}{2}x^\top x\right)
+&gt; $$&lt;p&gt;
+对数形式为：
+&lt;/p&gt;
+$$
+&gt; \log \pi(x) = -\frac{d}{2} \log(2\pi) - \frac{1}{2}x^\top x
+&gt; $$&lt;p&gt;
+&lt;strong&gt;关键观察&lt;/strong&gt;：$log⁡\pi(x)$ 仅包含常数项和 $x^⊤x$（即二阶矩）。&lt;/p&gt;
+&lt;p&gt;交叉熵定义为：
+&lt;/p&gt;
+$$
+&gt; H(q, \pi) = -\int q(x) \log \pi(x) \, dx
+&gt; $$&lt;p&gt;
+所以：
+&lt;/p&gt;
+$$
+&gt; \begin{aligned}
+&gt; H(q, \pi) &amp;= -\int q(x) \left[-\frac{d}{2} \log(2\pi) - \frac{1}{2}x^\top x\right] dx \\
+&gt; &amp;= \frac{d}{2} \log(2\pi) \underbrace{\int q(x)dx}_{=1} + \frac{1}{2} \int q(x)x^\top x \, dx \\
+&gt; &amp;= \frac{d}{2} \log(2\pi) + \frac{1}{2} \mathbb{E}_q[x^\top x]
+&gt; \end{aligned}
+&gt; $$&lt;p&gt;
+同理，$\pi$ 的熵为：
+&lt;/p&gt;
+$$
+&gt; H(\pi) = \frac{d}{2} \log(2\pi) + \frac{1}{2} \mathbb{E}_{\pi}[x^T x]
+&gt; $$&lt;p&gt;
+因此，当 $E_q[x^⊤x]=E_{\pi}[x^⊤x]$ 时：交叉熵退化为熵&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;b2-在-t0-时移除边缘效应&#34;&gt;B.2. 在 t=0 时移除边缘效应
+&lt;/h4&gt;&lt;p&gt;为了避免边缘效应，我们将反向轨迹的最后一步设置为与对应的前向扩散步骤相同，
+&lt;/p&gt;
+$$
+p\left(x^{(0)} \mid x^{(1)}\right) = q\left(x^{(1)} \mid x^{(0)}\right) \frac{\pi\left(x^{(0)}\right)}{\pi\left(x^{(1)}\right)} = T_{\pi}\left(x^{(0)} \mid x^{(1)}; \beta_1\right). \tag{44}
+$$&lt;p&gt;
+然后我们利用这种等价性来移除求和中第一步的贡献，
+$$
+K =  \sum_{t=2}^{T} \int dx^{(0\cdots T)} q\left(x^{(0\cdots T)}\right) \log \left[\frac{p\left(x^{(t-1)} \mid x^{(t)}\right)}{q\left(x^{(t)} \mid x^{(t-1)}\right)}\right]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;\int dx^{(0)} dx^{(1)} q\left(x^{(0)}, x^{(1)}\right) \log \left[\frac{q\left(x^{(1)} \mid x^{(0)}\right) \pi\left(x^{(0)}\right)}{q\left(x^{(1)} \mid x^{(0)}\right) \pi\left(x^{(1)}\right)}\right] - H_p\left(X^{(T)}\right) \tag{45}
+$$&lt;/li&gt;
+&lt;/ul&gt;
+$$
+K = \sum_{t=2}^{T} \int dx^{(0\cdots T)} q\left(x^{(0\cdots T)}\right) \log \left[\frac{p\left(x^{(t-1)} \mid x^{(t)}\right)}{q\left(x^{(t)} \mid x^{(t-1)}\right)}\right] - H_p\left(X^{(T)}\right), \tag{46}
+$$&lt;p&gt;其中我们再次利用了这样一个事实：根据设计，$−∫dx^{(t)}q(x^{(t)})log⁡\pi(x^{(t)})=H_p(X^{(T)})$ 对所有 $t$ 都是一个常数。&lt;/p&gt;
+&lt;h4 id=&#34;b3-重写后验分布-qxt1x0&#34;&gt;B.3. 重写后验分布 q(x(t−1)∣x(0))
+&lt;/h4&gt;&lt;p&gt;由于前向轨迹是一个马尔可夫过程，
+&lt;/p&gt;
+$$
+K = \sum_{t=2}^{T} \int dx^{(0 \cdots T)} \, q\left(x^{(0 \cdots T)}\right) \log \left[ \frac{p\left(x^{(t-1)} \mid x^{(t)}\right)}{q\left(x^{(t)} \mid x^{(t-1)}, x^{(0)}\right)} \right] - H_p\left(X^{(T)}\right). \tag{47}
+$$&lt;p&gt;
+利用贝叶斯规则将条件概率重写为后验分布形式，
+&lt;/p&gt;
+$$
+K = \sum_{t=2}^{T} \int dx^{(0 \cdots T)} \, q\left(x^{(0 \cdots T)}\right) \log \left[ \frac{p\left(x^{(t-1)} \mid x^{(t)}\right)}{q\left(x^{(t)} \mid x^{(t-1)}, x^{(0)}\right)} \cdot \frac{q\left(x^{(t-1)} \mid x^{(0)}\right)}{q\left(x^{(t)} \mid x^{(0)}\right)} \right] - H_p\left(X^{(T)}\right). \tag{48}
+$$&lt;h4 id=&#34;b4-用kl散度和熵重写&#34;&gt;B.4. 用KL散度和熵重写
+&lt;/h4&gt;&lt;p&gt;然后我们认识到一些项是条件熵，
+&lt;/p&gt;
+$$
+K = \sum_{t=2}^{T} \int dx^{(0 \cdots T)} \, q\left(x^{(0 \cdots T)}\right) \log \left[ \frac{p\left(x^{(t-1)} \mid x^{(t)}\right)}{q\left(x^{(t)} \mid x^{(t-1)}, x^{(0)}\right)} \right] + \sum_{t=2}^{T} \left[ H_q\left(X^{(t)} \mid X^{(0)}\right) - H_q\left(X^{(t-1)} \mid X^{(0)}\right) \right] - H_p\left(X^{(T)}\right) \tag{49}
+$$$$
+K = \sum_{t=2}^{T} \int dx^{(0 \cdots T)} \, q\left(x^{(0 \cdots T)}\right) \log \left[ \frac{p\left(x^{(t-1)} \mid x^{(t)}\right)}{q\left(x^{(t)} \mid x^{(t-1)}, x^{(0)}\right)} \right] + H_q\left(X^{(T)} \mid X^{(0)}\right) - H_q\left(X^{(1)} \mid X^{(0)}\right) - H_p\left(X^{(T)}\right) \tag{50}
+$$&lt;blockquote&gt;
+&lt;p&gt;通过**识别条件熵（公式 49）&lt;strong&gt;并利用&lt;/strong&gt;望远镜级数（公式 50）**的特性，将复杂的求和项简化为仅依赖于初始和最终状态的表达式。这是扩散模型能够高效计算对数似然下界的关键数学技巧。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;最后，我们将概率分布的对数比转换为KL散度，
+&lt;/p&gt;
+$$
+K = -\sum_{t=2}^{T} \int dx^{(0)} dx^{(t)} q\left(x^{(0)}, x^{(t)}\right) D_{KL}\left(q\left(x^{(t-1)} \mid x^{(t)}, x^{(0)}\right) \parallel p\left(x^{(t-1)} \mid x^{(t)}\right)\right) + H_q\left(X^{(T)} \mid X^{(0)}\right) - H_q\left(X^{(1)} \mid X^{(0)}\right) - H_p\left(X^{(T)}\right). \tag{51}
+$$&lt;p&gt;
+注意：熵项可以解析计算，且给定 $x^{(0)}$ 和 $x^{(t)}$ 时，KL 散度也可以解析计算。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;该公式将复杂的概率计算问题转化为&lt;strong&gt;可解析计算的KL散度&lt;/strong&gt;和&lt;strong&gt;熵项&lt;/strong&gt;。由于扩散过程的前向轨迹已知，所有这些项都可以&lt;strong&gt;精确计算&lt;/strong&gt;，无需蒙特卡洛采样。这是扩散模型区别于其他生成模型（如GAN、VAE）的核心优势。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;c-扰动高斯转移&#34;&gt;C. 扰动高斯转移
+&lt;/h4&gt;&lt;p&gt;我们希望计算 $\tilde{p}(x^{(t−1)}∣x^{(t)})$。为简化符号表示，令 $\mu=f_{\mu}(x^{(t)},t)$，$\Sigma =f_{\Sigma}(x^{(t)},t)$，且 $y=x(t−1)$。使用此符号表示，
+&lt;/p&gt;
+$$
+\tilde{p}(y \mid x^{(t)}) \propto p(y \mid x^{(t)}) r(y) 
+= \mathcal{N}(y; \mu, \Sigma) r(y). \tag{53}
+$$&lt;p&gt;
+我们可以将此重写为能量函数的形式，其中 $E_r(y)=−log⁡r(y)$，
+&lt;/p&gt;
+$$
+\tilde{p}(y \mid x^{(t)}) \propto \exp\left[-E(y)\right] \tag{54}
+$$$$
+E(y) = \frac{1}{2}(y - \mu)^T \Sigma^{-1} (y - \mu) + E_r(y). \tag{55}
+$$&lt;blockquote&gt;
+&lt;p&gt;公式 54 ：扰动后的分布可表示为能量函数 $E(y)$ 的指数形式；能量越低的区域，概率密度越高（玻尔兹曼分布原理）&lt;/p&gt;
+&lt;p&gt;公式 55 ：第一项表示原始高斯分布的能量项（二次型）；第二项表示扰动函数 $r(y)$ 对应的能量项&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果 $E_r(y)$ 相对于 $\frac{1}{2}(y−μ)^T\Sigma^{−1}(y−μ)$ 是平滑的，那么我们可以使用其在 $\mu$ 处的泰勒展开来近似它。一个充分条件是 $E_r(y)$ 的 Hessian 矩阵的特征值处处比 $\Sigma^{-1}$ 的特征值的模小得多。然后我们有
+&lt;/p&gt;
+$$
+E_r(y) \approx E_r(\mu) + (y-\mu)g \tag{56}
+$$&lt;p&gt;
+其中 $g=\frac{\partial E_r(y′)}{\partial y′} ∣_{y′=μ}$。将此代入完整能量函数，
+$$
+\begin{aligned}
+E(y)  &amp;amp;\approx  \frac{1}{2}(y - \mu)^T \Sigma^{-1} (y - \mu) + (y - \mu)^T \mathbf{g} + \text{constant} \&lt;/p&gt;
+&lt;p&gt;&amp;amp;= \frac{1}{2} y^T \Sigma^{-1} y - \frac{1}{2} y^T \Sigma^{-1} \mu - \frac{1}{2} \mu^T \Sigma^{-1} y + \frac{1}{2} y^T \Sigma^{-1} \Sigma \mathbf{g} + \frac{1}{2} \bf{g}^T \Sigma \Sigma^{-1} y + \text{constant} \&lt;/p&gt;
+&lt;p&gt;&amp;amp;= \frac{1}{2} (y - \mu + \Sigma \mathbf{g})^T \Sigma^{-1} (y - \mu + \Sigma \mathbf{g}) + \text{constant}.
+\end{aligned}
+&lt;/p&gt;
+$$
+这对应于一个高斯分布，
+$$&lt;p&gt;
+\begin{equation}
+\tilde{p}(y \mid x^{(t)}) \approx \mathcal{N}(y; \mu - \Sigma g, \Sigma). \tag{60}
+\end{equation}
+&lt;/p&gt;
+$$
+将结果代回原始形式，得到
+$$&lt;p&gt;
+\tilde{p}\left(x^{(t-1)} \mid x^{(t)}\right) \approx \mathcal{N}\left(x^{(t-1)}; \mathbf{f}&lt;em&gt;{\mu}\left(x^{(t)}, t\right) + \mathbf{f}&lt;/em&gt;{\Sigma}\left(x^{(t)}, t\right) \left.\frac{\partial \log r\left(x^{(t-1)&amp;rsquo;}\right)}{\partial x^{(t-1)&amp;rsquo;}}\right|&lt;em&gt;{x^{(t-1)&amp;rsquo;} = \mathbf{f}&lt;/em&gt;{\mu}\left(x^{(t)}, t\right)}, \mathbf{f}_{\Sigma}\left(x^{(t)}, t\right)\right). \tag{61}
+$$&lt;/p&gt;
+&lt;h4 id=&#34;实验细节&#34;&gt;实验细节
+&lt;/h4&gt;&lt;p&gt;用的卷积神经网络，数据集不再进行介绍。&lt;/p&gt;
 </description>
         </item>
         <item>
