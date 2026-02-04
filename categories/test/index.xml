@@ -12,7 +12,7 @@
         <pubDate>Sun, 25 Jan 2026 16:51:02 +0800</pubDate>
         
         <guid>https://ruheyun.github.io/p/myfirstblog/</guid>
-        <description>&lt;img src="https://ruheyun.github.io/p/myfirstblog/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post MyFirstBlog" /&gt;&lt;p&gt;文章的前言部分，可有可无。&lt;/p&gt;
+        <description>&lt;p&gt;文章的前言部分，可有可无。&lt;/p&gt;
 &lt;h1 id=&#34;hello-hugo&#34;&gt;Hello Hugo!
 &lt;/h1&gt;&lt;p&gt;测试github自动部署功能&lt;/p&gt;
 &lt;h2 id=&#34;名言&#34;&gt;名言
@@ -34,7 +34,7 @@
         <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
         
         <guid>https://ruheyun.github.io/p/placeholder-text/</guid>
-        <description>&lt;img src="https://ruheyun.github.io/p/placeholder-text/matt-le-SJSpo9hQf7s-unsplash.jpg" alt="Featured image of post Placeholder Text" /&gt;&lt;p&gt;&lt;code&gt;这段文本是 **Lorem Ipsum 风格的占位文本**（伪拉丁文），常用于排版设计和内容模板中作为示例文字，本身**没有实际语义**。&lt;/code&gt;好像没什么用，暂不翻译&lt;/p&gt;
+        <description>&lt;p&gt;&lt;code&gt;这段文本是 **Lorem Ipsum 风格的占位文本**（伪拉丁文），常用于排版设计和内容模板中作为示例文字，本身**没有实际语义**。&lt;/code&gt;好像没什么用，暂不翻译&lt;/p&gt;
 &lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;
 &lt;p&gt;Redit teque digerit hominumque toris verebor lumina non cervice subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc caluere tempus inhospita parcite confusaque translucet patri vestro qui optatis lumine cognoscere flos nubis! Fronde ipsamque patulos Dryopen deorum.&lt;/p&gt;
 &lt;ol&gt;
@@ -66,7 +66,7 @@
         <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
         
         <guid>https://ruheyun.github.io/p/emoji-support/</guid>
-        <description>&lt;img src="https://ruheyun.github.io/p/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg" alt="Featured image of post Emoji 支持" /&gt;&lt;p&gt;这篇文章是&lt;code&gt;Hugo默认生成的文件，翻译版&lt;/code&gt;。&lt;/p&gt;
+        <description>&lt;p&gt;这篇文章是&lt;code&gt;Hugo默认生成的文件，翻译版&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;在 Hugo 项目中，可通过多种方式启用 Emoji 支持。&lt;/p&gt;
 &lt;p&gt;可在模板或内联短代码（&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/templates/shortcode-templates/#inline-shortcodes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Inline Shortcodes&lt;/a&gt;）中直接调用 &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/functions/emojify/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
