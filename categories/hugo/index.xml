@@ -7,12 +7,79 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright><atom:link href="https://ruheyun.github.io/categories/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>PostTemplate</title>
+        <link>https://ruheyun.github.io/p/post-template/</link>
+        <pubDate>Tue, 27 Jan 2026 11:32:30 +0800</pubDate>
+        
+        <guid>https://ruheyun.github.io/p/post-template/</guid>
+        <description>&lt;p&gt;关于Hugo的Stack渲染Markdown语言的笔记&lt;/p&gt;
+&lt;h1 id=&#34;文章模版&#34;&gt;文章模版
+&lt;/h1&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;+++
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;date = &amp;#39;2026-01-27&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;draft = true
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;title = &amp;#39;文章模版&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;author = &amp;#39;RuHeYun&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;description = &amp;#39;这是一个副标题&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;image = &amp;#39;helena-hertz-wWZzXlDpMog-unsplash.jpg&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;categories = [&amp;#39;Test&amp;#39;, &amp;#39;Hugo&amp;#39;,]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tags = [&amp;#39;Post&amp;#39;, &amp;#39;Template&amp;#39;,]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;slug = &amp;#39;post-template&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;math = true
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;toc = true
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;comments = true
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lastmod = &amp;#39;2026-01-28&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;+++
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;参数说明&#34;&gt;参数说明
+&lt;/h2&gt;&lt;p&gt;front matter参数使用的是toml格式&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;author&lt;/code&gt;：作者名&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;draft&lt;/code&gt;：草稿状态标识（true，false）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;title&lt;/code&gt;：文章标题，显示在文章顶部和浏览器标签页&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;description&lt;/code&gt;：文章描述，副标题&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;date&lt;/code&gt;：文章发布日期&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;slug&lt;/code&gt;：自定义文章的URL路径，更改浏览器标签页显示&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;image&lt;/code&gt;：封面图片&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;categories&lt;/code&gt;：文章分类&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;tags&lt;/code&gt;：文章标签&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;lastmod&lt;/code&gt;：最后修改日期&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;math&lt;/code&gt;：数学公式支持（true，false）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;toc&lt;/code&gt;：目录显示（true，false）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;comments&lt;/code&gt;：是否开启评论区（true，false）&lt;/p&gt;
+&lt;h2 id=&#34;说明文档&#34;&gt;说明文档
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://stack.jimmycai.com/guide/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://stack.jimmycai.com/guide/&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;已经配置了自动更新最后更新时间功能，所以不用再显示定义&lt;code&gt;lastmod&lt;/code&gt;参数。&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
         <title>Hugo网站美化</title>
         <link>https://ruheyun.github.io/p/hugo-beautify/</link>
         <pubDate>Tue, 27 Jan 2026 11:01:58 +0800</pubDate>
         
         <guid>https://ruheyun.github.io/p/hugo-beautify/</guid>
-        <description>&lt;h1 id=&#34;网站美化&#34;&gt;网站美化
+        <description>&lt;img src="https://ruheyun.github.io/p/hugo-beautify/26_21.png" alt="Featured image of post Hugo网站美化" /&gt;&lt;h1 id=&#34;网站美化&#34;&gt;网站美化
 &lt;/h1&gt;&lt;h2 id=&#34;评论区配置&#34;&gt;评论区配置
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;giscus&lt;/code&gt;是利用&lt;code&gt;Github&lt;/code&gt;仓库的&lt;code&gt;Discussions&lt;/code&gt;来实现的，完全免费。&lt;/p&gt;
 &lt;h3 id=&#34;使用方法&#34;&gt;使用方法
@@ -976,7 +1043,7 @@
         <pubDate>Mon, 26 Jan 2026 12:31:44 +0800</pubDate>
         
         <guid>https://ruheyun.github.io/p/hugo-construction/</guid>
-        <description>&lt;p&gt;这篇文章主要是记录了使用&lt;code&gt;Hugo&lt;/code&gt;和&lt;code&gt;Stack&lt;/code&gt;搭建整个网站的过程，以及部署到&lt;code&gt;Github&lt;/code&gt;上，并编写了几个方便使用的&lt;code&gt;Bat&lt;/code&gt;脚本。&lt;/p&gt;
+        <description>&lt;img src="https://ruheyun.github.io/p/hugo-construction/hugo-logo-wide.svg" alt="Featured image of post Hugo网站搭建" /&gt;&lt;p&gt;这篇文章主要是记录了使用&lt;code&gt;Hugo&lt;/code&gt;和&lt;code&gt;Stack&lt;/code&gt;搭建整个网站的过程，以及部署到&lt;code&gt;Github&lt;/code&gt;上，并编写了几个方便使用的&lt;code&gt;Bat&lt;/code&gt;脚本。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/documentation/%3e&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Hugo说明文档&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://stack.jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;

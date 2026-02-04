@@ -10,7 +10,7 @@
 <meta property='og:description' content="第一次提出扩散模型的论文解读">
 <meta property='og:url' content='https://ruheyun.github.io/p/diffusion/'>
 <meta property='og:site_name' content='RuHeYun'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='ICML' /><meta property='article:tag' content='2015' /><meta property='article:tag' content='图像数据' /><meta property='article:published_time' content='2026-01-29T15:55:20&#43;08:00'/><meta property='article:modified_time' content='2026-02-03T23:28:02&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='ICML' /><meta property='article:tag' content='2015' /><meta property='article:tag' content='图像数据' /><meta property='article:published_time' content='2026-01-29T15:55:20&#43;08:00'/><meta property='article:modified_time' content='2026-02-04T15:03:02&#43;08:00'/>
 <meta name="twitter:title" content="Diffusion">
 <meta name="twitter:description" content="第一次提出扩散模型的论文解读">
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -247,13 +247,7 @@
                                 
                                     <option value="https://ruheyun.github.io/en/" >English</option>
                                 
-                                    <option value="https://ruheyun.github.io/ja/" >日本語</option>
-                                
                                     <option value="https://ruheyun.github.io/" selected>简体中文</option>
-                                
-                                    <option value="https://ruheyun.github.io/zh-tw/" >正體中文</option>
-                                
-                                    <option value="https://ruheyun.github.io/ar/" >عربي</option>
                                 
                             </select>
                         </li>
@@ -309,11 +303,6 @@
             <nav id="TableOfContents">
   <ol>
     <li><a href="#论文基本信息">论文基本信息</a></li>
-    <li><a href="#问题与动机">问题与动机</a></li>
-    <li><a href="#该论文方法">该论文方法</a></li>
-    <li><a href="#核心思想">核心思想</a></li>
-    <li><a href="#优势">优势</a></li>
-    <li><a href="#困惑点">困惑点</a></li>
     <li><a href="#论文翻译">论文翻译</a>
       <ol>
         <li><a href="#标题">标题</a></li>
@@ -436,38 +425,6 @@
 </h2><p><mark>论文名称</mark>：Deep Unsupervised Learning using Nonequilibrium Thermodynamics</p>
 <p><mark>出版期刊</mark>：ICML 2015</p>
 <p><mark>学校机构</mark>：Stanford University，University of California, Berkeley</p>
-<h2 id="问题与动机">问题与动机
-</h2><p>机器学习中的概率模型一直面临 “灵活性” vs “可处理性” (Flexibility vs. Tractability) 的权衡。</p>
-<p>简单模型 (如高斯分布): 易于计算（采样、求概率、推断），但无法捕捉复杂数据（如图像）的丰富结构。</p>
-<p>灵活模型 (如能量模型 $p(x) \varpropto \phi(x)$): 理论上可以拟合任意分布，但归一化常数 Z 难以计算，导致训练、采样、评估都极其困难（通常依赖昂贵的 MCMC)。</p>
-<h2 id="该论文方法">该论文方法
-</h2><p>提出一种新框架，同时实现高度灵活性和计算可处理性。</p>
-<p>快速学习复杂的深度生成模型。</p>
-<p>精确采样 (Exact Sampling)。</p>
-<p>廉价地评估数据点的概率 (Cheap Probability Evaluation)。</p>
-<p><strong>轻松计算后验概率（用于去噪、修复等任务）。</strong></p>
-<p><mark style="background-color: #00ffff;">关键思想：与其直接建模复杂的$p(x)$，不如建模一个过程&ndash;一个能将简单噪声变回数据的过程。</mark></p>
-<h2 id="核心思想">核心思想
-</h2><p>受物理启发的扩散过程</p>
-<p><mark style="background-color: #00ffff;">前向过程</mark> (Forward/Inference Process - q): 这是一个预定义的、固定的<strong>马尔可夫链</strong>。它从真实数据 $x(0) \sim q(x(0))$ 开始。通过 $T$ 步逐渐添加噪声（例如高斯噪声），最终将任何复杂的数据分布平滑地转化为一个简单的、易于处理的先验分布（例如标准高斯分布 $\pi(x(T)) = N(0,I)$)。</p>
-<blockquote>
-<p>目的： “破坏”数据中的结构，使其变得无序（像热力学中的熵增过程）。</p>
-<p><strong>关键点</strong>： 这个过程是已知的、可解析计算的。</p>
-</blockquote>
-<p><mark style="background-color: #00ffff;">反向过程</mark> (Reverse/Generative Process - p): 要学习的模型。它从简单的先验分布 $x(T) \sim p(x(T)) = \pi(x(T))$ 开始。通过 $T$ 步逐渐去除噪声，最终重构出数据分布 $p(x(0))$ 。</p>
-<blockquote>
-<p>目的： “恢复”数据中的结构，进行生成。</p>
-<p><strong>关键点</strong>： 每一步的转换 $p(x(t-1) \mid x(t))$ 由一个神经网络（如MLP或CNN）参数化，用于预测均值（和方差）。</p>
-</blockquote>
-<p><mark style="background-color: #00ffff;">非平衡态热力学 </mark>(Nonequilibrium Thermodynamics): 前向过程就像一个非平衡的“淬火”过程，系统从有序（数据）变为无序（噪声）。</p>
-<p><mark style="background-color: #00ffff;">准静态过程</mark> (Quasi-static Process): 如果 T 足够大（即每一步的噪声添加/移除非常微小），那么前向和反向过程的轨迹会变得几乎相同。这使得模型的训练和评估变得非常高效。</p>
-<h2 id="优势">优势
-</h2><p>灵活性：通过深度网络和长链条，可以建模极其复杂的分布。</p>
-<p>可处理性：采样（从后往前跑一遍）、概率评估（用重要性采样）、训练（优化下界）都是高效的。</p>
-<p><mark style="background-color: #00ffff;">后验推断</mark>：非常重要！由于模型是基于过程的，要计算后验 $p(x(0) \mid y) \propto p(x(0)) * r(x(0))$ （例如 r 是一个观测模型），只需要对反向过程的每一步进行微小的扰动即可。<strong>可以推出是对均值的扰动</strong>。</p>
-<h2 id="困惑点">困惑点
-</h2><p style="color: red;">为什么论文第二部分又称前向过程为 Inference Process？</p>
-<p>在这篇论文中，“inference” 指的是：给定一个真实数据样本 x(0) ，推断（或构造）它在整个扩散轨迹中对应的噪声版本序列 x(1),x(2),…,x(T) 。这里的 “inference” 不是指“从训练好的模型生成新样本”，而是指“为训练目的，从已知数据反推其在扩散链中的演化路径”。</p>
 <h2 id="论文翻译">论文翻译
 </h2><p>以下翻译结合了AI工具和我对论文的理解，在翻译的过程中会省略我认为不重要的部分，并不是全篇一字一句的翻译。并且可能翻译或理解有误。（此过程同时借助了<a class="link" href="https://chatgpt.com/"  target="_blank" rel="noopener"
     >ChatGPT</a>和<a class="link" href="https://chat.qwen.ai/"  target="_blank" rel="noopener"
@@ -583,6 +540,10 @@
 	
 ></p>
 <p>图1：在 2-d swiss roll data 上训练的建模框架。第一行展示了前向轨迹 $q(x^{(0:T)})$ 在各时间切片上的分布。数据分布（左）经历高斯扩散过程，逐步转化为单位协方差高斯分布（右）。第二行展示了训练所得反向轨迹 $p(x^{(0:T)})$ 对应的时间切片。单位协方差高斯分布（右）经过具有学习得到的均值与协方差函数的高斯扩散过程，逐步重构回原始数据分布（左）。第三行展示了同一反向扩散过程的漂移项（drift term）$f_\mu(x^{(t)}, t) - x^{(t)}$。</p>
+<blockquote>
+<p style="color: red;">为什么论文这里又称前向过程为 Inference Process？</p>
+<p>在这篇论文中，“inference” 指的是：给定一个真实数据样本 x(0) ，推断（或构造）它在整个扩散轨迹中对应的噪声版本序列 x(1),x(2),…,x(T) 。这里的 “inference” 不是指“从训练好的模型生成新样本”，而是指“为训练目的，从已知数据反推其在扩散链中的演化路径”。</p>
+</blockquote>
 <h4 id="前向轨迹">前向轨迹
 </h4><p>我们将数据分布记为 $q(x^{(0)})$。通过反复应用针对 $\pi(y)$ 的马尔可夫扩散核 $T_\pi(y \mid y'; \beta)$，数据分布被逐步转换为一个性质良好（解析可处理）的分布 $\pi(y)$，其中 $\beta$ 为扩散速率，
 </p>
@@ -1108,7 +1069,7 @@ $$<h4 id="实验细节">实验细节
 
 
         <span>
-            最后更新于 2026-02-03
+            最后更新于 2026-02-04
         </span>
 &nbsp;
         
@@ -1158,6 +1119,28 @@ $$<h4 id="实验细节">实验细节
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/ncsn/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">NCSN</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     

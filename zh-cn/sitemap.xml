@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://ruheyun.github.io/tags/2015/</loc>
-    <lastmod>2026-02-03T23:28:02+08:00</lastmod>
+    <loc>https://ruheyun.github.io/tags/2019/</loc>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/categories/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -14,36 +14,18 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="ja"
-                href="https://ruheyun.github.io/ja/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="https://ruheyun.github.io/zh-tw/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ar"
-                href="https://ruheyun.github.io/ar/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="zh-cn"
                 href="https://ruheyun.github.io/categories/"
                 />
   </url><url>
-    <loc>https://ruheyun.github.io/p/diffusion/</loc>
-    <lastmod>2026-02-03T23:28:02+08:00</lastmod>
-  </url><url>
-    <loc>https://ruheyun.github.io/tags/icml/</loc>
-    <lastmod>2026-02-03T23:28:02+08:00</lastmod>
+    <loc>https://ruheyun.github.io/p/ncsn/</loc>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/post/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/tags/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -51,60 +33,54 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="ja"
-                href="https://ruheyun.github.io/ja/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="https://ruheyun.github.io/zh-tw/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ar"
-                href="https://ruheyun.github.io/ar/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="zh-cn"
                 href="https://ruheyun.github.io/tags/"
                 />
   </url><url>
+    <loc>https://ruheyun.github.io/tags/2015/</loc>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
+  </url><url>
+    <loc>https://ruheyun.github.io/p/diffusion/</loc>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
+  </url><url>
+    <loc>https://ruheyun.github.io/tags/icml/</loc>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
+  </url><url>
     <loc>https://ruheyun.github.io/tags/%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE/</loc>
-    <lastmod>2026-02-03T23:28:02+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/p/post-template/</loc>
-    <lastmod>2026-01-29T15:18:47+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/tags/css/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/tags/giscus/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/tags/hugo/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/p/hugo-beautify/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/tags/js/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/tags/stack/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/tags/bat/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/tags/github/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/p/hugo-construction/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/tags/markdown/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/page/</loc>
     <lastmod>2026-01-28T19:58:49+08:00</lastmod>
@@ -113,16 +89,16 @@
     <lastmod>2026-01-28T15:20:33+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/tags/html/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/p/myfirstblog/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/tags/themes/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/p/markdown-syntax/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/logs/</loc>
     <lastmod>2026-01-28T19:58:49+08:00</lastmod>
@@ -134,32 +110,22 @@
     <lastmod>2026-02-04T14:34:07+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/p/placeholder-text/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ar"
-                href="https://ruheyun.github.io/ar/p/%D9%85%D8%AB%D8%A7%D9%84-%D9%86%D8%B5/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://ruheyun.github.io/p/placeholder-text/"
-                />
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/tags/tag-with-whitespaces/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/tags/text/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/p/math-typesetting/</loc>
     <lastmod>2026-01-29T15:18:47+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/tags/emoji/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/p/emoji-support/</loc>
-    <lastmod>2026-02-04T14:34:07+08:00</lastmod>
+    <lastmod>2026-02-04T15:03:02+08:00</lastmod>
   </url><url>
     <loc>https://ruheyun.github.io/</loc>
     <lastmod>2026-01-25T20:35:44+08:00</lastmod>
@@ -167,21 +133,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://ruheyun.github.io/en/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://ruheyun.github.io/ja/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="https://ruheyun.github.io/zh-tw/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ar"
-                href="https://ruheyun.github.io/ar/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -209,6 +160,16 @@
   </url><url>
     <loc>https://ruheyun.github.io/categories/test/</loc>
     <lastmod>2026-01-25T20:35:44+08:00</lastmod>
+  </url><url>
+    <loc>https://ruheyun.github.io/categories/%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9/</loc>
+  </url><url>
+    <loc>https://ruheyun.github.io/categories/%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9-%D9%85%D8%B9-%D9%81%D8%B1%D8%A7%D8%BA%D8%A7%D8%AA/</loc>
+  </url><url>
+    <loc>https://ruheyun.github.io/tags/%D9%85%D8%A7%D8%B1%D9%83%D8%AF%D8%A7%D9%88%D9%86/</loc>
+  </url><url>
+    <loc>https://ruheyun.github.io/tags/%D9%86%D8%B5/</loc>
+  </url><url>
+    <loc>https://ruheyun.github.io/tags/%D9%88%D8%B3%D9%85-%D9%85%D8%B9-%D9%81%D8%B1%D8%A7%D8%BA%D8%A7%D8%AA/</loc>
   </url><url>
     <loc>https://ruheyun.github.io/search/</loc>
     <lastmod>2026-01-25T20:35:44+08:00</lastmod>
