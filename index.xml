@@ -2476,6 +2476,11 @@ $$&lt;h4 id=&#34;实验细节&#34;&gt;实验细节
   &lt;/thead&gt;
   &lt;tbody&gt;
       &lt;tr&gt;
+          &lt;td&gt;页脚添加字数统计&lt;/td&gt;
+          &lt;td&gt;2026-02-05&lt;/td&gt;
+          &lt;td&gt;页脚添加文章和字数统计，并更改了配置文件中对math的支持&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
           &lt;td&gt;浏览数统计&lt;/td&gt;
           &lt;td&gt;2026-01-28&lt;/td&gt;
           &lt;td&gt;页脚处添加浏览数，页面结尾添加单篇文章阅读数&lt;/td&gt;
