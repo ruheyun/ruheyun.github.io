@@ -7,13 +7,29 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Wed, 04 Feb 2026 15:03:02 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/2019/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 06 Feb 2026 17:55:51 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/2019/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>NCSN</title>
         <link>https://ruheyun.github.io/p/ncsn/</link>
         <pubDate>Wed, 04 Feb 2026 14:56:05 +0800</pubDate>
         
         <guid>https://ruheyun.github.io/p/ncsn/</guid>
-        <description>&lt;p&gt;预告：下一篇将要阅读的论文&lt;/p&gt;
+        <description>&lt;h1 id=&#34;扩散模型阅读笔记2&#34;&gt;扩散模型阅读笔记(2)
+&lt;/h1&gt;&lt;h2 id=&#34;论文基本信息&#34;&gt;论文基本信息
+&lt;/h2&gt;&lt;p&gt;&lt;mark&gt;论文名称&lt;/mark&gt;：Generative Modeling by Estimating Gradients of the Data Distribution&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;出版期刊&lt;/mark&gt;：NeurIPS 2019&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;学校机构&lt;/mark&gt;：Stanford University&lt;/p&gt;
+&lt;h2 id=&#34;论文翻译&#34;&gt;论文翻译
+&lt;/h2&gt;&lt;h3 id=&#34;标题&#34;&gt;标题
+&lt;/h3&gt;&lt;p&gt;基于数据分布梯度估计的生成模型&lt;/p&gt;
+&lt;h3 id=&#34;摘要&#34;&gt;摘要
+&lt;/h3&gt;&lt;p&gt;我们提出了一种新型生成模型，&lt;mark&gt;该模型通过朗之万动力学（Langevin dynamics）进行采样，所用梯度通过对数据分布进行分数匹配（score matching）来估计&lt;/mark&gt;。&lt;u&gt;由于当数据位于低维流形上时，梯度可能难以定义且难以准确估计，我们采用不同强度的高斯噪声对数据进行扰动，并联合估计对应各噪声层级的分数（score），即所有噪声水平下扰动后数据分布的梯度向量场&lt;/u&gt;。&lt;mark&gt;在采样阶段，我们提出了一种退火朗之万动力学（annealed Langevin dynamics）：随着采样过程逐渐逼近真实数据流形，我们逐步使用对应更低噪声水平的梯度进行迭代更新&lt;/mark&gt;。代码实现&lt;a class=&#34;link&#34; href=&#34;https://github.com/ermongroup/ncsn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Github&lt;/a&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;引言&#34;&gt;引言
+&lt;/h3&gt;&lt;p&gt;生成模型在机器学习中具有广泛的应用。举例而言，它们已被用于生成高保真图像、合成逼真的语音与音乐片段、提升半监督学习的性能、检测对抗样本及其他异常数据、模仿学习，以及在强化学习中探索具有潜力的状态空间。近年来的进展主要由两类方法推动：基于似然的方法（likelihood-based methods）与生成对抗网络（GAN）。前者以对数似然（或合适的代理目标）作为训练目标，而后者则通过对抗训练来最小化模型分布与数据分布之间的 f 散度（f-divergences）或积分概率度量（integral probability metrics）。&lt;/p&gt;
+&lt;p&gt;尽管基于似然的模型与生成对抗网络（GAN）已取得显著成功，但它们各自存在一些固有局限。例如，基于似然的模型要么必须采用特定架构以构建归一化的概率模型（如自回归模型、流模型），要么需借助代理损失函数进行训练（如变分自编码器中使用的证据下界 、基于能量模型中的对比散度）。GAN 在一定程度上规避了基于似然模型的部分局限，但其对抗训练过程往往导致训练不稳定。此外，GAN 的目标函数并不适合用于不同 GAN 模型之间的评估与比较。尽管生成建模领域还存在其他目标函数，例如噪声对比估计（noise contrastive estimation）与最小概率流（minimum probability flow），但这些方法通常仅适用于低维数据，在高维场景下表现欠佳。&lt;/p&gt;
+&lt;p&gt;本文探索了一种基于估计与采样数据对数密度（logarithmic data density）的（Stein）分数的新型生成建模原理。&lt;mark&gt;该分数定义为输入数据点处对数密度函数的梯度，构成一个指向对数数据密度增长最快方向的向量场&lt;/mark&gt;。我们采用基于&lt;u&gt;分数匹配（score matching）&lt;/u&gt;训练的神经网络，从数据中学习这一向量场，并进一步利用&lt;u&gt;朗之万动力学（Langevin dynamics）&lt;/u&gt;生成样本：其基本原理是将随机初始样本沿着（估计得到的）分数向量场逐步移向高密度区域。然而，该方法面临&lt;span style=&#34;color: red;&#34;&gt;两大主要挑战&lt;/span&gt;：&lt;code&gt;首先&lt;/code&gt;，若数据分布支撑于低维流形上——这在许多真实世界数据集中是常见假设——则在环境空间（ambient space）中分数将无法良好定义，导致分数匹配无法提供一致的分数估计器。&lt;code&gt;其次&lt;/code&gt;，在低数据密度区域（例如远离流形的区域）训练数据稀缺，这不仅制约了分数估计的准确性，也延缓了朗之万动力学采样的混合（mixing）过程。由于朗之万动力学通常在数据分布的低密度区域进行初始化，这些区域中不准确的分数估计将对采样过程产生负面影响。此外，为实现在分布不同模态（modes）之间的转移，采样过程往往需要穿越低密度区域，这也使得混合过程变得困难。&lt;/p&gt;
+&lt;p&gt;为应对上述两大挑战，&lt;mark&gt;我们提出对数据施加不同强度的随机高斯噪声进行扰动。添加随机噪声可确保所得分布不会坍缩至低维流形&lt;/mark&gt;。&lt;u&gt;较大的噪声强度将在原始（未扰动）数据分布的低密度区域产生样本，从而改善分数估计效果&lt;/u&gt;。关键在于，&lt;code&gt;我们训练一个以噪声强度为条件的单一分数网络（score network），并联合估计所有噪声层级下的分数&lt;/code&gt;。进而，&lt;u&gt;我们提出一种退火版本的朗之万动力学：采样初始阶段使用对应最高噪声强度的分数，随后逐步降低噪声强度，直至其小到与原始数据分布难以区分为止&lt;/u&gt;。我们的采样策略受模拟退火（simulated annealing）启发，后者通过启发式方法有效改善了多模态景观下的优化性能。&lt;/p&gt;
+&lt;p&gt;我们的方法具备若干理想特性。首先，该目标函数对几乎所有分数网络的参数化形式均易于处理，无需特殊约束或架构设计，且可在训练过程中避免对抗训练、MCMC 采样或其他近似方法。此外，该目标函数还可用于对同一数据集上的不同模型进行定量比较。我们在 MNIST、CelebA 和 CIFAR-10 数据集上通过实验验证了该方法的有效性。结果表明，所生成的样本质量可与现代基于似然的模型及生成对抗网络（GAN）相媲美。在 CIFAR-10 数据集上，我们的模型在无条件生成模型中取得了 8.87 的全新最优 Inception Score，并获得了具有竞争力的 25.32 FID 分数。通过图像修复（inpainting）实验，我们进一步证明该模型能够学习到数据的有意义表征。&lt;/p&gt;
 </description>
         </item>
         
