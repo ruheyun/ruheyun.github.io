@@ -10,7 +10,7 @@
 <meta property='og:description' content="关于Hugo的Stack渲染Markdown语言的笔记\n文章模版 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 +++ date = &#39;2026-01-27&#39; draft = true title = &#39;文章模版&#39; author = &#39;RuHeYun&#39; description = &#39;这是一个副标题&#39; image = &#39;helena-hertz-wWZzXlDpMog-unsplash.jpg&#39; categories = [&#39;Test&#39;, &#39;Hugo&#39;,] tags = [&#39;Post&#39;, &#39;Template&#39;,] slug = &#39;post-template&#39; math = true toc = true comments = true lastmod = &#39;2026-01-28&#39; +++ 参数说明 front matter参数使用的是toml格式\n">
 <meta property='og:url' content='https://ruheyun.github.io/p/post-template/'>
 <meta property='og:site_name' content='RuHeYun'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-01-27T11:32:30&#43;08:00'/><meta property='article:modified_time' content='2026-02-04T15:03:02&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='template' /><meta property='article:published_time' content='2026-01-27T11:32:30&#43;08:00'/><meta property='article:modified_time' content='2026-02-06T15:34:36&#43;08:00'/>
 <meta name="twitter:title" content="PostTemplate">
 <meta name="twitter:description" content="关于Hugo的Stack渲染Markdown语言的笔记\n文章模版 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 +++ date = &#39;2026-01-27&#39; draft = true title = &#39;文章模版&#39; author = &#39;RuHeYun&#39; description = &#39;这是一个副标题&#39; image = &#39;helena-hertz-wWZzXlDpMog-unsplash.jpg&#39; categories = [&#39;Test&#39;, &#39;Hugo&#39;,] tags = [&#39;Post&#39;, &#39;Template&#39;,] slug = &#39;post-template&#39; math = true toc = true comments = true lastmod = &#39;2026-01-28&#39; +++ 参数说明 front matter参数使用的是toml格式\n">
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -423,6 +423,7 @@
 <p><code>math</code>：数学公式支持（true，false）</p>
 <p><code>toc</code>：目录显示（true，false）</p>
 <p><code>comments</code>：是否开启评论区（true，false）</p>
+<p><code>weight</code>：文章的权重，越低排的越前，默认不设置按照发布日期排，如果置顶文章通常设置为 1</p>
 <h2 id="说明文档">说明文档
 </h2><p><a class="link" href="https://stack.jimmycai.com/guide/"  target="_blank" rel="noopener"
     >https://stack.jimmycai.com/guide/</a></p>
@@ -435,6 +436,12 @@
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/template/">Template</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">
@@ -458,7 +465,7 @@
 
 
         <span>
-            最后更新于 2026-02-04
+            最后更新于 2026-02-06
         </span>
 &nbsp;
         
@@ -667,6 +674,8 @@
     
         
     
+        
+    
     
     
     
@@ -679,8 +688,8 @@
         <p style="font-size: 0.9em;">
             本站总访问量 <span id="vercount_value_site_pv">Loading...</span> 次
             总访客数 <span id="vercount_value_site_uv">Loading...</span> 人 ·
-            共发表了11篇文章  
-            总计24.81k字
+            共发表了12篇文章  
+            总计24.87k字
         </p>
         
         <p id="blog-runtime" style="text-align: left; font-size: 0.9em; margin: 0.5em 0; color: #888;">

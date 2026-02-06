@@ -65,6 +65,7 @@
 &lt;p&gt;&lt;code&gt;math&lt;/code&gt;：数学公式支持（true，false）&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;toc&lt;/code&gt;：目录显示（true，false）&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;comments&lt;/code&gt;：是否开启评论区（true，false）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;weight&lt;/code&gt;：文章的权重，越低排的越前，默认不设置按照发布日期排，如果置顶文章通常设置为 1&lt;/p&gt;
 &lt;h2 id=&#34;说明文档&#34;&gt;说明文档
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://stack.jimmycai.com/guide/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://stack.jimmycai.com/guide/&lt;/a&gt;&lt;/p&gt;
