@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Tue, 27 Jan 2026 23:18:59 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 08 Feb 2026 23:23:59 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>DM</title>
         <link>https://ruheyun.github.io/categories/dm/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -48,12 +48,28 @@
         <description>&lt;img src="https://ruheyun.github.io/categories/markdown/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Markdown" /&gt;</description>
         </item>
         <item>
+        <title>Python</title>
+        <link>https://ruheyun.github.io/categories/python/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://ruheyun.github.io/categories/python/</guid>
+        <description>&lt;img src="https://ruheyun.github.io/categories/python/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Python" /&gt;</description>
+        </item>
+        <item>
         <title>RAG</title>
         <link>https://ruheyun.github.io/categories/rag/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://ruheyun.github.io/categories/rag/</guid>
         <description>&lt;img src="https://ruheyun.github.io/categories/rag/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post RAG" /&gt;</description>
+        </item>
+        <item>
+        <title>Template</title>
+        <link>https://ruheyun.github.io/categories/template/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://ruheyun.github.io/categories/template/</guid>
+        <description>&lt;img src="https://ruheyun.github.io/categories/template/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Template" /&gt;</description>
         </item>
         <item>
         <title>Test</title>
