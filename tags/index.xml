@@ -7,7 +7,23 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Sun, 08 Feb 2026 23:23:59 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 09 Feb 2026 14:58:09 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Site</title>
+        <link>https://ruheyun.github.io/tags/site/</link>
+        <pubDate>Mon, 09 Feb 2026 10:26:11 +0800</pubDate>
+        
+        <guid>https://ruheyun.github.io/tags/site/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Software</title>
+        <link>https://ruheyun.github.io/tags/software/</link>
+        <pubDate>Mon, 09 Feb 2026 10:26:11 +0800</pubDate>
+        
+        <guid>https://ruheyun.github.io/tags/software/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Conda</title>
         <link>https://ruheyun.github.io/tags/conda/</link>
         <pubDate>Sun, 08 Feb 2026 22:47:18 +0800</pubDate>
@@ -64,7 +80,7 @@
         <description></description>
         </item>
         <item>
-        <title>Css</title>
+        <title>CSS</title>
         <link>https://ruheyun.github.io/tags/css/</link>
         <pubDate>Tue, 27 Jan 2026 11:01:58 +0800</pubDate>
         
