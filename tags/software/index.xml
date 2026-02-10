@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Mon, 09 Feb 2026 14:58:09 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/software/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 10 Feb 2026 17:21:47 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/software/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>网站/软件推荐</title>
         <link>https://ruheyun.github.io/p/website-recommend/</link>
         <pubDate>Mon, 09 Feb 2026 10:26:11 +0800</pubDate>
@@ -30,6 +30,10 @@
 &lt;li&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://huggingface.co/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;HuggingFace&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.hello-algo.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hello 算法&lt;/a&gt; ：动画图解、一键运行的数据结构与算法教程。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;工具类&#34;&gt;工具类

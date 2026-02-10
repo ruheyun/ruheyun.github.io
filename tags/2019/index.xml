@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Fri, 06 Feb 2026 17:55:51 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/2019/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 10 Feb 2026 17:21:47 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/2019/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>NCSN</title>
         <link>https://ruheyun.github.io/p/ncsn/</link>
         <pubDate>Wed, 04 Feb 2026 14:56:05 +0800</pubDate>
@@ -30,6 +30,67 @@
 &lt;p&gt;本文探索了一种基于估计与采样数据对数密度（logarithmic data density）的（Stein）分数的新型生成建模原理。&lt;mark&gt;该分数定义为输入数据点处对数密度函数的梯度，构成一个指向对数数据密度增长最快方向的向量场&lt;/mark&gt;。我们采用基于&lt;u&gt;分数匹配（score matching）&lt;/u&gt;训练的神经网络，从数据中学习这一向量场，并进一步利用&lt;u&gt;朗之万动力学（Langevin dynamics）&lt;/u&gt;生成样本：其基本原理是将随机初始样本沿着（估计得到的）分数向量场逐步移向高密度区域。然而，该方法面临&lt;span style=&#34;color: red;&#34;&gt;两大主要挑战&lt;/span&gt;：&lt;code&gt;首先&lt;/code&gt;，若数据分布支撑于低维流形上——这在许多真实世界数据集中是常见假设——则在环境空间（ambient space）中分数将无法良好定义，导致分数匹配无法提供一致的分数估计器。&lt;code&gt;其次&lt;/code&gt;，在低数据密度区域（例如远离流形的区域）训练数据稀缺，这不仅制约了分数估计的准确性，也延缓了朗之万动力学采样的混合（mixing）过程。由于朗之万动力学通常在数据分布的低密度区域进行初始化，这些区域中不准确的分数估计将对采样过程产生负面影响。此外，为实现在分布不同模态（modes）之间的转移，采样过程往往需要穿越低密度区域，这也使得混合过程变得困难。&lt;/p&gt;
 &lt;p&gt;为应对上述两大挑战，&lt;mark&gt;我们提出对数据施加不同强度的随机高斯噪声进行扰动。添加随机噪声可确保所得分布不会坍缩至低维流形&lt;/mark&gt;。&lt;u&gt;较大的噪声强度将在原始（未扰动）数据分布的低密度区域产生样本，从而改善分数估计效果&lt;/u&gt;。关键在于，&lt;code&gt;我们训练一个以噪声强度为条件的单一分数网络（score network），并联合估计所有噪声层级下的分数&lt;/code&gt;。进而，&lt;u&gt;我们提出一种退火版本的朗之万动力学：采样初始阶段使用对应最高噪声强度的分数，随后逐步降低噪声强度，直至其小到与原始数据分布难以区分为止&lt;/u&gt;。我们的采样策略受模拟退火（simulated annealing）启发，后者通过启发式方法有效改善了多模态景观下的优化性能。&lt;/p&gt;
 &lt;p&gt;我们的方法具备若干理想特性。首先，该目标函数对几乎所有分数网络的参数化形式均易于处理，无需特殊约束或架构设计，且可在训练过程中避免对抗训练、MCMC 采样或其他近似方法。此外，该目标函数还可用于对同一数据集上的不同模型进行定量比较。我们在 MNIST、CelebA 和 CIFAR-10 数据集上通过实验验证了该方法的有效性。结果表明，所生成的样本质量可与现代基于似然的模型及生成对抗网络（GAN）相媲美。在 CIFAR-10 数据集上，我们的模型在无条件生成模型中取得了 8.87 的全新最优 Inception Score，并获得了具有竞争力的 25.32 FID 分数。通过图像修复（inpainting）实验，我们进一步证明该模型能够学习到数据的有意义表征。&lt;/p&gt;
+&lt;h3 id=&#34;基于分数的生成模型&#34;&gt;基于分数的生成模型
+&lt;/h3&gt;&lt;p&gt;假设我们的数据集由来自未知数据分布 $ p_{\text{data}}(\mathbf{x}) $ 的独立同分布样本 $\{ \mathbf{x}_i \in \mathbb{R}^D \}_{i=1}^N$ 构成。&lt;strong&gt;我们定义概率密度 $ p(\mathbf{x}) $ 的分数（score）为 $ \nabla_{\mathbf{x}} \log p(\mathbf{x}) $&lt;/strong&gt;。分数网络 $ s_\theta : \mathbb{R}^D \to \mathbb{R}^D $ 是一个由参数 $ \theta $ 参数化的神经网络，该网络将被训练以近似 $ p_{\text{data}}(\mathbf{x}) $ 的分数。生成建模的目标是利用数据集学习一个模型，从而从 $ p_{\text{data}}(\mathbf{x}) $ 中生成新的样本。基于分数的生成建模框架包含两个核心组成部分：&lt;span style=&#34;color: red;&#34;&gt;分数匹配&lt;/span&gt; 与 &lt;span style=&#34;color: red;&#34;&gt;朗之万动力学&lt;/span&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;分数估计的分数匹配&#34;&gt;分数估计的分数匹配
+&lt;/h4&gt;&lt;p&gt;分数匹配（score matching）最初设计用于基于独立同分布样本学习非归一化统计模型。我们将其重新用于分数估计。通过分数匹配，我们可直接训练分数网络 $\mathbf{s}_\theta(\mathbf{x})$ 以估计 $\nabla_{\mathbf{x}} \log p_{\text{data}}(\mathbf{x})$，无需预先训练模型来估计 $p_{\text{data}}(\mathbf{x})$。与分数匹配的典型用法不同，我们选择不使用基于能量模型的梯度，以避免因高阶导数带来的额外计算开销。该目标函数最小化 $\frac{1}{2} \mathbb{E}_{p_{\text{data}}(\mathbf{x})} \left[ \|\mathbf{s}_\theta(\mathbf{x}) - \nabla_{\mathbf{x}} \log p_{\text{data}}(\mathbf{x})\|_2^2 \right]$，在常数项内等价于以下形式：&lt;/p&gt;
+$$
+\mathbb{E}_{p_{\text{data}}(\mathbf{x})} \left[ \text{tr}(\nabla_{\mathbf{x}} \mathbf{s}_\theta(\mathbf{x})) + \frac{1}{2} \|\mathbf{s}_\theta(\mathbf{x})\|_2^2 \right], \tag{1}
+$$&lt;p&gt;其中 $\nabla_{\mathbf{x}} \mathbf{s}_\theta(\mathbf{x})$ 表示 $\mathbf{s}_\theta(\mathbf{x})$ 的雅可比矩阵。在一定正则性条件下，式 (1) 的极小值点（记为 $\mathbf{s}_\theta^*(\mathbf{x})$）几乎必然满足 $\mathbf{s}_\theta^*(\mathbf{x}) = \nabla_{\mathbf{x}} \log p_{\text{data}}(\mathbf{x})$。实践中，式 (1) 中关于 $p_{\text{data}}(\mathbf{x})$ 的期望可通过数据样本快速估计。然而，由于 $\text{tr}(\nabla_{\mathbf{x}} \mathbf{s}_\theta(\mathbf{x}))$ 的计算限制，分数匹配难以扩展至深度网络和高维数据。下文将讨论两种适用于大规模分数匹配的流行方法。&lt;/p&gt;
+&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt;去噪分数匹配&lt;/span&gt;（Denoising score matching）是分数匹配的一种变体，其核心优势在于&lt;strong&gt;完全规避了雅可比矩阵迹（$\text{tr}(\nabla_{\mathbf{x}} \mathbf{s}_\theta(\mathbf{x}))$）的计算&lt;/strong&gt;。该方法首先通过预设噪声分布 $q_\sigma(\tilde{\mathbf{x}} \mid \mathbf{x})$ 对数据点 $\mathbf{x}$ 施加扰动，随后采用分数匹配技术估计扰动后数据分布 $q_\sigma(\tilde{\mathbf{x}}) \triangleq \int q_\sigma(\tilde{\mathbf{x}} \mid \mathbf{x}) p_{\text{data}}(\mathbf{x}) \mathrm{d}\mathbf{x}$ 的分数。其目标函数经证明等价于：&lt;br&gt;
+&lt;/p&gt;
+$$
+\frac{1}{2} \mathbb{E}_{q_\sigma(\tilde{\mathbf{x}} \mid \mathbf{x}) p_{\text{data}}(\mathbf{x})} \left[ \|\mathbf{s}_\theta(\tilde{\mathbf{x}}) - \nabla_{\tilde{\mathbf{x}}} \log q_\sigma(\tilde{\mathbf{x}} \mid \mathbf{x})\|_2^2 \right]. \tag{2}
+$$&lt;p&gt;最小化式 (2) 的最优分数网络（记为 $\mathbf{s}_\theta^*(\mathbf{x})$）几乎必然满足 $\mathbf{s}_\theta^*(\mathbf{x}) = \nabla_{\mathbf{x}} \log q_\sigma(\mathbf{x})$。然而需注意：&lt;strong&gt;仅当噪声强度足够小（使得 $q_\sigma(\mathbf{x}) \approx p_{\text{data}}(\mathbf{x})$）时&lt;/strong&gt;，才有 $\mathbf{s}_\theta^*(\mathbf{x}) \approx \nabla_{\mathbf{x}} \log p_{\text{data}}(\mathbf{x})$ 成立。&lt;/p&gt;
+&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt;切片分数匹配&lt;/span&gt;（Sliced score matching）通过随机投影近似分数匹配中的雅可比矩阵迹 $\text{tr}(\nabla_{\mathbf{x}} \mathbf{s}_\theta(\mathbf{x}))$。其目标函数为：&lt;br&gt;
+&lt;/p&gt;
+$$
+\mathbb{E}_{p_{\mathbf{v}}} \mathbb{E}_{p_{\text{data}}} \left[ \mathbf{v}^\top \nabla_{\mathbf{x}} \mathbf{s}_\theta(\mathbf{x}) \mathbf{v} + \frac{1}{2} \|\mathbf{s}_\theta(\mathbf{x})\|_2^2 \right], \tag{3}
+$$&lt;p&gt;其中 $p_{\mathbf{v}}$ 为简单随机向量分布（例如多变量标准正态分布）。$\mathbf{v}^\top \nabla_{\mathbf{x}} \mathbf{s}_\theta(\mathbf{x}) \mathbf{v}$ 可通过前向模式自动微分（forward mode auto-differentiation）高效计算。与去噪分数匹配不同：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;切片分数匹配直接估计&lt;strong&gt;原始未扰动数据分布&lt;/strong&gt;的分数&lt;/li&gt;
+&lt;li&gt;但因需前向模式自动微分，其计算量约为去噪分数匹配的四倍&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;关键术语说明&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;英文术语&lt;/th&gt;
+          &lt;th&gt;中文译法&lt;/th&gt;
+          &lt;th&gt;技术依据&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Sliced score matching&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;切片分数匹配&lt;/td&gt;
+          &lt;td&gt;&amp;ldquo;sliced&amp;rdquo; 源自随机投影的&amp;quot;切片&amp;quot;特性（保留数学本质）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;forward mode auto-differentiation&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;前向模式自动微分&lt;/td&gt;
+          &lt;td&gt;计算机科学标准译法（对比&amp;quot;反向模式&amp;quot;）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;unperturbed data distribution&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;未扰动数据分布&lt;/td&gt;
+          &lt;td&gt;与前文&amp;quot;perturbed data&amp;quot;（扰动后数据）严格对应&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;multivariate standard normal&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;多变量标准正态分布&lt;/td&gt;
+          &lt;td&gt;概率论规范表述（避免&amp;quot;多元高斯&amp;quot;口语化）&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;基于朗之万动力学的采样&#34;&gt;基于朗之万动力学的采样
+&lt;/h4&gt;&lt;p&gt;朗之万动力学（Langevin dynamics）仅需利用分数函数 $\nabla_{\mathbf{x}} \log p(\mathbf{x})$ 即可从概率密度 $p(\mathbf{x})$ 中生成样本。给定固定步长 $\epsilon &gt; 0$ 和初始值 $\tilde{\mathbf{x}}_0 \sim \pi(\mathbf{x})$（其中 $\pi$ 为先验分布），朗之万方法通过以下递归式迭代计算：&lt;/p&gt;
+$$
+\tilde{\mathbf{x}}_t = \tilde{\mathbf{x}}_{t-1} + \frac{\epsilon}{2} \nabla_{\mathbf{x}} \log p(\tilde{\mathbf{x}}_{t-1}) + \sqrt{\epsilon} \, \mathbf{z}_t, \tag{4}
+$$&lt;p&gt;其中 $\mathbf{z}_t \sim \mathcal{N}(0, I)$。当 $\epsilon \to 0$ 且 $T \to \infty$ 时，在满足一定正则性条件下，$\tilde{\mathbf{x}}_T$ 的分布将收敛至 $p(\mathbf{x})$，此时 $\tilde{\mathbf{x}}_T$ 即为 $p(\mathbf{x})$ 的精确样本。当 $\epsilon &gt; 0$ 且 $T &lt; \infty$ 时，需通过 Metropolis-Hastings 更新校正 式 (4) 的误差，但在实际应用中（当 $\epsilon$ 足够小且 $T$ 足够大时），该误差通常可忽略。&lt;/p&gt;
+&lt;p&gt;需注意：从式 (4) 采样仅需分数函数 $\nabla_{\mathbf{x}} \log p(\mathbf{x})$。因此，为从 $p_{\text{data}}(\mathbf{x})$ 生成样本，我们可先训练分数网络使 $\mathbf{s}_\theta(\mathbf{x}) \approx \nabla_{\mathbf{x}} \log p_{\text{data}}(\mathbf{x})$，再通过 $\mathbf{s}_\theta(\mathbf{x})$ 近似实现朗之万动力学采样。&lt;strong&gt;这正是基于分数的生成建模框架的核心思想&lt;/strong&gt;。&lt;/p&gt;
 </description>
         </item>
         

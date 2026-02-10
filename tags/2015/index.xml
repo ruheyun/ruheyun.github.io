@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Wed, 04 Feb 2026 15:03:02 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/2015/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 10 Feb 2026 17:21:47 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/2015/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Diffusion</title>
         <link>https://ruheyun.github.io/p/diffusion/</link>
         <pubDate>Thu, 29 Jan 2026 15:55:20 +0800</pubDate>
@@ -617,10 +617,10 @@ $$&lt;p&gt;
 $$
 \tilde{p}(y \mid x^{(t)}) \approx \mathcal{N}(y; \mu - \Sigma g, \Sigma). \tag{60}
 $$&lt;p&gt;
-将结果代回原始形式，得到&lt;code&gt;公式 61&lt;/code&gt;：
+将结果代回原始形式，得到：
 &lt;/p&gt;
 $$
-\tilde{p}\left(x^{(t-1)} \mid x^{(t)}\right) \approx \mathcal{N}\left(x^{(t-1)}; \mathbf{f}_{\mu}\left(x^{(t)}, t\right) + \mathbf{f}_{\Sigma}\left(x^{(t)}, t\right) \left.\frac{\partial \log r\left(x^{(t-1)&#39;}\right)}{\partial x^{(t-1)&#39;}}\right|_{x^{(t-1)&#39;} = \mathbf{f}_{\mu}\left(x^{(t)}, t\right)}, \mathbf{f}_{\Sigma}\left(x^{(t)}, t\right)\right).
+\tilde{p}\left(x^{(t-1)} \mid x^{(t)}\right) \approx \mathcal{N}\left(x^{(t-1)}; \mathbf{f}_{\mu}\left(x^{(t)}, t\right) + \mathbf{f}_{\Sigma}\left(x^{(t)}, t\right) \left.\frac{\partial \log r\left(x^{(t-1)&#39;}\right)}{\partial x^{(t-1)&#39;}}\right|_{x^{(t-1)&#39;} = \mathbf{f}_{\mu}\left(x^{(t)}, t\right)}, \mathbf{f}_{\Sigma}\left(x^{(t)}, t\right)\right). \quad (61)
 $$&lt;h4 id=&#34;实验细节&#34;&gt;实验细节
 &lt;/h4&gt;&lt;p&gt;用的卷积神经网络，数据集不再进行介绍。&lt;/p&gt;
 </description>
