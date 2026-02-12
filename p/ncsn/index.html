@@ -10,7 +10,7 @@
 <meta property='og:description' content="通过估计数据梯度生成建模">
 <meta property='og:url' content='https://ruheyun.github.io/p/ncsn/'>
 <meta property='og:site_name' content='RuHeYun'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='2019' /><meta property='article:published_time' content='2026-02-04T14:56:05&#43;08:00'/><meta property='article:modified_time' content='2026-02-11T15:10:57&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='2019' /><meta property='article:published_time' content='2026-02-04T14:56:05&#43;08:00'/><meta property='article:modified_time' content='2026-02-12T14:31:59&#43;08:00'/>
 <meta name="twitter:title" content="NCSN">
 <meta name="twitter:description" content="通过估计数据梯度生成建模">
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -312,14 +312,18 @@
           <ol>
             <li><a href="#分数估计的分数匹配">分数估计的分数匹配</a></li>
             <li><a href="#基于朗之万动力学的采样">基于朗之万动力学的采样</a></li>
-          </ol>
-        </li>
-        <li><a href="#基于分数的生成建模所面临的挑战">基于分数的生成建模所面临的挑战</a>
-          <ol>
-            <li><a href="#流形假设">流形假设</a></li>
+            <li><a href="#基于分数的生成建模所面临的挑战">基于分数的生成建模所面临的挑战</a></li>
             <li><a href="#低数据密度区域">低数据密度区域</a></li>
           </ol>
         </li>
+        <li><a href="#噪声条件分数网络学习与推理">噪声条件分数网络：学习与推理</a>
+          <ol>
+            <li><a href="#噪声条件分数网络">噪声条件分数网络</a></li>
+            <li><a href="#通过分数匹配学习噪声条件分数网络">通过分数匹配学习噪声条件分数网络</a></li>
+            <li><a href="#通过退火朗之万动力学进行-ncsn-推理">通过退火朗之万动力学进行 NCSN 推理</a></li>
+          </ol>
+        </li>
+        <li><a href="#实验">实验</a></li>
       </ol>
     </li>
   </ol>
@@ -470,29 +474,16 @@ $$
 \tilde{\mathbf{x}}_t = \tilde{\mathbf{x}}_{t-1} + \frac{\epsilon}{2} \nabla_{\mathbf{x}} \log p(\tilde{\mathbf{x}}_{t-1}) + \sqrt{\epsilon} \, \mathbf{z}_t, \tag{4}
 $$<p>其中 $\mathbf{z}_t \sim \mathcal{N}(0, I)$。当 $\epsilon \to 0$ 且 $T \to \infty$ 时，在满足一定正则性条件下，$\tilde{\mathbf{x}}_T$ 的分布将收敛至 $p(\mathbf{x})$，此时 $\tilde{\mathbf{x}}_T$ 即为 $p(\mathbf{x})$ 的精确样本。当 $\epsilon > 0$ 且 $T < \infty$ 时，需通过 Metropolis-Hastings 更新校正 式 (4) 的误差，但在实际应用中（当 $\epsilon$ 足够小且 $T$ 足够大时），该误差通常可忽略。</p>
 <p>需注意：从式 (4) 采样仅需分数函数 $\nabla_{\mathbf{x}} \log p(\mathbf{x})$。因此，为从 $p_{\text{data}}(\mathbf{x})$ 生成样本，我们可先训练分数网络使 $\mathbf{s}_\theta(\mathbf{x}) \approx \nabla_{\mathbf{x}} \log p_{\text{data}}(\mathbf{x})$，再通过 $\mathbf{s}_\theta(\mathbf{x})$ 近似实现朗之万动力学采样。<strong>这正是基于分数的生成建模框架的核心思想</strong>。</p>
-<h3 id="基于分数的生成建模所面临的挑战">基于分数的生成建模所面临的挑战
-</h3><p>本节将对基于分数的生成建模思想进行更深入的分析。我们认为，存在两大主要障碍，使得该方法无法被直接（朴素地）应用。</p>
-<h4 id="流形假设">流形假设
-</h4><p><strong>流形假设</strong>指出，<span style="color: red;">现实世界的数据往往集中分布在高维空间（即环境空间）中嵌入的低维流形上</span>。该假设已在诸多数据集中得到经验验证，并成为流形学习的基础理论。在流形假设下，基于分数的生成模型将面临两大关键挑战：</p>
+<h4 id="基于分数的生成建模所面临的挑战">基于分数的生成建模所面临的挑战
+</h4><p>本节将对基于分数的生成建模思想进行更深入的分析。我们认为，存在两大主要障碍，使得该方法无法被直接（朴素地）应用。</p>
+<h5 id="流形假设">流形假设
+</h5><p><strong>流形假设</strong>指出，<span style="color: red;">现实世界的数据往往集中分布在高维空间（即环境空间）中嵌入的低维流形上</span>。该假设已在诸多数据集中得到经验验证，并成为流形学习的基础理论。在流形假设下，基于分数的生成模型将面临两大关键挑战：</p>
 <ol>
 <li><strong>分数的定义问题</strong>：由于分数 $\nabla_{\mathbf{x}} \log p_{\text{data}}(\mathbf{x})$ 是在环境空间中计算的梯度，当数据点 $\mathbf{x}$ 被限制在低维流形上时，该梯度无法良好定义。</li>
 <li><strong>分数估计的不一致性</strong>：分数匹配目标函数（式(1)）仅在数据分布的支撑集为整个空间时提供一致的分数估计器（参见文献 [24] 中的定理 2），而当数据分布支撑于低维流形时，该估计器将变得不一致。</li>
 </ol>
 <p>流形假设对分数估计的负面影响可通过图 1 清晰观察：我们在 CIFAR-10 数据集上训练 ResNet（附录 B.1 详述）以估计数据分数，采用切片分数匹配目标函数（式(3)）实现快速训练与精确估计。如图 1（左）所示，当直接在原始 CIFAR-10 图像上训练时，切片分数匹配损失先下降后出现剧烈波动。相比之下，若对数据施加微小高斯噪声（使扰动后数据分布的支撑集覆盖整个 $\mathbb{R}^D$），损失曲线将稳定收敛（右图）。需注意，我们施加的高斯噪声 $\mathcal{N}(0, 0.0001)$ 对像素值范围在 $[0,1]$ 的图像而言极其微弱，人眼几乎无法辨识。</p>
-<p><img src="/p/ncsn/image-20260211144724709.png"
-	width="610"
-	height="222"
-	srcset="/p/ncsn/image-20260211144724709_hu_e25f6720c100d77.png 480w, /p/ncsn/image-20260211144724709_hu_e00b88fba0ed7b0c.png 1024w"
-	loading="lazy"
-	
-		alt="image-20260211144724709"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="274"
-		data-flex-basis="659px"
-	
-></p>
+<img src="image-20260211144724709.png" alt="image-20260211144724709" style="zoom:80%;" />
 <p><strong>图 1 说明</strong></p>
 <ul>
 <li><strong>左图</strong>：无噪声添加时，切片分数匹配（SSM）损失随迭代次数的变化</li>
@@ -503,20 +494,7 @@ $$<p>其中 $\mathbf{z}_t \sim \mathcal{N}(0, I)$。当 $\epsilon \to 0$ 且 $T 
 <h5 id="分数匹配中的分数估计不准确性">分数匹配中的分数估计不准确性
 </h5><p>在数据密度较低的区域，由于样本数量不足，分数匹配可能无法准确估计分数函数。如第 2.1 节所述，分数匹配的目标是最小化分数估计值的期望平方误差，即 $\frac{1}{2} \mathbb{E}_{p_{\text{data}}} \left[ \|\mathbf{s}_\theta(\mathbf{x}) - \nabla_{\mathbf{x}} \log p_{\text{data}}(\mathbf{x})\|_2^2 \right]$。在实际应用中，该期望通常通过独立同分布样本 $\{\mathbf{x}_i\}_{i=1}^N \stackrel{\text{i.i.d.}}{\sim} p_{\text{data}}(\mathbf{x})$ 进行估计。考虑任意区域 $\mathcal{R} \subset \mathbb{R}^D$ 满足 $p_{\text{data}}(\mathcal{R}) \approx 0$，在大多数情况下 $\{\mathbf{x}_i\}_{i=1}^N \cap \mathcal{R} = \varnothing$，因此分数匹配无法获得足够样本以准确估计 $\mathcal{R}$ 内 $\mathbf{x}$ 处的 $\nabla_{\mathbf{x}} \log p_{\text{data}}(\mathbf{x})$。</p>
 <p>为验证此负面影响，我们在图 2 中展示了一个简化实验（附录 B.1 详述）：使用切片分数匹配估计高斯混合分布 $p_{\text{data}} = \frac{1}{5} \mathcal{N}((-5,-5), I) + \frac{4}{5} \mathcal{N}((5,5), I)$ 的分数。如图所示，<strong>分数估计仅在模态（modes）附近的高密度区域内可靠</strong>，而在低密度区域存在显著偏差。</p>
-<p><img src="/p/ncsn/image-20260211145219245.png"
-	width="584"
-	height="303"
-	srcset="/p/ncsn/image-20260211145219245_hu_369965a3e6acdf83.png 480w, /p/ncsn/image-20260211145219245_hu_4b7de439e517d329.png 1024w"
-	loading="lazy"
-	
-		alt="image-20260211145219245"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="192"
-		data-flex-basis="462px"
-	
-></p>
+<img src="image-20260211145219245.png" alt="image-20260211145219245" style="zoom:80%;" />
 <p><strong>图 2 说明</strong></p>
 <ul>
 <li><strong>左图</strong>：真实分数 $\nabla_{\mathbf{x}} \log p_{\text{data}}(\mathbf{x})$（橙色色阶编码：颜色越深表示密度越高）</li>
@@ -527,20 +505,7 @@ $$<p>其中 $\mathbf{z}_t \sim \mathcal{N}(0, I)$。当 $\epsilon \to 0$ 且 $T 
 </h5><p>当数据分布的两个模态被低密度区域分隔时，Langevin 动力学将无法在合理时间内准确恢复这两个模态的相对权重，因此可能无法收敛至真实分布。我们的分析主要受文献 [63] 启发，该文献在分数匹配的密度估计背景下分析了相同现象。</p>
 <p>考虑高斯混合分布 $p_{\text{data}}(\mathbf{x}) = \pi p_1(\mathbf{x}) + (1-\pi)p_2(\mathbf{x})$，其中 $p_1(\mathbf{x})$ 和 $p_2(\mathbf{x})$ 是支撑集不相交的归一化分布，且 $\pi \in (0,1)$。在 $p_1(\mathbf{x})$ 的支撑集内，$\nabla_{\mathbf{x}} \log p_{\text{data}}(\mathbf{x}) = \nabla_{\mathbf{x}} (\log \pi + \log p_1(\mathbf{x})) = \nabla_{\mathbf{x}} \log p_1(\mathbf{x})$；在 $p_2(\mathbf{x})$ 的支撑集内，$\nabla_{\mathbf{x}} \log p_{\text{data}}(\mathbf{x}) = \nabla_{\mathbf{x}} (\log(1-\pi) + \log p_2(\mathbf{x})) = \nabla_{\mathbf{x}} \log p_2(\mathbf{x})$。在两种情况下，分数 $\nabla_{\mathbf{x}} \log p_{\text{data}}(\mathbf{x})$ 均与 $\pi$ 无关。由于 Langevin 动力学使用 $\nabla_{\mathbf{x}} \log p_{\text{data}}(\mathbf{x})$ 从 $p_{\text{data}}(\mathbf{x})$ 采样，所得样本将不依赖于 $\pi$。在实际应用中，当不同模态具有近似不相交的支撑集（可能共享相同支撑但被小密度区域连接）时，该分析结论依然成立。此时 Langevin 动力学理论上可生成正确样本，但可能需要<strong>极小步长</strong>和<strong>极大步数</strong>才能完成混合。</p>
 <p>为验证此分析，我们在 3.2.1 节使用的相同高斯混合分布上测试 Langevin 动力学采样，并将结果展示在图 3 中。采样时使用真实分数作为输入。对比图 3(b) 与 (a) 可以明显看出，Langevin 动力学在两个模态间产生的相对密度存在偏差，这与我们的理论分析一致。</p>
-<p><img src="/p/ncsn/image-20260211150255237.png"
-	width="1077"
-	height="410"
-	srcset="/p/ncsn/image-20260211150255237_hu_b251f6f5cf07e43e.png 480w, /p/ncsn/image-20260211150255237_hu_95efe8627d107971.png 1024w"
-	loading="lazy"
-	
-		alt="image-20260211150255237"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="262"
-		data-flex-basis="630px"
-	
-></p>
+<img src="image-20260211150255237.png" alt="image-20260211150255237" style="zoom:80%;" />
 <p><strong>图 3 说明</strong></p>
 <ul>
 <li><strong>(a)</strong> 精确采样结果</li>
@@ -548,7 +513,43 @@ $$<p>其中 $\mathbf{z}_t \sim \mathcal{N}(0, I)$。当 $\epsilon \to 0$ 且 $T 
 <li><strong>(c)</strong> 使用退火 Langevin 动力学（annealed Langevin dynamics）的真实分数采样结果</li>
 <li><strong>关键结论</strong>：Langevin 动力学对模态间相对权重的估计存在偏差，而退火 Langevin 动力学能准确恢复相对权重</li>
 </ul>
-
+<h3 id="噪声条件分数网络学习与推理">噪声条件分数网络：学习与推理
+</h3><p>我们观察到，通过随机高斯噪声扰动数据可使数据分布更适配基于分数的生成建模。首先，由于高斯噪声分布的支撑集覆盖整个空间，扰动后的数据将不再受限于低维流形，从而规避流形假设带来的困难并使分数估计明确定义。其次，较大的高斯噪声能填充原始未扰动数据分布中的低密度区域，使分数匹配获得更充分的训练信号以提升分数估计质量。<strong>更重要的是，通过采用多级噪声，我们可获得一系列收敛至真实数据分布的噪声扰动分布序列</strong>。我们可借鉴<span style="color: red;">模拟退火与退火重要性采样</span>的思想，利用这些中间分布提升多模态分布下 Langevin 动力学的混合效率。</p>
+<p>基于此洞见，我们提出通过以下两步改进基于分数的生成建模：</p>
+<ol>
+<li><strong>使用多级噪声扰动数据</strong>；</li>
+<li><strong>通过训练单一噪声条件分数网络，联合估计所有噪声层级对应的分数</strong>。</li>
+</ol>
+<p>训练完成后，在使用 Langevin 动力学生成样本时，我们<strong>初始采用大噪声层级对应的分数，再逐步降低噪声层级</strong>。这有助于将大噪声层级的优化优势平滑迁移至低噪声层级（此时扰动数据与原始数据几乎无法区分）。下文将详细阐述本方法的技术细节，包括分数网络架构、训练目标函数及 Langevin 动力学的退火调度策略。</p>
+<h4 id="噪声条件分数网络">噪声条件分数网络
+</h4><p>设 $\{\sigma_i\}_{i=1}^L$ 为满足 $\frac{\sigma_1}{\sigma_2} = \dots = \frac{\sigma_{L-1}}{\sigma_L} > 1$ 的正几何序列。定义扰动数据分布 $q_{\sigma}(\mathbf{x}) \triangleq \int p_{\text{data}}(\mathbf{t}) \mathcal{N}(\mathbf{x} \mid \mathbf{t}, \sigma^2 I) \mathrm{d}\mathbf{t}$。我们选择噪声层级 $\{\sigma_i\}_{i=1}^L$，使得 $\sigma_1$ 足够大以缓解第 3 节讨论的困难，而 $\sigma_L$ 足够小以最小化对数据的影响。我们的目标是训练一个噪声条件分数网络，联合估计所有扰动数据分布的分数，即对任意 $\sigma \in \{\sigma_i\}_{i=1}^L$，满足 $\mathbf{s}_\theta(\mathbf{x}, \sigma) \approx \nabla_{\mathbf{x}} \log q_\sigma(\mathbf{x})$。需注意，当 $\mathbf{x} \in \mathbb{R}^D$ 时，$\mathbf{s}_\theta(\mathbf{x}, \sigma) \in \mathbb{R}^D$。<strong>我们将 $\mathbf{s}_\theta(\mathbf{x}, \sigma)$ 称为噪声条件分数网络（Noise Conditional Score Network, NCSN）</strong>。</p>
+<p>与基于似然的生成模型和 GANs 类似，模型架构设计对生成高质量样本至关重要。在本工作中，我们主要关注适用于图像生成的架构设计，其他领域的架构设计将留待后续研究。由于噪声条件分数网络 $\mathbf{s}_\theta(\mathbf{x}, \sigma)$ 的输出形状与输入图像 $\mathbf{x}$ 相同，我们借鉴语义分割领域成功模型架构的设计思路（例如语义分割任务）。在实验中，我们的模型 $\mathbf{s}_\theta(\mathbf{x}, \sigma)$ <strong>融合了 U-Net 的架构设计</strong>与<strong>空洞卷积/扩张卷积</strong>（二者在语义分割中已被证明非常成功）。此外，我们采用<strong>实例归一化（instance normalization）</strong>，并基于其在部分图像生成任务中的卓越表现，<strong>使用条件实例归一化的改进版本实现对噪声层级 $\sigma_i$ 的条件化</strong>。关于模型架构的更多细节可详见附录 A。</p>
+<h4 id="通过分数匹配学习噪声条件分数网络">通过分数匹配学习噪声条件分数网络
+</h4><p>切片分数匹配与去噪分数匹配均可用于训练噪声条件分数网络（NCSN）。<strong>我们采用去噪分数匹配，因其在训练速度上略占优势，且更自然地契合噪声扰动数据分布的分数估计任务</strong>。需强调的是，经验切片分数匹配同样适用于 NCSN 训练。</p>
+<p>我们选择噪声分布为 $q_\sigma(\tilde{\mathbf{x}} \mid \mathbf{x}) = \mathcal{N}(\tilde{\mathbf{x}} \mid \mathbf{x}, \sigma^2 I)$，因此 $\nabla_{\tilde{\mathbf{x}}} \log q_\sigma(\tilde{\mathbf{x}} \mid \mathbf{x}) = -(\tilde{\mathbf{x}} - \mathbf{x}) / \sigma^2$。对于给定噪声强度 $\sigma$，去噪分数匹配的目标函数（式(2)）为：</p>
+$$
+\ell(\theta; \sigma) \triangleq \frac{1}{2} \mathbb{E}_{p_{\text{data}}(\mathbf{x})} \mathbb{E}_{\tilde{\mathbf{x}} \sim \mathcal{N}(\mathbf{x}, \sigma^2 I)} \left[ \left\| \mathbf{s}_\theta(\tilde{\mathbf{x}}, \sigma) + \frac{\tilde{\mathbf{x}} - \mathbf{x}}{\sigma^2} \right\|_2^2 \right]. \tag{5}
+$$<p>随后，我们将式(5)对所有 $\sigma \in \{\sigma_i\}_{i=1}^L$ 求和，得到统一目标函数：</p>
+$$
+\mathcal{L}(\theta; \{\sigma_i\}_{i=1}^L) \triangleq \frac{1}{L} \sum_{i=1}^L \lambda(\sigma_i) \ell(\theta; \sigma_i), \tag{6}
+$$<p>其中 $\lambda(\sigma_i) > 0$ 是依赖于 $\sigma_i$ 的系数函数。假设 $\mathbf{s}_\theta(\mathbf{x}, \sigma)$ 具有足够容量，则式(6)的极小值点 $\mathbf{s}_\theta^*(\mathbf{x}, \sigma)$ 满足 $\mathbf{s}_\theta^*(\mathbf{x}, \sigma_i) = \nabla_{\mathbf{x}} \log q_{\sigma_i}(\mathbf{x})$ 几乎必然成立（对所有 $i \in \{1,2,\cdots,L\}$），<strong>因为式(6)是 $L$ 个去噪分数匹配目标函数的锥形组合</strong>。</p>
+<p>关于系数函数 $\lambda(\cdot)$ 的取值存在多种可能选择。理想情况下，我们希望所有 $\{\sigma_i\}_{i=1}^L$ 对应的 $\lambda(\sigma_i)\ell(\theta;\sigma_i)$ 具有大致同阶的量级。通过实验观察发现，当分数网络训练至最优时，$\|\mathbf{s}_\theta(\mathbf{x}, \sigma)\|_2 \propto 1/\sigma$。这一现象启发我们选择 $\lambda(\sigma) = \sigma^2$。在此选择下，$\lambda(\sigma)\ell(\theta;\sigma) = \sigma^2 \ell(\theta;\sigma) = \frac{1}{2}\mathbb{E}\left[\|\mathbf{s}_\theta(\tilde{\mathbf{x}}, \sigma) + \frac{\tilde{\mathbf{x}} - \mathbf{x}}{\sigma}\|_2^2\right]$。由于 $\frac{\tilde{\mathbf{x}} - \mathbf{x}}{\sigma} \sim \mathcal{N}(0, I)$ 且 $\|\mathbf{s}_\theta(\mathbf{x}, \sigma)\|_2 \propto 1$，可直接推导出 $\lambda(\sigma)\ell(\theta;\sigma)$ 的量级与 $\sigma$ 无关。</p>
+<p><strong>需特别强调</strong>：我们的目标函数（式(6)）具有以下核心优势：</p>
+<ol>
+<li><strong>训练过程无需对抗训练</strong>；</li>
+<li><strong>无需代理损失函数</strong>（例如对比散度等）；</li>
+<li><strong>训练过程中无需从分数网络进行采样</strong>（区别于对比散度等方法）；</li>
+<li><strong>不要求分数网络具有特殊架构</strong>即可保证可训练性。<br>
+此外，当 $\lambda(\cdot)$ 和 $\{\sigma_i\}_{i=1}^L$ 固定时，该目标函数可用于<strong>定量比较不同噪声条件分数网络（NCSN）的性能</strong>。</li>
+</ol>
+<h4 id="通过退火朗之万动力学进行-ncsn-推理">通过退火朗之万动力学进行 NCSN 推理
+</h4><p>在训练完噪声条件分数网络 $\mathbf{s}_\theta(\mathbf{x}, \sigma)$ 后，我们提出一种采样方法——<strong>退火朗之万动力学</strong>（算法 1）——用于生成样本。该方法受<code>模拟退火</code>和<code>退火重要性采样</code>的启发。如算法 1 所示，我们首先从某个固定的先验分布（例如均匀噪声）初始化样本 $\tilde{\mathbf{x}}_0$。随后，我们以步长 $\alpha_1$ 运行朗之万动力学，从 $q_{\sigma_1}(\mathbf{x})$ 采样。接着，我们从上一次模拟的最终样本出发，以减小的步长 $\alpha_2$ 运行朗之万动力学，从 $q_{\sigma_2}(\mathbf{x})$ 采样。我们以这种方式继续迭代：将 $q_{\sigma_{i-1}}(\mathbf{x})$ 的朗之万动力学最终样本作为 $q_{\sigma_i}(\mathbf{x})$ 的初始样本，并逐步减小步长 $\alpha_i$（其中 $\alpha_i = \epsilon \cdot \sigma_i^2 / \sigma_L^2$）。最终，我们运行朗之万动力学从 $q_{\sigma_L}(\mathbf{x})$ 采样，当 $\sigma_L \approx 0$ 时，$q_{\sigma_L}(\mathbf{x})$ 与原始数据分布 $p_{\text{data}}(\mathbf{x})$ 高度接近。</p>
+<img src="image-20260212141759013.png" alt="image-20260212141759013" style="zoom:80%;" />
+<p>由于所有扰动分布 $\{q_{\sigma_i}\}_{i=1}^L$ 均通过高斯噪声进行扰动，其支撑集覆盖整个空间且分数定义良好，从而规避了流形假设带来的困难。当 $\sigma_1$ 足够大时，$q_{\sigma_1}(\mathbf{x})$ 的低密度区域显著缩小，且不同模态之间的隔离程度降低。如前所述，这能提升分数估计的准确性并加速朗之万动力学的混合过程。因此，我们可以合理假设朗之万动力学能从 $q_{\sigma_1}(\mathbf{x})$ 生成高质量样本。这些样本很可能处于 $q_{\sigma_1}(\mathbf{x})$ 的高密度区域，这意味着它们<strong>也大概率处于 $q_{\sigma_2}(\mathbf{x})$ 的高密度区域</strong>——鉴于 $q_{\sigma_1}(\mathbf{x})$ 与 $q_{\sigma_2}(\mathbf{x})$ 仅存在细微差异。由于分数估计和朗之万动力学在高密度区域表现更优，$q_{\sigma_1}(\mathbf{x})$ 的样本可作为 $q_{\sigma_2}(\mathbf{x})$ 朗之万动力学的优质初始样本。同理，$q_{\sigma_{i-1}}(\mathbf{x})$ 为 $q_{\sigma_i}(\mathbf{x})$ 提供优质初始样本，最终我们能从 $q_{\sigma_L}(\mathbf{x})$ 获得高质量样本。</p>
+<p>在算法1中，关于步长 $\alpha_i$ 的调整策略存在多种可能方案。我们的选择是 $\alpha_i \propto \sigma_i^2$，其动机在于<strong>固定朗之万动力学中的&quot;信号-噪声比&quot; $\frac{\alpha_i \mathbf{s}_\theta(\mathbf{x}, \sigma_i)}{2\sqrt{\alpha_i} \mathbf{z}}$ 的量级</strong>。需注意：$\mathbb{E}\left[\left\|\frac{\alpha_i \mathbf{s}_\theta(\mathbf{x}, \sigma_i)}{2\sqrt{\alpha_i} \mathbf{z}}\right\|_2^2\right] \approx \mathbb{E}\left[\frac{\alpha_i \|\mathbf{s}_\theta(\mathbf{x}, \sigma_i)\|_2^2}{4}\right] \propto \frac{1}{4} \mathbb{E}\left[\|\mathbf{s}_\theta(\mathbf{x}, \sigma_i)\|_2^2\right]$。如前所述，当分数网络训练接近最优时，$\|\mathbf{s}_\theta(\mathbf{x}, \sigma_i)\|_2 \propto 1/\sigma_i$，因此 $\left\|\frac{\alpha_i \mathbf{s}_\theta(\mathbf{x}, \sigma_i)}{2\sqrt{\alpha_i} \mathbf{z}}\right\|_2^2 \propto \frac{1}{4} \mathbb{E}\left[\|\mathbf{s}_\theta(\mathbf{x}, \sigma_i)\|_2^2\right] \propto \frac{1}{4}$，<strong>该量级与 $\sigma_i$ 无关</strong>。</p>
+<p>为验证退火朗之万动力学的有效性，我们通过一个玩具实验进行演示：仅使用分数从两个分离良好的高斯混合分布中采样（实验设置同3.2节）。我们采用算法1进行采样，选择 $\{\sigma_i\}_{i=1}^L$ 为几何级数，其中 $L=10$，$\sigma_1=10$，$\sigma_{10}=0.1$。实验结果展示于图3。对比图3(b)与(c)可见，<strong>退火朗之万动力学能正确恢复两模态间的相对权重，而标准朗之万动力学则失败</strong>。</p>
+<h3 id="实验">实验
+</h3>
 </section>
 
 
@@ -583,7 +584,7 @@ $$<p>其中 $\mathbf{z}_t \sim \mathcal{N}(0, I)$。当 $\epsilon \to 0$ 且 $T 
 
 
         <span>
-            最后更新于 2026-02-11
+            最后更新于 2026-02-12
         </span>
 &nbsp;
         
@@ -803,7 +804,7 @@ $$<p>其中 $\mathbf{z}_t \sim \mathcal{N}(0, I)$。当 $\epsilon \to 0$ 且 $T 
             本站总访问量 <span id="vercount_value_site_pv">Loading...</span> 次
             总访客数 <span id="vercount_value_site_uv">Loading...</span> 人 ·
             共发表了13篇文章  
-            总计31.14k字
+            总计34.10k字
         </p>
         
         <p id="blog-runtime" style="text-align: left; font-size: 0.9em; margin: 0.5em 0; color: #888;">
