@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="扩散模型阅读笔记\n论文基本信息 论文名称：White-box Membership Inference Attacks against Diffusion Models\n出版期刊：PoPETs 2025\n学校机构：University of Virginia, Iowa State University, CISPA Helmholtz Center for Information Security\nWhite-box（白盒）：指攻击者能够完全访问模型的内部参数、结构和训练过程，与“黑盒”（仅能通过输入输出接口交互）相对。\n">
+<title>针对扩散模型的白盒成员推理攻击</title>
+
+<link rel='canonical' href='https://ruheyun.github.io/p/gsa/'>
+
+<link rel="stylesheet" href="/scss/style.min.c53e728d39bf4abc64011c8c96de2ed571fe0a5237f8e834a07f716ed99115ad.css"><meta property='og:title' content="针对扩散模型的白盒成员推理攻击">
+<meta property='og:description' content="扩散模型阅读笔记\n论文基本信息 论文名称：White-box Membership Inference Attacks against Diffusion Models\n出版期刊：PoPETs 2025\n学校机构：University of Virginia, Iowa State University, CISPA Helmholtz Center for Information Security\nWhite-box（白盒）：指攻击者能够完全访问模型的内部参数、结构和训练过程，与“黑盒”（仅能通过输入输出接口交互）相对。\n">
+<meta property='og:url' content='https://ruheyun.github.io/p/gsa/'>
+<meta property='og:site_name' content='RuHeYun'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='White-box' /><meta property='article:tag' content='Membership Inference Attacks' /><meta property='article:published_time' content='2026-02-13T16:18:06&#43;08:00'/><meta property='article:modified_time' content='2026-02-13T17:27:10&#43;08:00'/>
+<meta name="twitter:title" content="针对扩散模型的白盒成员推理攻击">
+<meta name="twitter:description" content="扩散模型阅读笔记\n论文基本信息 论文名称：White-box Membership Inference Attacks against Diffusion Models\n出版期刊：PoPETs 2025\n学校机构：University of Virginia, Iowa State University, CISPA Helmholtz Center for Information Security\nWhite-box（白盒）：指攻击者能够完全访问模型的内部参数、结构和训练过程，与“黑盒”（仅能通过输入输出接口交互）相对。\n">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_fc0063c7379d43fb.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🥰</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">RuHeYun</a></h1>
+            <h2 class="site-description">欢迎来到我的网站！</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/ruheyun'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/logs/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-list-details"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M13 5h8" /><path d="M13 9h5" /><path d="M13 15h8" /><path d="M13 19h5" /><path d="M3 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" /><path d="M3 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" /></svg>
+                
+                <span>日志</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://ruheyun.github.io/en/" >English</option>
+                                
+                                    <option value="https://ruheyun.github.io/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#摘要">摘要</a></li>
+    <li><a href="#引言">引言</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/dm/" style="background-color: #2a9d8f; color: #fff;">
+                DM
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/gsa/">针对扩散模型的白盒成员推理攻击</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2026-02-13T16:18:06&#43;08:00'>2026-02-13</time>
+            </div>
+        
+
+        
+
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>扩散模型阅读笔记</p>
+<!-- more -->
+<h1 id="论文基本信息">论文基本信息
+</h1><p><mark>论文名称</mark>：White-box Membership Inference Attacks against Diffusion Models</p>
+<p><mark>出版期刊</mark>：PoPETs 2025</p>
+<p><mark>学校机构</mark>：University of Virginia, Iowa State University, CISPA Helmholtz Center for  Information Security</p>
+<blockquote>
+<p>White-box（白盒）：指攻击者能够完全访问模型的内部参数、结构和训练过程，与“黑盒”（仅能通过输入输出接口交互）相对。</p>
+<p>Membership Inference Attacks（成员推理攻击）：一种隐私攻击方法，旨在判断某个特定数据样本是否曾被用于训练目标模型，从而泄露训练数据的隐私信息。</p>
+<p>Diffusion Models（扩散模型）：一类基于逐步加噪和去噪过程的生成式模型，广泛应用于图像、音频等数据生成任务。</p>
+</blockquote>
+<h1 id="论文翻译">论文翻译
+</h1><h2 id="摘要">摘要
+</h2><p>扩散模型凭借卓越的图像生成能力，已在工业应用中逐渐超越GAN等其他生成式模型。此类模型的复杂架构蕴含丰富的攻击特性。鉴于此，<u>本研究旨在设计面向扩散模型的成员推理攻击（MIAs）</u>。我们首先对现有攻击方法进行系统性分析，综合考量黑盒/白盒模型类型与攻击特征选择等因素。实验发现：<u>白盒攻击在真实场景中具有高度适用性，且当前最有效的攻击形式即为白盒攻击</u>。与早期研究不同——后者以模型损失作为白盒攻击的核心特征，<mark>本研究创新性地采用模型梯度作为攻击特征，充分利用梯度信息能更深入反映模型对各类样本响应机制的特性</mark>。我们通过严格的参数测试（涵盖训练步数、时间步采样频率、扩散步数及数据方差等），验证了该方法的鲁棒性。在所有实验设置下，攻击成功率均趋近100%，攻击AUCROC值接近1.0。此外，针对常见防御机制的测试表明，本攻击仍能保持显著效果。代码 <a class="link" href="https://github.com/py85252876/GSA"  target="_blank" rel="noopener"
+    >Github</a>。</p>
+<h2 id="引言">引言
+</h2><p>近年来，扩散模型受到广泛关注，各类应用不断涌现。这类模型依赖于渐进式去噪过程生成图像，相较于早期的生成对抗网络（GANs）和变分自编码器（VAEs），其生成图像的质量显著提升。当前主流模型主要分为两类：第一类为基于扩散机制的架构，包括 GLIDE、Stable Diffusion、DALL·E 2和 Imagen；第二类为代表性的序列到序列（sequence-to-sequence）模型，如 DALL·E、Parti 和 CogView。现有的文本到图像生成模型能够根据文本描述生成精致且细节丰富的图像，已广泛应用于平面设计、插画创作等多个领域。尽管扩散模型可用于合成独特的艺术风格，但其训练通常需要依赖大规模敏感数据集。因此，研究成员推理攻击（Membership Inference Attacks, MIAs）—— 即判断特定样本是否曾被用于扩散模型训练——对于保障数据隐私具有至关重要的意义。</p>
+<p>针对分类模型与生成对抗网络（GANs）等模型的成员推理攻击已开展了大量研究。然而，由于扩散模型在训练与推理机制上具有独特性，既有的攻击方法难以直接适用。例如，在分类模型中，攻击通常以模型的最终输出作为特征，依赖模型对训练数据的过拟合所导致的分类置信度差异进行推断；而针对 GAN 等生成模型的早期研究则主要利用其判别器（discriminator）进行成员判定。由于扩散模型本身不包含判别器，其架构与 GAN 存在本质差异，因此必须为其专门设计新型攻击方法。</p>
+<p>目前已有一些初步工作尝试对扩散模型实施成员推理攻击。但值得注意的是，这些研究与该领域多数工作类似，主要聚焦于基于损失函数（loss-based）和阈值判定（threshold-based）的攻击策略。我们认为，神经网络的不同层学习到的特征各异，因而存储的信息量也存在差异。仅依赖损失值进行评估可能忽略大量潜在的判别性信息。因此，若在考虑模型损失的同时，进一步纳入反向传播后各网络层的梯度信息，将有助于更全面地刻画模型对样本的响应特性，从而提升攻击的有效性。</p>
+<p>将梯度信息用于成员推理攻击（MIAs）面临两大主要挑战：一是计算开销过大，二是攻击模型易出现过拟合问题（鉴于扩散模型规模庞大，其梯度维度可达数百万）。为此，我们深入分析了降维策略，提出了一种融合子采样（subsampling）与聚合（aggregation）机制的攻击框架，命名为<strong>基于子采样与聚合的梯度攻击</strong>（Gradient attack based on Subsampling and Aggregation, <strong>GSA</strong>），并进一步设计了两种具体实现方案——GSA1 与 GSA2，以展示该框架内不同设计权衡下的性能表现。</p>
+<p>为确保研究的全面性与完整性，我们在两类代表性扩散模型上开展实验：基础的无条件去噪扩散概率模型（Denoising Diffusion Probabilistic Models, <strong>DDPM</strong>）与当前文本到图像生成领域的前沿模型 <strong>Imagen</strong>。其中，CIFAR-10 与 ImageNet 数据集用于训练无条件扩散模型，MS COCO 数据集用于训练 Imagen 模型。我们系统探究了不同参数（如时间步、模型层数等）对攻击效果的影响。最终实验结果表明，所提攻击策略取得了接近 100% 的成功率，充分揭示了扩散模型在安全性方面亟待解决的隐私风险。</p>
+<p>本文的主要贡献如下：</p>
+<ul>
+<li>系统梳理了现有针对扩散模型的成员推理攻击研究，并面向新型实用场景设计了基于梯度的攻击方法，从时间步、模型层等多个维度展开深入分析；</li>
+<li>在三种数据集上分别基于传统 DDPM 模型与前沿文本到图像模型 Imagen 进行实验验证。结果表明，该方法在四项评估指标上均达到极高准确率，有力证实了将梯度作为攻击特征的有效性与优越性。</li>
+</ul>
+<p><strong>论文结构安排</strong>。第 2 节介绍扩散模型的背景知识，并深入探讨成员推理攻击的原理；同时分析我们面临的主要挑战，并回顾现有针对扩散模型的攻击方法。第 3 节详细阐述我们提出的攻击策略。第 4 节说明实验设置，第 5 节展示实验结果。第 6 节将 GSA 框架应用于模型层级别，进一步降低计算耗时。第 7 节验证该攻击在多种防御策略下的性能表现。第 8 节讨论本攻击方法的局限性。第 9 节综述相关研究工作，最后第 10 节对全文进行总结。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/white-box/">White-Box</a>
+        
+            <a href="/tags/membership-inference-attacks/">Membership Inference Attacks</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>根据CC BY-NC-SA 4.0许可</span>
+    </section>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 2026-02-13
+        </span>
+&nbsp;
+        
+        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+        <time class="article-time--reading">
+            
+            <span id="vercount_value_page_pv">loading... </span>次
+        </time>
+    </section></footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        const elementsToRender = [".main-article", ".widget--toc"];
+
+        elementsToRender.forEach(selector => {
+            const element = document.querySelector(selector);
+            if (element) {
+                renderMathInElement(element, {
+                    delimiters: [
+                        { left: "$$", right: "$$", display: true },
+                        { left: "$", right: "$", display: false },
+                        { left: "\\(", right: "\\)", display: false },
+                        { left: "\\[", right: "\\]", display: true }
+                    ],
+                    ignoredClasses: ["gist"]
+                });
+            }
+        });
+    });
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/paper-reading/">
+        
+        
+            <div class="article-image">
+                <img src="/p/paper-reading/123.44d101d01d88ba6753d799023e82c8f5_hu_31ac40e73c40a18f.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 论文阅读汇总"
+                        data-key="paper-reading" 
+                        data-hash="md5-RNEB0B2IumdT15kCPoLI9Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">论文阅读汇总</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/ncsn/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">NCSN</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/diffusion/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Diffusion</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script
+    src="https://giscus.app/client.js"
+    data-repo="ruheyun/ruheyun.github.io"
+    data-repo-id="R_kgDORA4gWA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDORA4gWM4C1aAn"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="light_protanopia"
+    data-lang="en"
+    data-loading=""
+    crossorigin="anonymous"
+    async
+></script>
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function () {
+        addEventListener("message", (e) => {
+            if (event.origin !== "https://giscus.app") return;
+            handler();
+        });
+        window.addEventListener("onColorSchemeChange", handler);
+
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('light_protanopia');
+            } else {
+                setGiscusTheme('dark_high_contrast');
+            }
+        }
+    })();
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2026 RuHeYun
+    </section>
+    
+    
+
+    
+    
+    
+    
+    
+     
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    
+    
+    
+
+    <section class="custom-footer-text">
+        <p style="text-align: left; font-size: 1.1em; margin: 0.5em 0;">
+            [ 天天熬夜 <span class="heartbeat">❤️</span> 迟早猝死 ]
+        </p>
+
+        <p style="font-size: 0.9em;">
+            本站总访问量 <span id="vercount_value_site_pv">Loading...</span> 次
+            总访客数 <span id="vercount_value_site_uv">Loading...</span> 人 ·
+            共发表了14篇文章  
+            总计38.90k字
+        </p>
+        
+        <p id="blog-runtime" style="text-align: left; font-size: 0.9em; margin: 0.5em 0; color: #888;">
+            这个网站已经运行了: <span id="runtime-value">Loading...</span>
+            <span class="floating-end">ღゝ◡╹)ノ♡</span>
+        </p>
+    </section>
+
+    
+    
+
+    <section class="totalcount">
+    
+    </section>
+
+
+    
+
+</footer>
+
+
+<style>
+     
+     
+    .custom-footer-text {
+        font-family: 'ZCOOL QingKe HuangYou', cursive, sans-serif;
+    }
+
+     
+    .custom-footer-text p:first-child {
+        font-size: 1.2em;
+         
+         
+    }
+
+
+    .heartbeat {
+        display: inline-block;
+        animation: heartbeat 1.5s ease-in-out infinite;
+        color: #e74c3c;  
+    }
+
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        15% { transform: scale(1.1); }
+        30% { transform: scale(1); }
+        45% { transform: scale(1.1); }
+        60% { transform: scale(1); }
+        75% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+      
+    .floating-end {
+        display: inline-block;
+        animation: float 3s ease-in-out infinite;
+         
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+    }
+</style>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        const startDate = new Date("2022-06-18T00:00:00Z"); 
+
+        function updateRuntime() {
+            const now = new Date();
+            const diffMs = now - startDate;
+            const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+            const diffSeconds = Math.floor((diffMs % (1000 * 60)) / 1000);
+
+            const runtimeStr = `${diffDays} 天 ${diffHours} 小时 ${diffMinutes} 分钟 ${diffSeconds} 秒`;
+            document.getElementById('runtime-value').textContent = runtimeStr;
+        }
+
+        
+        updateRuntime();
+        setInterval(updateRuntime, 1000);
+    });
+</script>
+
+<script src="/js/scroll-buttons.js"></script>
+
+
+
+<script defer src="https://events.vercount.one/js"></script>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+    
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.c922af694cc257bf1ecc41c0dd7b0430f9114ec280ccf67cd2c6ad55f5316c4e.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<div id="particles-js"></div>
+
+<script src='https://ruheyun.github.io/background/particles.min.js'></script>
+<script>
+  particlesJS.load('particles-js', 'https:\/\/ruheyun.github.io\/background\/particlesjs-config.json', function() {
+    console.log('particles.js loaded - callback');
+  });
+</script>
+
+<style>
+  #particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+  }
+</style>
+
+
+<style>
+  @font-face {
+    font-family: 'shcss';
+    src: url('https://ruheyun.github.io/font/SkyHeartClearSerifSC.ttf') format('truetype');
+  }
+
+  :root {
+    --base-font-family: 'shcss';
+    --code-font-family: 'shcss';
+  }
+</style>
+
+
+<style>
+    .highlight {
+         
+        max-height: 400px;
+        overflow: hidden;
+    }
+
+    .code-show {
+        max-height: none !important;
+    }
+
+    .code-more-box {
+        width: 100%;
+        padding-top: 78px;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(#fff));
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    .code-more-btn {
+        display: block;
+        margin: auto;
+        width: 44px;
+        height: 22px;
+        background: #f0f0f5;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        padding-top: 6px;
+        cursor: pointer;
+    }
+
+    .code-more-img {
+        cursor: pointer !important;
+        display: block;
+        margin: auto;
+        width: 22px;
+        height: 16px;
+    }
+</style>
+
+<script>
+  function initCodeMoreBox() {
+    let codeBlocks = document.querySelectorAll(".highlight");
+    if (!codeBlocks) {
+      return;
+    }
+    codeBlocks.forEach(codeBlock => {
+      
+      if (codeBlock.scrollHeight <= codeBlock.clientHeight) {
+        return;
+      }
+      
+      
+      let codeMoreBox = document.createElement('div');
+      codeMoreBox.classList.add('code-more-box');
+      
+      let codeMoreBtn = document.createElement('span');
+      codeMoreBtn.classList.add('code-more-btn');
+      codeMoreBtn.addEventListener('click', () => {
+        codeBlock.classList.add('code-show');
+        codeMoreBox.style.display = 'none';
+        
+        window.dispatchEvent(new Event('resize'))
+      })
+      
+      let img = document.createElement('img');
+      img.classList.add('code-more-img');
+      img.src = 'https:\/\/ruheyun.github.io\/icons\/codeMore.png'
+      
+      codeMoreBtn.appendChild(img);
+      codeMoreBox.appendChild(codeMoreBtn);
+      codeBlock.appendChild(codeMoreBox)
+    })
+  }
+  
+  initCodeMoreBox();
+</script>
+
+
+
+    </body>
+</html>

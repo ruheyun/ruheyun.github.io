@@ -7,7 +7,23 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Fri, 13 Feb 2026 15:03:27 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 13 Feb 2026 17:27:10 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Membership Inference Attacks</title>
+        <link>https://ruheyun.github.io/tags/membership-inference-attacks/</link>
+        <pubDate>Fri, 13 Feb 2026 16:18:06 +0800</pubDate>
+        
+        <guid>https://ruheyun.github.io/tags/membership-inference-attacks/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>White-Box</title>
+        <link>https://ruheyun.github.io/tags/white-box/</link>
+        <pubDate>Fri, 13 Feb 2026 16:18:06 +0800</pubDate>
+        
+        <guid>https://ruheyun.github.io/tags/white-box/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Site</title>
         <link>https://ruheyun.github.io/tags/site/</link>
         <pubDate>Mon, 09 Feb 2026 10:26:11 +0800</pubDate>
