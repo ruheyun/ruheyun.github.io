@@ -14,7 +14,7 @@
         <guid>https://ruheyun.github.io/p/paper-reading/</guid>
         <description>&lt;img src="https://ruheyun.github.io/p/paper-reading/123.jpg" alt="Featured image of post 论文阅读汇总" /&gt;&lt;h2 id=&#34;扩散模型论文阅读笔记&#34;&gt;扩散模型论文阅读笔记
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://ruheyun.github.io/p/diffusion&#34; &gt;Deep Unsupervised Learning using Nonequilibrium Thermodynamics&lt;/a&gt; 2015【已更完】&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://ruheyun.github.io/p/ncsn&#34; &gt;Generative Modeling by Estimating Gradients of the Data Distribution&lt;/a&gt; 2019【更新中】&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://ruheyun.github.io/p/ncsn&#34; &gt;Generative Modeling by Estimating Gradients of the Data Distribution&lt;/a&gt; 2019【已更完】&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -176,7 +176,31 @@ $$&lt;p&gt;其中 $\lambda(\sigma_i) &gt; 0$ 是依赖于 $\sigma_i$ 的系数�
 &lt;p&gt;在算法1中，关于步长 $\alpha_i$ 的调整策略存在多种可能方案。我们的选择是 $\alpha_i \propto \sigma_i^2$，其动机在于&lt;strong&gt;固定朗之万动力学中的&amp;quot;信号-噪声比&amp;quot; $\frac{\alpha_i \mathbf{s}_\theta(\mathbf{x}, \sigma_i)}{2\sqrt{\alpha_i} \mathbf{z}}$ 的量级&lt;/strong&gt;。需注意：$\mathbb{E}\left[\left\|\frac{\alpha_i \mathbf{s}_\theta(\mathbf{x}, \sigma_i)}{2\sqrt{\alpha_i} \mathbf{z}}\right\|_2^2\right] \approx \mathbb{E}\left[\frac{\alpha_i \|\mathbf{s}_\theta(\mathbf{x}, \sigma_i)\|_2^2}{4}\right] \propto \frac{1}{4} \mathbb{E}\left[\|\mathbf{s}_\theta(\mathbf{x}, \sigma_i)\|_2^2\right]$。如前所述，当分数网络训练接近最优时，$\|\mathbf{s}_\theta(\mathbf{x}, \sigma_i)\|_2 \propto 1/\sigma_i$，因此 $\left\|\frac{\alpha_i \mathbf{s}_\theta(\mathbf{x}, \sigma_i)}{2\sqrt{\alpha_i} \mathbf{z}}\right\|_2^2 \propto \frac{1}{4} \mathbb{E}\left[\|\mathbf{s}_\theta(\mathbf{x}, \sigma_i)\|_2^2\right] \propto \frac{1}{4}$，&lt;strong&gt;该量级与 $\sigma_i$ 无关&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;为验证退火朗之万动力学的有效性，我们通过一个玩具实验进行演示：仅使用分数从两个分离良好的高斯混合分布中采样（实验设置同3.2节）。我们采用算法1进行采样，选择 $\{\sigma_i\}_{i=1}^L$ 为几何级数，其中 $L=10$，$\sigma_1=10$，$\sigma_{10}=0.1$。实验结果展示于图3。对比图3(b)与(c)可见，&lt;strong&gt;退火朗之万动力学能正确恢复两模态间的相对权重，而标准朗之万动力学则失败&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;实验&#34;&gt;实验
-&lt;/h3&gt;</description>
+&lt;/h3&gt;&lt;h3 id=&#34;相关工作&#34;&gt;相关工作
+&lt;/h3&gt;&lt;p&gt;我们的方法与若干通过学习马尔可夫链转移算子实现采样的方法存在相似性。例如，生成随机网络（GSN）利用去噪自编码器训练一个马尔可夫链，其平衡分布与数据分布相匹配。类似地，我们的方法通过训练朗之万动力学中使用的分数函数，从数据分布中进行采样。但需注意：GSN 通常从接近训练数据点的位置初始化马尔可夫链，因此要求链在不同模态间快速转移。相比之下，我们的退火朗之万动力学从非结构化噪声初始化。非平衡热力学（NET）采用预设扩散过程将数据缓慢转换为随机噪声，再通过训练逆向扩散过程实现还原。然而，NET 可扩展性较差，因其要求扩散过程步长极小，且训练时需模拟数千步的马尔可夫链。&lt;/p&gt;
+&lt;p&gt;先前的方法（如扩散训练（IT）和变分回溯（VW））同样采用不同噪声层级/温度训练马尔可夫链的转移算子。IT 和 VW（以及 NET）均通过最大化适当边缘似然的证据下界（ELBO）训练模型。实践中，它们常生成模糊的图像样本（与变分自编码器类似）。&lt;strong&gt;与之形成鲜明对比的是，我们的目标函数基于分数匹配而非似然优化，因此能够生成与 GAN 相媲美的高质量图像&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;与前述方法相比，我们的方法存在若干结构性差异。首先，&lt;strong&gt;我们不需要在训练过程中从马尔可夫链采样&lt;/strong&gt;。相比之下，生成随机网络（GSN）的回溯过程需要多次运行马尔可夫链以生成&amp;quot;负样本&amp;quot;。包括非平衡热力学（NET）、扩散训练（IT）和变分回溯（VW）在内的其他方法，也需要为每个输入模拟马尔可夫链来计算训练损失。这种差异使我们的方法在训练深度模型时更加高效且可扩展。其次，&lt;strong&gt;我们的训练与采样方法相互解耦&lt;/strong&gt;。对于分数估计，可采用切片分数匹配和去噪分数匹配等任意方法；对于采样，可使用任何基于分数的方法，包括朗之万动力学和（潜在的）哈密顿蒙特卡洛。我们的框架允许任意组合分数估计器和（基于梯度的）采样方法，而大多数先前方法则将模型与特定的马尔可夫链绑定。最后，&lt;strong&gt;我们的方法可用于训练基于能量的模型（EBM）&lt;/strong&gt;，只需将基于能量模型的梯度作为分数模型。相比之下，目前尚不清楚先前学习马尔可夫链转移算子的方法如何直接用于训练 EBM。&lt;/p&gt;
+&lt;p&gt;分数匹配最初是为学习基于能量的模型（EBM）而提出的。然而，许多现有基于分数匹配的方法要么不可扩展，要么无法产生与变分自编码器（VAE）或生成对抗网络（GAN）相当质量的样本。为提升深度基于能量模型的训练性能，一些近期工作转向对比散度，并提出在训练和测试中使用朗之万动力学进行采样。然而，与我们的方法不同，对比散度在训练中使用计算昂贵的朗之万动力学作为内循环。将退火与去噪分数匹配相结合的思想也在先前工作中在不同背景下进行了研究。然而，这些工作主要聚焦于学习表示以改进分类性能，而非生成建模。去噪分数匹配的方法也可从贝叶斯最小二乘的角度推导，并可借助 Stein 无偏风险估计器的技术实现。&lt;/p&gt;
+&lt;h3 id=&#34;结论&#34;&gt;结论
+&lt;/h3&gt;&lt;p&gt;我们提出了一种基于分数的生成建模框架：首先通过分数匹配估计数据密度的梯度，再利用朗之万动力学生成样本。我们分析了该方法朴素应用所面临的若干挑战，并提出通过训练&lt;strong&gt;噪声条件分数网络（NCSN）&lt;/strong&gt; 和采用&lt;strong&gt;退火朗之万动力学采样&lt;/strong&gt;来应对这些挑战。本方法无需对抗训练、训练过程中无需 MCMC 采样，且对模型架构无特殊要求。实验表明，我们的方法能够生成此前仅由最优基于似然模型和 GAN 生成的高质量图像。我们在 CIFAR-10 数据集上取得了&lt;strong&gt;8.87 的最先进 Inception Score&lt;/strong&gt;，且 FID 分数与 SNGANs 相当。&lt;/p&gt;
+&lt;h3 id=&#34;a-架构&#34;&gt;A 架构
+&lt;/h3&gt;&lt;p&gt;本实验中所用噪声条件分数网络（NCSN）的架构包含三个重要组件：&lt;strong&gt;实例归一化&lt;/strong&gt;、&lt;strong&gt;空洞卷积&lt;/strong&gt;和&lt;strong&gt;U-Net类型架构&lt;/strong&gt;。下文将详细介绍这些组件的背景，并阐述我们如何修改它们以适应研究需求。若需更全面的细节和参考实现，建议读者查阅我们公开的代码库。我们的分数网络基于 &lt;strong&gt;PyTorch&lt;/strong&gt; 实现，代码 &lt;a class=&#34;link&#34; href=&#34;https://github.com/ermongroup/ncsn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Github&lt;/a&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;a1-实例归一化&#34;&gt;A.1 实例归一化
+&lt;/h3&gt;&lt;p&gt;我们采用条件实例归一化，使分数网络 $\mathbf{s}_\theta(\mathbf{x}, \sigma)$ 在预测分数时能够考虑噪声水平 $\sigma$。在条件实例归一化中，针对不同的 $\sigma \in \{\sigma_i\}_{i=1}^L$ 采用不同的缩放参数与偏置参数。具体而言，假设输入 $\mathbf{x}$ 包含 $C$ 个特征图。令 $\mu_k$ 和 $s_k$ 分别表示 $\mathbf{x}$ 的第 $k$ 个特征图沿空间轴计算的均值与标准差。条件实例归一化通过以下公式实现：&lt;/p&gt;
+$$
+\mathbf{z}_k = \gamma[i,k] \frac{\mathbf{x}_k - \mu_k}{s_k} + \beta[i,k],
+$$&lt;p&gt;其中 $\gamma \in \mathbb{R}^{L \times C}$ 和 $\beta \in \mathbb{R}^{L \times C}$ 为可学习参数，$k$ 表示特征图索引，$i$ 表示 $\{\sigma_i\}_{i=1}^L$ 中 $\sigma$ 的索引。&lt;/p&gt;
+&lt;p&gt;然而，实例归一化的一个缺点是它完全移除了不同特征图的 $\mu_k$ 信息，这可能导致生成图像出现颜色偏移。为解决此问题，我们提出对条件实例归一化进行简单改进：首先计算 $\mu_k$ 的均值与标准差，分别记为 $m$ 和 $v$；然后引入另一个可学习参数 $\alpha \in \mathbb{R}^{L \times C}$。改进后的条件实例归一化定义为：&lt;/p&gt;
+$$
+\mathbf{z}_k = \gamma[i,k] \frac{\mathbf{x}_k - \mu_k}{s_k} + \beta[i,k] + \alpha[i,k] \frac{\mu_k - m}{v}.
+$$&lt;p&gt;我们将这种改进的条件实例归一化简称为 &lt;strong&gt;CondInstanceNorm++&lt;/strong&gt;。在我们的架构中，&lt;strong&gt;CondInstanceNorm++ 被添加在每个卷积层和池化层之前&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;a2-空洞卷积&#34;&gt;A.2 空洞卷积
+&lt;/h3&gt;&lt;p&gt;空洞卷积可在保持特征图分辨率的同时扩大感受野。研究表明，空洞卷积在语义分割任务中效果显著，因其能更好地保留高分辨率特征图中的位置信息。在噪声条件分数网络（NCSN）的架构设计中，&lt;strong&gt;我们使用空洞卷积替换除第一层外的所有下采样层&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;a3-u-net-架构&#34;&gt;A.3 U-Net 架构
+&lt;/h3&gt;&lt;p&gt;U-Net 是一种具有特殊跳跃连接的架构。这些跳跃连接有助于将浅层中的低层信息（如位置和形状）传递至网络的深层。由于浅层通常包含位置和形状等低层信息，这些跳跃连接有助于提升语义分割的结果。为构建 $\mathbf{s}_\theta(\mathbf{x}, \sigma)$，我们采用 RefineNet 的架构，这是一种结合了 ResNet 设计的 U-Net 现代变体。关于 RefineNet 架构的详细描述，建议读者参考文献 [32]。&lt;/p&gt;
+&lt;p&gt;在我们的实验中，&lt;strong&gt;我们使用 4 级级联的 RefineNet&lt;/strong&gt;。我们采用预激活残差块（pre-activation residual blocks），并移除 RefineNet 架构中的所有批归一化层，替换为 CondInstanceNorm++。我们将 RefineNet 中的&lt;strong&gt;最大池化层替换为平均池化&lt;/strong&gt;，因为平均池化在图像生成任务（如风格迁移）中被证实能产生更平滑的图像。此外，我们在 RefineNet 块中的每个卷积和平均池化前添加 CondInstanceNorm++（尽管原始 RefineNet 块中未使用归一化）。所有激活函数均选择为 ELU。如前所述，我们&lt;strong&gt;使用空洞卷积替换残差块中的下采样层（第一层除外）&lt;/strong&gt;。遵循常规实践，我们在进入下一级联时将膨胀率增加一倍。对于 CelebA 和 CIFAR-10 实验，第一级对应的层的滤波器数量为 128，其他级的滤波器数量加倍；而对于 MNIST 实验，滤波器数量则减半。&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>Diffusion</title>
