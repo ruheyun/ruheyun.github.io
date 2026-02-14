@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Sat, 14 Feb 2026 15:33:31 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 14 Feb 2026 18:44:09 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>论文阅读汇总</title>
         <link>https://ruheyun.github.io/p/paper-reading/</link>
         <pubDate>Fri, 06 Feb 2026 14:55:22 +0800</pubDate>
@@ -75,42 +75,44 @@
         <guid>https://ruheyun.github.io/p/gsa/</guid>
         <description>&lt;p&gt;扩散模型阅读笔记&lt;/p&gt;
 &lt;!-- more --&gt;
-&lt;h1 id=&#34;论文基本信息&#34;&gt;论文基本信息
-&lt;/h1&gt;&lt;p&gt;&lt;mark&gt;论文标题&lt;/mark&gt;：White-box Membership Inference Attacks against Diffusion Models&lt;/p&gt;
+&lt;h2 id=&#34;论文基本信息&#34;&gt;论文基本信息
+&lt;/h2&gt;&lt;p&gt;&lt;mark&gt;论文标题&lt;/mark&gt;：White-box Membership Inference Attacks against Diffusion Models&lt;/p&gt;
 &lt;p&gt;&lt;mark&gt;出版期刊&lt;/mark&gt;：PoPETs 2025&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;论文作者&lt;/mark&gt;：Yan Pang, Tianhao Wang, Xuhui Kang, Mengdi Huai, Yang Zhang&lt;/p&gt;
 &lt;p&gt;&lt;mark&gt;学校机构&lt;/mark&gt;：University of Virginia, Iowa State University, CISPA Helmholtz Center for  Information Security&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;White-box（白盒）：指攻击者能够完全访问模型的内部参数、结构和训练过程，与“黑盒”（仅能通过输入输出接口交互）相对。&lt;/p&gt;
-&lt;p&gt;Membership Inference Attacks（成员推理攻击）：一种隐私攻击方法，旨在判断某个特定数据样本是否曾被用于训练目标模型，从而泄露训练数据的隐私信息。&lt;/p&gt;
-&lt;p&gt;Diffusion Models（扩散模型）：一类基于逐步加噪和去噪过程的生成式模型，广泛应用于图像、音频等数据生成任务。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&#34;目标贡献&#34;&gt;目标/贡献
-&lt;/h1&gt;&lt;p&gt;设计针对扩散模型的白盒成员推理攻击（MIA），利用梯度信息提升攻击效果；&lt;/p&gt;
-&lt;p&gt;提出GSA框架及实例，验证梯度作为攻击特征的优越性，多数据集/模型验证有效性&lt;/p&gt;
-&lt;h1 id=&#34;研究背景&#34;&gt;研究背景
-&lt;/h1&gt;&lt;h2 id=&#34;扩散模型现状&#34;&gt;扩散模型现状
-&lt;/h2&gt;&lt;p&gt;优势：图像生成性能超GANs/VAEs，应用于图形设计等领域&lt;/p&gt;
+&lt;h2 id=&#34;目标贡献&#34;&gt;目标/贡献
+&lt;/h2&gt;&lt;p&gt;设计针对&lt;code&gt;扩散模型&lt;/code&gt;的&lt;code&gt;白盒成员&lt;/code&gt;推理攻击（MIA），利用&lt;code&gt;梯度信息&lt;/code&gt;提升攻击效果；&lt;/p&gt;
+&lt;p&gt;提出 GSA 框架及实例，验证梯度作为攻击特征的优越性，多数据集/模型验证有效性&lt;/p&gt;
+&lt;h2 id=&#34;研究背景&#34;&gt;研究背景
+&lt;/h2&gt;&lt;h3 id=&#34;扩散模型现状&#34;&gt;扩散模型现状
+&lt;/h3&gt;&lt;p&gt;优势：图像生成性能超 GANs/VAEs，应用于图形设计等领域&lt;/p&gt;
 &lt;p&gt;分类：无条件（DDPM）、条件（Imagen、Stable Diffusion）&lt;/p&gt;
 &lt;p&gt;隐患：依赖敏感训练数据，存在隐私泄露风险&lt;/p&gt;
-&lt;h2 id=&#34;成员推理攻击mia基础&#34;&gt;成员推理攻击（MIA）基础
-&lt;/h2&gt;&lt;p&gt;定义：判断样本是否属于模型训练集&lt;/p&gt;
+&lt;h3 id=&#34;成员推理攻击mia基础&#34;&gt;成员推理攻击（MIA）基础
+&lt;/h3&gt;&lt;p&gt;定义：一种隐私攻击方法，旨在判断某个特定数据样本是否曾被用于训练目标模型，从而泄露训练数据的隐私信息。&lt;/p&gt;
 &lt;p&gt;现有方法局限：分类模型依赖输出向量，GANs依赖判别器，扩散模型无判别器需新方法&lt;/p&gt;
-&lt;h2 id=&#34;现有扩散模型-mia-不足&#34;&gt;现有扩散模型 MIA 不足
-&lt;/h2&gt;&lt;p&gt;主流依赖损失值/阈值，信息单一易误判&lt;/p&gt;
+&lt;h3 id=&#34;黑盒白盒攻击&#34;&gt;黑盒/白盒攻击
+&lt;/h3&gt;&lt;p&gt;White-box（白盒）：指攻击者能够完全访问模型的内部参数、结构和训练过程，与“黑盒”（仅能通过输入输出接口交互）相对。&lt;/p&gt;
+&lt;p&gt;我们发现白盒攻击在现实世界中非常适用，目前最有效的攻击是白盒。&lt;/p&gt;
+&lt;h3 id=&#34;现有扩散模型-mia-不足&#34;&gt;现有扩散模型 MIA 不足
+&lt;/h3&gt;&lt;p&gt;主流依赖损失值/阈值，信息单一易误判&lt;/p&gt;
 &lt;p&gt;白盒攻击为当前最有效类型，但现有方法计算成本高&lt;/p&gt;
-&lt;h1 id=&#34;攻击方法设计gsa-框架&#34;&gt;攻击方法设计（GSA 框架）
-&lt;/h1&gt;&lt;h2 id=&#34;思想&#34;&gt;思想
-&lt;/h2&gt;&lt;p&gt;用梯度替代损失作为攻击特征，梯度含更高维模型响应信息&lt;/p&gt;
-&lt;h2 id=&#34;理论基础&#34;&gt;理论基础
-&lt;/h2&gt;&lt;p&gt;梯度公式：$∇_θL_t(θ,x) = 2(ε_θ(x_t,t)-εt)⊤∇_θε_θ(x_t,t)$&lt;/p&gt;
+&lt;h2 id=&#34;攻击方法设计gsa-框架&#34;&gt;攻击方法设计（GSA 框架）
+&lt;/h2&gt;&lt;h3 id=&#34;思想&#34;&gt;思想
+&lt;/h3&gt;&lt;p&gt;用梯度替代损失作为攻击特征，梯度含更高维模型响应信息&lt;/p&gt;
+&lt;h3 id=&#34;理论基础&#34;&gt;理论基础
+&lt;/h3&gt;&lt;p&gt;梯度公式：$∇_θL_t(θ,x) = 2(ε_θ(x_t,t)-εt)⊤∇_θε_θ(x_t,t)$&lt;/p&gt;
 &lt;p&gt;优势：即使损失相同，梯度可通过 $∇θεθ(xt,t)$ 区分成员/非成员样本&lt;/p&gt;
-&lt;h2 id=&#34;梯度降维策略&#34;&gt;梯度降维策略
-&lt;/h2&gt;&lt;p&gt;时间步层面：等距采样（平衡效果与效率）、有效采样（需预计算黄金区间）、泊松采样（随机）&lt;/p&gt;
+&lt;h3 id=&#34;梯度降维策略&#34;&gt;梯度降维策略
+&lt;/h3&gt;&lt;p&gt;时间步层面：等距采样（平衡效果与效率）、有效采样（需预计算黄金区间）、泊松采样（随机）&lt;/p&gt;
 &lt;p&gt;模型层层面：选择性提取各层梯度，聚合有用信息&lt;/p&gt;
 &lt;p&gt;层内梯度层面：将梯度视为集合，避免顺序依赖&lt;/p&gt;
-&lt;h2 id=&#34;具体实例&#34;&gt;具体实例
-&lt;/h2&gt;&lt;p&gt;GSA₁：先求多时间步损失均值，再反向传播求梯度（效率高，Imagen耗时&amp;lt;2小时）&lt;/p&gt;
+&lt;h3 id=&#34;具体实例&#34;&gt;具体实例
+&lt;/h3&gt;&lt;p&gt;GSA₁：先求多时间步损失均值，再反向传播求梯度（效率高，Imagen耗时&amp;lt;2小时）&lt;/p&gt;
 &lt;p&gt;GSA₂：逐时间步求梯度，再取均值（效果优，耗时约6小时）&lt;/p&gt;
+&lt;h2 id=&#34;实验&#34;&gt;实验
+&lt;/h2&gt;&lt;p&gt;代码 &lt;a class=&#34;link&#34; href=&#34;https://github.com/py85252876/GSA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Github&lt;/a&gt;。&lt;/p&gt;
 </description>
         </item>
         <item>
