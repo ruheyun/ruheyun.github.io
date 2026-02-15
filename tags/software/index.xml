@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Wed, 11 Feb 2026 18:25:21 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/software/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 15 Feb 2026 17:46:29 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/software/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>网站/软件推荐</title>
         <link>https://ruheyun.github.io/p/website-recommend/</link>
         <pubDate>Mon, 09 Feb 2026 10:26:11 +0800</pubDate>
@@ -26,6 +26,14 @@
 &lt;li&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.kaggle.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Kaggle&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.luogu.com.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;洛谷&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nowcoder.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;牛客&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://huggingface.co/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
