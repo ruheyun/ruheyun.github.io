@@ -7,14 +7,14 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Thu, 19 Feb 2026 17:48:34 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 19 Feb 2026 20:13:39 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Github 笔记</title>
         <link>https://ruheyun.github.io/p/github-note/</link>
         <pubDate>Thu, 19 Feb 2026 17:33:17 +0800</pubDate>
         
         <guid>https://ruheyun.github.io/p/github-note/</guid>
-        <description>&lt;h1 id=&#34;git和github&#34;&gt;Git和Github
-&lt;/h1&gt;&lt;ol&gt;
+        <description>&lt;h2 id=&#34;git和github&#34;&gt;Git和Github
+&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;注册GitHub，下载安装git&lt;/p&gt;
 &lt;/li&gt;
@@ -36,7 +36,7 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;img src=&#34;image-20250226230448725.png&#34; alt=&#34;image-20250226230448725&#34; style=&#34;zoom:80%;&#34; /&gt;
+&lt;img src=&#34;image-20250226230448725.png&#34; alt=&#34;image-20250226230448725&#34; style=&#34;zoom:80%;text-align: center;&#34; /&gt;
 &lt;ol start=&#34;3&#34;&gt;
 &lt;li&gt;
 &lt;p&gt;获取ssh密钥，一直回车即可&lt;/p&gt;
@@ -53,7 +53,7 @@
 &lt;p&gt;登录github，然后在设置里找到ssh keys，将获取的公钥粘贴进去。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;img src=&#34;image-20250301201043306.png&#34; alt=&#34;image-20250301201043306&#34; style=&#34;zoom: 80%;&#34; /&gt;
+&lt;img src=&#34;image-20250301201043306.png&#34; alt=&#34;image-20250301201043306&#34; style=&#34;zoom: 80%;text-align: center;&#34; /&gt;
 &lt;ol start=&#34;5&#34;&gt;
 &lt;li&gt;先在本地一个文件夹初始化为一个仓库&lt;/li&gt;
 &lt;/ol&gt;
@@ -245,9 +245,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git push origin main --force
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;img src=&#34;image-20260219174606186.png&#34; alt=&#34;image-20260219174606186&#34; style=&#34;zoom:80%;&#34; /&gt;
-&lt;img src=&#34;image-20260219174628083.png&#34; alt=&#34;image-20260219174628083&#34; style=&#34;zoom:80%;&#34; /&gt;
-&lt;img src=&#34;image-20260219174647245.png&#34; alt=&#34;image-20260219174647245&#34; style=&#34;zoom:80%;&#34; /&gt;
+&lt;/div&gt;&lt;img src=&#34;image-20260219174606186.png&#34; alt=&#34;image-20260219174606186&#34; style=&#34;zoom:80%;text-align: center;&#34; /&gt;
+&lt;img src=&#34;image-20260219174628083.png&#34; alt=&#34;image-20260219174628083&#34; style=&#34;zoom:80%;text-align: center;&#34; /&gt;
+&lt;img src=&#34;image-20260219174647245.png&#34; alt=&#34;image-20260219174647245&#34; style=&#34;zoom:80%;text-align: center;&#34; /&gt;
 </description>
         </item>
         <item>
