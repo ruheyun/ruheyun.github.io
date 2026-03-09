@@ -382,7 +382,7 @@
 &lt;/h3&gt;&lt;p&gt;White-box（白盒）：指攻击者能够完全访问模型的内部参数、结构和训练过程，与“黑盒”（仅能通过输入输出接口交互）相对。&lt;/p&gt;
 &lt;p&gt;我们发现白盒攻击在现实世界中非常适用，目前最有效的攻击是白盒。&lt;/p&gt;
 &lt;h3 id=&#34;现有扩散模型-mia-不足&#34;&gt;现有扩散模型 MIA 不足
-&lt;/h3&gt;&lt;p&gt;主流依赖损失值/阈值，信息单一易误判&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;主流攻击模型依赖损失值/阈值，信息单一易误判&lt;/p&gt;
 &lt;p&gt;白盒攻击为当前最有效类型，但现有方法计算成本高&lt;/p&gt;
 &lt;h2 id=&#34;攻击方法设计gsa-框架&#34;&gt;攻击方法设计（GSA 框架）
 &lt;/h2&gt;&lt;h3 id=&#34;思想&#34;&gt;思想
@@ -395,8 +395,10 @@
 &lt;p&gt;模型层层面：选择性提取各层梯度，聚合有用信息&lt;/p&gt;
 &lt;p&gt;层内梯度层面：将梯度视为集合，避免顺序依赖&lt;/p&gt;
 &lt;h3 id=&#34;具体实例&#34;&gt;具体实例
-&lt;/h3&gt;&lt;p&gt;GSA₁：先求多时间步损失均值，再反向传播求梯度（效率高，Imagen耗时&amp;lt;2小时）&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;本文只实现了时间步层面，并将等距采样作为主要的采样方式，提出以下两个实例：&lt;/p&gt;
+&lt;p&gt;GSA₁：先求多时间步损失均值，再反向传播求梯度（效率高，Imagen耗时&amp;lt;2小时）&lt;/p&gt;
 &lt;p&gt;GSA₂：逐时间步求梯度，再取均值（效果优，耗时约6小时）&lt;/p&gt;
+&lt;img src=&#34;image-20260309202735582.png&#34; alt=&#34;image-20260309202735582&#34; style=&#34;zoom:80%;&#34; /&gt;
 &lt;h2 id=&#34;实验&#34;&gt;实验
 &lt;/h2&gt;&lt;p&gt;代码 &lt;a class=&#34;link&#34; href=&#34;https://github.com/py85252876/GSA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Github&lt;/a&gt;。&lt;/p&gt;
