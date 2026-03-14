@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Thu, 19 Feb 2026 20:21:06 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 15 Mar 2026 00:45:58 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Github 笔记</title>
         <link>https://ruheyun.github.io/p/github-note/</link>
         <pubDate>Thu, 19 Feb 2026 17:33:17 +0800</pubDate>
@@ -221,6 +221,18 @@
 &lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;q:本地电脑有两个仓库，连接到同一个Github账号中的两个远程仓库，每次都需要输入git remote add origin吗，还是只需要输入一次，以后直接git push就行?&lt;/p&gt;
 &lt;p&gt;a:&lt;strong&gt;各自只需配置一次远程地址&lt;/strong&gt;，之后就可以直接 &lt;code&gt;git push&lt;/code&gt; 了。&lt;/p&gt;
+&lt;p&gt;q:当使用另一台电脑提交代码时，GitHub不会计入个人贡献次数（绿色方块）。&lt;/p&gt;
+&lt;p&gt;a:GitHub 通过提交记录中的&lt;strong&gt;邮箱地址&lt;/strong&gt;来识别贡献者。如果新电脑上配置的 Git 邮箱与 GitHub 账户中绑定的邮箱不一致，贡献将不会显示。&lt;/p&gt;
+&lt;p&gt;q:GitHub 私有仓库克隆失败：密码认证已停用，这个错误是因为 GitHub 从 2021 年起已不再支持使用账户密码进行 HTTPS 的 Git 操作，必须使用 Personal Access Token (PAT) 或 SSH 密钥 进行认证。&lt;/p&gt;
+&lt;p&gt;a:方法1，使用ssh下载代码，但是国内可能下载很慢。方法2，登录 GitHub → 右上角头像 → Settings -&amp;gt; 左侧菜单 → Developer settings → Personal access tokens → Tokens (classic)
+点击 Generate new token (classic)
+填写信息：
+Note: Laptop-Q6JPM115（便于识别设备）
+Expiration: 建议选 30~90 天（更安全）
+Select scopes: 勾选 repo（完整控制私有仓库）
+点击 Generate token，立即复制生成的 token（⚠️ 只显示一次！）
+然后使用git clone https://&amp;hellip;
+然后将远程连接协议改为ssh，把生成的token删除即可，以后通过ssh拉取和推送。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;15.回退代码&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
