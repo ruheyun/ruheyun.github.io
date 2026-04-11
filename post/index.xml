@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>RuHeYun</copyright>
-        <lastBuildDate>Tue, 31 Mar 2026 10:14:06 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 11 Apr 2026 16:08:12 +0800</lastBuildDate><atom:link href="https://ruheyun.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>论文阅读汇总</title>
         <link>https://ruheyun.github.io/p/paper-reading/</link>
         <pubDate>Fri, 06 Feb 2026 14:55:22 +0800</pubDate>
@@ -20,6 +20,7 @@
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://ruheyun.github.io/p/gsa&#34; &gt;White-box Membership Inference Attacks against Diffusion Models&lt;/a&gt; 2025&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2405.17724&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ClavaDDPM: Multi-relational Data Synthesis with Cluster-guided Diffusion Models&lt;/a&gt; 2024&lt;/p&gt;
+&lt;p&gt;Privacy Preserving Diffusion Models for Mixed-Type Tabular Data Generation 2025&lt;/p&gt;
 </description>
         </item>
         <item>
